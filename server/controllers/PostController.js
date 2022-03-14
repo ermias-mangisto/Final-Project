@@ -13,13 +13,13 @@ const GetById=async(req, res)=>{
 };
 const GetByName=async(req, res)=>{
     const {pages,limit}=req.query;
-   await Post.filter({postName:req.params.Name}).limit(limit).skip((pages-1)*limit)
+   await Post.find({postName:req.params.postName}).limit(limit).skip((pages-1)*limit)
     .then((data)=>{ res.send(data)})
     .catch((err)=>res.status(404).send({message: "err"}))
 };
 const GetByProjectType=async(req, res)=>{
     const {pages,limit}=req.query;
-   await Post.filter({ProjectType:req.params.type}).limit(limit).skip((pages-1)*limit)
+   await Post.find({projectType:req.params.projectType}).limit(limit).skip((pages-1)*limit)
     .then((data)=>{ res.send(data)})
     .catch((err)=>res.status(404).send({message: "err"}))
 };
