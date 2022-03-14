@@ -33,9 +33,9 @@ const toggleLogin = () => {
     const classes = useStyles();
 
     return (
-     {login &&<Login   handleClose={toggleLogin}/>}
-{register &&<Register handleClose={toggleRegister}/>}
-      <div className='navbar'>
+        <div className='navbar'>
+          {login && <Login   handleClose={toggleLogin}/>}
+     {register && <Register handleClose={toggleRegister}/>}
         <AppBar position="static" color= "#f8f5f1">
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
