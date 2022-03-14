@@ -1,16 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
 import UserContextProvider from "./context/userContext/userContext"
+import React from "react";
+import "./App.css";
+import Landing from "./components/pages/landing/landing";
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+
+
       <UserContextProvider>
+       <Landing />
      </UserContextProvider>
-      </header>
+
+
+
     </div>
   );
 }
