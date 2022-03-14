@@ -4,8 +4,8 @@ const {Get,GetById,GetByName,GetByProjectType,Update,Add,Delete}=require('../con
 
 PostRouter.get("/",Get)
 PostRouter.get("/:id",GetById)
-PostRouter.get("/:name", GetByName)
-PostRouter.get("/:type", GetByProjectType)
+PostRouter.get("/name/:postName", GetByName)
+PostRouter.get("/type/:projectType", GetByProjectType)
 PostRouter.post("/add",Add)
 PostRouter.put("/update/:id",Update )
 PostRouter.delete("/delete/:id", Delete)
