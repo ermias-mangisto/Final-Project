@@ -1,5 +1,5 @@
 
-import {useState} from "react"
+import { useState } from "react"
 import Register from "../../parts/register/register";
 import Login from "../../parts/login/login";
 import React from 'react';
@@ -21,34 +21,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-   const NavBar=()=> {
-    const [login,setLogin]=useState(false);
-const [register,setRegister]=useState(false);
-const toggleLogin = () => {
+const NavBar = () => {
+  const [login, setLogin] = useState(false);
+  const [register, setRegister] = useState(false);
+  const toggleLogin = () => {
     setLogin(!login);
   }
   const toggleRegister = () => {
     setRegister(!register);
   }
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-     {login &&<Login   handleClose={toggleLogin}/>}
-{register &&<Register handleClose={toggleRegister}/>}
-      <div className='navbar'>
-        <AppBar position="static" color= "#f8f5f1">
-          <Toolbar>
-            <Typography variant="h5" className={classes.title}>
-              TEAMWARE
-            </Typography>
-            <Button color="inherit" onClick={toggleLogin}>Login</Button>
-            <Button color="inherit" onClick={toggleRegister}>Register</Button>
-          </Toolbar>
-        </AppBar>
-      </div>
-      
-    );
-  }
+  return (
+    <div className='navbar'>
+      {login && <Login handleClose={toggleLogin} />}
+      {register && <Register handleClose={toggleRegister} />}
+      <AppBar position="static" color="#f8f5f1">
+        <Toolbar>
+          <Typography variant="h5" className={classes.title}>
+            TEAMWARE
+          </Typography>
+          <Button color="inherit" onClick={toggleLogin}>Login</Button>
+          <Button color="inherit" onClick={toggleRegister}>Register</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
 
-  export default NavBar;
+  );
+}
+
+export default NavBar;
 
