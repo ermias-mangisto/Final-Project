@@ -3,23 +3,23 @@ const Get= async(req, res)=>{
     const {pages,limit}=req.query;
   await ArchivedPost.find().limit(limit).skip((pages-1)*limit)
   .then((data)=>{res.send(data)})
-  .catch((err)=>res.status(404).send({message: "err"}))
+  .catch((err)=>res.status(404).send({message: "err789"}))
     
 };
 const GetById=async(req, res)=>{
    await ArchivedPost.findById({_id:req.params.id})
     .then((data)=>{ res.send(data)})
-    .catch((err)=>res.status(404).send({message: "err"}))
+    .catch((err)=>res.status(404).send({message: "err123"}))
 };
 const GetByName=async(req, res)=>{
     const {pages,limit}=req.query;
-   await ArchivedPost.filter({PostName:req.params.Name}).limit(limit).skip((pages-1)*limit)
+   await ArchivedPost.find({postName:req.params.postName}).limit(limit).skip((pages-1)*limit)
     .then((data)=>{ res.send(data)})
-    .catch((err)=>res.status(404).send({message: "err"}))
+    .catch((err)=>res.status(404).send({message: "errtretre"}))
 };
 const GetByProjectType=async(req, res)=>{
     const {pages,limit}=req.query;
-   await ArchivedPost.filter({ProjectType:req.params.type}).limit(limit).skip((pages-1)*limit)
+   await ArchivedPost.find({projectType:req.params.projectType}).limit(limit).skip((pages-1)*limit)
     .then((data)=>{ res.send(data)})
     .catch((err)=>res.status(404).send({message: "err"}))
 };

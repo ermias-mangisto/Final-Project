@@ -18,18 +18,18 @@ const UserRouter=require('./routes/UserRoute');
 require('./config/passport')(passport);
 app.use(passport.initialize())
 app.use('/register',UserRouter);
-app.use('/post',passport.authenticate("jwt",{session:false}),PostRouter);
-app.use('/comment',passport.authenticate("jwt",{session:false}),CommentRouter);
-app.use('/alert/',passport.authenticate("jwt",{session:false}),AlertRouter);
+app.use('/post',PostRouter);
+app.use('/comment',CommentRouter);
+app.use('/alert/',AlertRouter);
 app.use('/report',ReportRouter);
-app.use('/archivedPost',passport.authenticate("jwt",{session:false}),ArchivedPostRouter);
+app.use('/archivedPost',ArchivedPostRouter);
 app.listen(port);
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')));
-    app.use(express.static('public'));
-    app.get('*', (req, res)=>{
-        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-    });
-  }
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static(path.join(__dirname, '../client/build')));
+//     app.use(express.static('public'));
+//     app.get('*', (req, res)=>{
+//         res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+//     });
+//   }
 
 
