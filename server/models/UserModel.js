@@ -8,9 +8,9 @@ const User = new mongoose.Schema(
     summary: {type: String},
     password:{ type: String, require: true },
     lastLogin: { type: Date, default: Date.now },
-    IsLogin: { type: Boolean, default: false },
-    IsAdmin: { type: Boolean, default: false },
-     PhoneNumber: { type:   Number, require: true ,unique: true }
+    isLogin: { type: Boolean, default: false },
+    isAdmin: { type: Boolean, default: false },
+    phoneNumber: { type:   Number, require: true ,unique: true }
 
   },
   { timestamps: true }
