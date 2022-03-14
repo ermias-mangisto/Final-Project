@@ -5,7 +5,7 @@ import  "./hero-image.css"
     return (
       <div className="HeroImage">
        
-      <img src="https://cdn.shopify.com/s/files/1/0535/6917/products/teams.jpg?v=1602625018"/>
+      <img src="http://resourcewebsite.singoo.cc/attachment/5ea4eea885192.jpg"/>
      
       </div>
     );
