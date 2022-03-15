@@ -1,23 +1,41 @@
-.Team {
-  margin-top: 20px;
+.allTeam {
+ 
   width: 100%;
   height: 60vh;
-  display: flex;
-  justify-content: right;
+
   border-bottom: 1px black solid;
- 
 }
-.image img {
-  width:60%;
+
+.allImage {
+  width:100%;
   height: 35vh;
   border-radius: 50%;
-  margin-left: 15%;
- 
-}
-.image h3 {
-  margin-left:15%;
+ margin-top: 5%;
+ display: flex;
+
 }
 .Meet {
-  margin-top: 10%;
-  margin-right: 20%;
+  width: 30%;
+   margin-left:10%;
+   margin-top: 10%;
+   font-size: x-large;
+
+
+ }
+ 
+.allImage img{
+  width:95%;
+  height: 35vh;
+  border-radius: 50%;
 }
+.image{
+  text-align: center;
+  margin: 10px;
+  
+}
+
+h3{
+  width:100%;
+  
+}
+
