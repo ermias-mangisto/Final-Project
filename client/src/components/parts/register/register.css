@@ -10,9 +10,9 @@
    
   .box {
     position: relative;
-    width: 33%;
+    width: 28%;
     margin: 0 auto;
-    height: 70vh;
+    height: 60vh;
     max-height: 70vh;
     margin-top: calc(100vh - 85vh - 20px);
     background: #fff;
@@ -22,6 +22,7 @@
     overflow: auto;
   }
    .register{
+    text-align: center;
   display: flex;
   color: black;
   width: 100%;
@@ -53,9 +54,10 @@ flex-direction: column;
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: calc(33% - 10px);
+    right: calc(35.2% - 10px);
     top: calc(102vh - 85vh - 33px);
     background: black;
+    color: white;
     width: 25px;
     height: 25px;
     border-radius: 50%;
