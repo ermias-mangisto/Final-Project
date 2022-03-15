@@ -16,7 +16,8 @@ const {  user,setUser}=useContext(UserContext)
             localStorage.setItem("token",res.token);
             const token = localStorage.getItem("token");
             const decoded = jwt_decode(token);
-            setUser(decoded.user);}
+            setUser(decoded.user);
+            props.handleClose()}
             alert(res.message)})
       };
 

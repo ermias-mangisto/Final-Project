@@ -16,15 +16,18 @@ function Register(props) {
     e.preventDefault();
     console.log(newUser);
     registerNewUser(newUser).then((res) => {
-        alert(res.message);
+    
     if(res.success){
     loginUser(newUser)
     .then((res) => {if(res.success){
         localStorage.setItem("token",res.token);
         const token = localStorage.getItem("token");
         const decoded = jwt_decode(token);
-        setUser(decoded.user);}
-        })}});
+        setUser(decoded.user);
+        props.handleClose()}
+        })}
+        alert(res.message);
+    });
   };
   return (
     <div className="popup-box">
