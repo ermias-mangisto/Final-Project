@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() =>{
     if (localStorage.token!==undefined) {
@@ -20,7 +21,8 @@ const UserContextProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        setUser
+        setUser,
+        isLoggedIn, setIsLoggedIn
       }}
     >
       {children}
