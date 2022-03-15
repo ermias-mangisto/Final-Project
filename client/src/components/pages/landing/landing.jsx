@@ -8,14 +8,14 @@ import Team from "./team";
 const Landing = () => {
   return (
     <div className="Landing">
-   <nav>
+
         
       <NavBar/>
         <HeroImage />
         <About />
         <Team/>
         <Footer/>
-        </nav>
+      
     </div>
   );
 };

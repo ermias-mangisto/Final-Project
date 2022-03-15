@@ -10,8 +10,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -37,7 +35,7 @@ const NavBar = () => {
       {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
       <AppBar position="static" color="#f8f5f1">
-        <Toolbar>
+        <Toolbar >
           <Typography variant="h5" className={classes.title}>
             TEAMWARE
           </Typography>
@@ -51,4 +49,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
