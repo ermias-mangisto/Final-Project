@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GetAllArchive } from "../../services//archivedPostService";
+import { GetAllArchive } from "../../services/archivedPostService";
 export const ArchivePostProvider = React.createContext();
 export const ArchivePostContext = ({children})=>{
 const [archivepost,setArchivePost] = useState([])

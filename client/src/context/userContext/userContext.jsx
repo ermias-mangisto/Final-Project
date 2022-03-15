@@ -14,20 +14,13 @@ const UserContextProvider = ({ children }) => {
         setUser(decoded.user);
     }
     }, []); 
-  const handleLogout = () => {
-    setUser({});
-  };
-  const handleRegister = (user) => {
-    setUser(user);
-  };
+
 
   return (
     <UserContext.Provider
       value={{
         user,
-        setUser,
-        handleLogout,
-        handleRegister,
+        setUser
       }}
     >
       {children}
