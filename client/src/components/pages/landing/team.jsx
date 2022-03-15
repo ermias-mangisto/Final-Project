@@ -4,14 +4,10 @@ import "./team.css";
 const Team = () => {
   return (
     <section className="allTeam">
-
-      
-
       <div className="allImage">
-
-      <div className="Meet">
-        <h1>Meet the team </h1>
-      </div>
+        <div className="Meet">
+          <h1>Meet the team </h1>
+        </div>
 
         <div className="image">
           <img src="https://avatars.githubusercontent.com/u/87426545?v=4" />
