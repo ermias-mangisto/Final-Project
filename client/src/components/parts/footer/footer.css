@@ -1,10 +1,9 @@
 .hidden-Footer {
   width: 100%;
   height: 100%;
-
   text-align: right;
   position: absolute;
-  transition: 2s;
+
 }
 .hidden-Footer img {
   width: 3%;
@@ -40,12 +39,10 @@
   height: 2em;
   overflow: hidden;
   margin: 0 auto;
-
-  transition: 1s;
+  transition-duration:2s;
 }
 .footer:hover {
   transition-duration: 0.5s;
-
   height: 15em;
 }
 .footer #container {
@@ -70,7 +67,6 @@
   float: left;
   text-align: center;
 }
-
 .hidden-Footer h3 {
   font-size: 30px;
   font-weight: 100;
@@ -78,37 +74,36 @@
   margin-left: 40px;
 }
 
-.hidden-Footer{
+.hidden-Footer {
   font-size: 10px;
   width: 100%;
   text-align: center;
-  color:BLACK;
+  color: BLACK;
   height: 50%;
-
-   display: flex;
+  padding: 10px;
+  display: flex;
   justify-content: space-around;
-}
-
  
-.hidden-Footer div{
+
+}
+.hidden-Footer div {
   display: flex;
   flex-direction: column;
 }
-.hidden-Footer a{
+.hidden-Footer a {
   text-decoration: none;
   color: antiquewhite;
   font-size: medium;
 }
-.hidden-Footer h1{
- font-size: x-large;
-
-
+.hidden-Footer h1 {
+  font-size: x-large;
 }
 
-/* .logo img{
+.logoa img {
   width: 100px;
   height: 100px;
 }
-.logo {
-  width: 30%;
-} */
+.logoa {
+  width: 20%;
+  padding: 35px;
+}
