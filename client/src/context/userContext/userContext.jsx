@@ -13,6 +13,7 @@ const UserContextProvider = ({ children }) => {
         setAuthToken(token);
         const decoded = jwt_decode(token);
         setUser(decoded.user);
+        setIsLoggedIn(true)
     }
     }, []); 
 
@@ -26,7 +27,7 @@ const UserContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </UserContext.Provider>
+    </UserContext.Provider> 
   );
 };
 export default UserContextProvider;

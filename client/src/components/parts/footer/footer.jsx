@@ -6,10 +6,10 @@ const Footer = () => {
       <div id="button"></div>
       <div id="container">
         <article className=" hidden-Footer">
-{/* <div className="logo">
+
+        <div className="logoa">
 <img src="https://i.ibb.co/7CsT864/ddaf023ec64044ebaeb29ebf4545b423.png" alt="" />
-</div> */}
-        
+</div>
           <div>
             <h1>Yafit Samuel</h1>
             <a href="https://www.linkedin.com/feed/">linkedin </a>

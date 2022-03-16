@@ -4,7 +4,7 @@ import {loginUser} from "../../../services/userService"
 import jwt_decode from "jwt-decode";
 import "./login.css";
 function Login(props){
-const {  user,setUser}=useContext(UserContext)
+const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
     const onFieldChange = (e) => {
         const { name, value } = e.target;
         setUser({ ...user, [name]: value });
@@ -17,6 +17,7 @@ const {  user,setUser}=useContext(UserContext)
             const token = localStorage.getItem("token");
             const decoded = jwt_decode(token);
             setUser(decoded.user);
+            setIsLoggedIn(true)
             props.handleClose()}
             alert(res.message)})
       };
