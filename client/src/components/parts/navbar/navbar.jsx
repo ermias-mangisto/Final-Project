@@ -1,5 +1,7 @@
 
-import { useState } from "react"
+import react,{useState,useContext} from 'react';
+import { Link } from "react-router-dom";
+import {UserContext} from "../../../context/userContext/userContext"
 import Register from "../../parts/register/register";
 import Login from "../../parts/login/login";
 import React from 'react';
@@ -20,8 +22,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
+  const { isLoggedIn, setIsLoggedIn}=useContext(UserContext)
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
+  const {  user,setUser}=useContext(UserContext)
+  function HandleLogout(){
+      setUser({})
+      localStorage.removeItem("token")
+      setIsLoggedIn(false)}
   const toggleLogin = () => {
     setLogin(!login);
   }
@@ -32,9 +40,9 @@ const NavBar = () => {
 
   return (
     <div className='navbar'>
-      {login && <Login handleClose={toggleLogin} />}
+     {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
-      <AppBar position="static" color="#f8f5f1">
+   {!isLoggedIn &&    <AppBar position="static" color="#f8f5f1">
         <Toolbar >
           <Typography variant="h5" className={classes.title}>
             TEAMWARE
@@ -42,7 +50,17 @@ const NavBar = () => {
           <Button color="inherit" onClick={toggleLogin}>Login</Button>
           <Button color="inherit" onClick={toggleRegister}>Register</Button>
         </Toolbar>
-      </AppBar>
+      </AppBar>}
+   {isLoggedIn &&    <AppBar position="static" color="#f8f5f1">
+        <Toolbar >
+          <Typography variant="h5" className={classes.title}>
+          <Link to="/">TEAMWARE</Link> 
+          </Typography>
+          <Button color="inherit" > <Link to="/profile">profile</Link></Button>
+          <Button color="inherit" > <Link to="/main">Main</Link></Button>
+          <Button color="inherit" onClick={HandleLogout}>log-out</Button>
+        </Toolbar>
+      </AppBar>}
     </div>
 
   );
