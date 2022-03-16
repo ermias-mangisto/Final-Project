@@ -58,7 +58,7 @@ const NavBar = () => {
           </Typography>
           <Button color="inherit" > <Link to="/profile">profile</Link></Button>
           <Button color="inherit" > <Link to="/main">Main</Link></Button>
-          <Button color="inherit" onClick={HandleLogout}>log-out</Button>
+          <Button color="inherit" onClick={HandleLogout}><Link to="/">log-out</Link></Button>
         </Toolbar>
       </AppBar>}
     </div>
