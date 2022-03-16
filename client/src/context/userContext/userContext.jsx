@@ -27,7 +27,7 @@ const UserContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </UserContext.Provider>
+    </UserContext.Provider> 
   );
 };
 export default UserContextProvider;
