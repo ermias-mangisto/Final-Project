@@ -6,7 +6,7 @@ import jwt_decode from "jwt-decode";
 import "./register.css"
 function Register(props) {
   const [newUser, setNewUser] = useState({});
-  const {  user,setUser}=useContext(UserContext)
+  const {  user,setUser,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
 
   const onFieldChange = (e) => {
     const { name, value } = e.target;
@@ -24,6 +24,7 @@ function Register(props) {
         const token = localStorage.getItem("token");
         const decoded = jwt_decode(token);
         setUser(decoded.user);
+        setIsLoggedIn(true);
         props.handleClose()}
         })}
         alert(res.message);
