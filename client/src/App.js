@@ -5,6 +5,7 @@ import UserContextProvider from "./context/userContext/userContext"
 import React from "react";
 import "./App.css";
 import Landing from "./components/pages/landing/landing";
+import Router from "./appRouter/AppRouter"
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
 
       <UserContextProvider>
-       <Landing />
+       <Router/>
      </UserContextProvider>
 
 
