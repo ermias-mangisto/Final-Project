@@ -1,16 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { GetAllPost } from "../../services/postService";
-export const PostProvider = React.createContext();
-export const PostContext = ({children})=>{
-const [post,setPost] = useState([])
+export const PostContext = React.createContext();
+export const PostProvider = ({children})=>{
+const [posts,setPosts] = useState([])
+const [page, setPage] = useState(1);
+const [loading, setLoading] = useState(true);
 useEffect(()=>{
-    GetAllPost()
-    .then(res => setPost(res))
-},[])
+    const loadPosts=async()=>{
+        setLoading(true);
+        const newPosts=await  GetAllPost(page);
+        console.log(posts);
+        setPosts((prev)=>[...prev,...newPosts]);
+        setLoading(false);
+    }
+   loadPosts();
+    
+},[page])
 return(
-    <PostProvider.Provider value={{post,setPost}}>
+    <PostContext.Provider value={{
+        posts,setPosts,
+        page, setPage,
+        loading, setLoading
+    }}>
         {children}
-    </PostProvider.Provider>
+    </PostContext.Provider>
+    
     
 )
 }
