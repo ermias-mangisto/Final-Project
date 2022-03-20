@@ -2,7 +2,7 @@ import "./footer.css";
 
 const Footer = () => {
   return (
-    <footer class="footer">
+    <footer className="footer">
       <div id="button"></div>
       <div id="container">
         <article className=" hidden-Footer">

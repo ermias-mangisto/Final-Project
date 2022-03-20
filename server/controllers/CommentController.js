@@ -9,6 +9,14 @@ let Get = async (req, res) => {
     })
     .catch((err) => res.status(404).send({ massage: error }));
 };
+let GetByPost = async (req, res) => {
+    const {pages,limit}=req.query;
+    await Comment.find({postId:req.params.postId}).limit(limit).skip((pages-1)*limit)
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => res.status(404).send({ massage: error }));
+};
 
 //GET:ID
 let GetById = async (req, res) => {
@@ -45,6 +53,7 @@ let Delete = async(req, res) => {
 };
 
 module.exports = {
+  GetByPost,
   Get,
   GetById,
   Add,
