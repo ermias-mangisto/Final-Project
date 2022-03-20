@@ -1,14 +1,14 @@
 const BASIC_URL = "http://localhost:8100/post";
-export const GetAllPost = async () => {
+export const GetAllPost = async (page)  => {
     try {
-        return await fetch(BASIC_URL)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=3  `)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
         return error
     }
-
 }
+
 export const GetPostById = async (id) => {
     try {
         return await fetch(`${BASIC_URL}/${id}`)
@@ -18,15 +18,16 @@ export const GetPostById = async (id) => {
         return error
     }
 }
-export const GetPostByName = async (name) => {
+export const GetPostByName = async (name,page) => {
     try {
-        return await fetch(`${BASIC_URL}/name/${name}`)
+        return await fetch(`${BASIC_URL}/name/${name}?page=${page}&limit=10`)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
         return error
     }
 }
+
 export const GetPostByType = async (type) => {
     try {
         return await fetch(`${BASIC_URL}/type/${type}`)
@@ -36,6 +37,7 @@ export const GetPostByType = async (type) => {
         return error
     }
 }
+
 export const CreatePost = async (post) => {
     try {
         return await fetch(`${BASIC_URL}/add`, {

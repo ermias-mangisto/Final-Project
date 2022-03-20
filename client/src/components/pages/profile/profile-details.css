@@ -1,0 +1,46 @@
+.ProfileDetails {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.input {
+  width: 600px;
+  height: 300px;
+  margin-top: 50px;
+  border-radius: 20px;
+  border: black 3px solid;
+}
+.createButton {
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+}
+.userIcon {
+  width: 200px;
+  height: 200px;
+  margin-top: 50px;
+  color: rgb(212, 252, 238);
+}
+p {
+  text-align: center;
+}
+.WhatsappIcon {
+  width: 30px;
+  height: 30px;
+}
+.emailIcon {
+  width: 30px;
+  height: 30px;
+}
+.editButton {
+  width: 100px;
+  height: 30px;
+  margin-top: 70px;
+  margin-left: 65%;
+}
+.summary {
+  width: 500px;
+  height: 200px;
+  margin-top: 60px;
+}
