@@ -1,7 +1,7 @@
 const Post=require('../models/PostModel')
 const Get= async(req, res)=>{
-    const {pages,limit}=req.query;
-  await Post.find().limit(limit).skip((pages-1)*limit)
+    const {page,limit}=req.query;
+  await Post.find().limit(limit).skip((page-1)*limit)
   .then((data)=>{res.send(data)})
   .catch((err)=>res.status(404).send({message: "err"}))
     
