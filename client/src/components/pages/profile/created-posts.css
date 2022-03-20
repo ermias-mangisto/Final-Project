@@ -1,0 +1,12 @@
+.CeratedPosts{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+.post{
+    width: 200px;
+    height: 200px;
+    border: 3px black solid;
+    border-radius: 20px;
+}
