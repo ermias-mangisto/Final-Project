@@ -1,7 +1,7 @@
 const BASIC_URL = "http://localhost:8100/report";
-export const GetAllReport = async () => {
+export const GetAllReport = async (page) => {
     try {
-        return await fetch(BASIC_URL)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=10`)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
