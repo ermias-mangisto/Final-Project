@@ -1,7 +1,17 @@
 const BASIC_URL = "http://localhost:8100/comment";
-export const GetAllComment = async () => {
+export const GetAllComment = async (page) => {
     try {
-        return await fetch(BASIC_URL)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=10`)
+            .then(response => response.json())
+            .catch(reject => console.error(reject))
+    } catch (error) {
+        return error
+    }
+
+}
+export const GetPostComment = async (postId,page) => {
+    try {
+        return await fetch(`${BASIC_URL}/post/${postId}?page=${page}&limit=10`)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {

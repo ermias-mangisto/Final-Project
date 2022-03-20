@@ -20,9 +20,9 @@ export const loginUser = async (user) => {
         .then(res => res.json())
         .catch((err)=>{return err});
 }
-export const GetAll = async()=>{
+export const GetAll = async(page)=>{
       try {
-          return await fetch(`${BASIC_API}`)
+          return await fetch(`${BASIC_API}?page=${page}&limit=10`)
           .then(res => res.json())
           .catch(err => {return err})
       } catch (error) {
@@ -38,9 +38,9 @@ export const GetUserById = async (id) => {
         return error
     }
 }
-export const GetUserByName = async (name) => {
+export const GetUserByName = async (name,page) => {
     try {
-        return await fetch(`${BASIC_API}/name/${name}`)
+        return await fetch(`${BASIC_API}/name/${name}?page=${page}&limit=10`)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
