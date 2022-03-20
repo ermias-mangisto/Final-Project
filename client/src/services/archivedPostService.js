@@ -36,11 +36,11 @@ export const GetArchiveByType = async (type) => {
         return error
     }
 }
-export const CreateArchive = async (archive) => {
+export const CreateArchive = async (postObject) => {
     try {
         return await fetch(`${BASIC_URL}/add`, {
             method: "POST",
-            body: JSON.stringify(archive),
+            body: JSON.stringify({postObject}),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(response => response.json())
