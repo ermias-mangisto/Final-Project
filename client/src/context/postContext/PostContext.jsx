@@ -11,5 +11,6 @@ return(
     <PostProvider.Provider value={{post,setPost}}>
         {children}
     </PostProvider.Provider>
+    
 )
 }

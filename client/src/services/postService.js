@@ -7,8 +7,8 @@ export const GetAllPost = async () => {
     } catch (error) {
         return error
     }
-
 }
+
 export const GetPostById = async (id) => {
     try {
         return await fetch(`${BASIC_URL}/${id}`)
@@ -27,6 +27,7 @@ export const GetPostByName = async (name) => {
         return error
     }
 }
+
 export const GetPostByType = async (type) => {
     try {
         return await fetch(`${BASIC_URL}/type/${type}`)
@@ -36,6 +37,7 @@ export const GetPostByType = async (type) => {
         return error
     }
 }
+
 export const CreatePost = async (post) => {
     try {
         return await fetch(`${BASIC_URL}/add`, {
