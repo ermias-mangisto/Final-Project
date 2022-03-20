@@ -11,6 +11,12 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { FaUserAlt } from "react-icons/fa";
+import {FaHome } from "react-icons/fa";
+
+import { FaBell } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +48,8 @@ const NavBar = () => {
     <div className='navbar'>
      {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
-   {!isLoggedIn &&    <AppBar position="static" color="#f8f5f1">
+   {!isLoggedIn &&    <AppBar position="static" color="inherit" >
+
         <Toolbar >
           <Typography variant="h5" className={classes.title}>
             TEAMWARE
@@ -51,14 +58,16 @@ const NavBar = () => {
           <Button color="inherit" onClick={toggleRegister}>Register</Button>
         </Toolbar>
       </AppBar>}
-   {isLoggedIn &&    <AppBar position="static" color="#f8f5f1">
+   {isLoggedIn &&    <AppBar position="static" color="#inherit">
         <Toolbar >
           <Typography variant="h5" className={classes.title}>
           <Link to="/">TEAMWARE</Link> 
           </Typography>
-          <Button color="inherit" > <Link to="/profile">profile</Link></Button>
-          <Button color="inherit" > <Link to="/main">Main</Link></Button>
-          <Button color="inherit" onClick={HandleLogout}><Link to="/">log-out</Link></Button>
+          <Button color="inherit" > <Link to="/main"><FaHome className='Icon'/></Link></Button>
+          <Button color="inherit" onClick={HandleLogout}><Link to="/"><FiLogOut className='Icon'/></Link></Button>
+          <Button color="inherit" ><Link to="/"><FaBell className='Icon'/></Link></Button>
+          <Button color="inherit" > <Link to="/profile">< FaUserAlt className='Icon'/></Link></Button>
+
         </Toolbar>
       </AppBar>}
     </div>
