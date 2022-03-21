@@ -1,11 +1,12 @@
 import react from "react";
-import {PostProvider }from "../../../context/postContext/PostContext"
+import {PostProvider }from "../../../context/postContext/PostContext";
 import Posts from "./posts";
-import "./home.css"
+import "./home.css";
 const PostsBody = () => {
     return (
     <section className="posts">
         <PostProvider>
+
         <Posts/>
         </PostProvider>
         </section>
