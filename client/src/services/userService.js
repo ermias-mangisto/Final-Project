@@ -38,6 +38,24 @@ export const GetUserById = async (id) => {
         return error
     }
 }
+export const GetUserCreatedPosts = async (id) => {
+    try {
+        return await fetch(`${BASIC_API}/created/${id}`)
+            .then(response => response.json())
+            .catch(reject => console.error(reject))
+    } catch (error) {
+        return error
+    }
+}
+export const GetUserJoinedPosts = async (id) => {
+    try {
+        return await fetch(`${BASIC_API}/joined/${id}`)
+            .then(response => response.json())
+            .catch(reject => console.error(reject))
+    } catch (error) {
+        return error
+    }
+}
 export const GetUserByName = async (name,page) => {
     try {
         return await fetch(`${BASIC_API}/name/${name}?page=${page}&limit=10`)
