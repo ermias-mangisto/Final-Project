@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import CommentIcon from '@mui/icons-material/Comment';
 import IconButton from '@mui/material/IconButton';
-
+import { MdOutlineDeleteOutline } from "react-icons/md";
 export default function Requests() { 
     const[alerts,setAlerts]=useState([])
     const{user,setUser}=useContext(UserContext)
@@ -18,7 +18,7 @@ export default function Requests() {
           disableGutters
           secondaryAction={
             <IconButton>
-               ok
+               <MdOutlineDeleteOutline/>
             </IconButton>
           }
         >

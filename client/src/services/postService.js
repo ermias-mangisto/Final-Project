@@ -38,9 +38,9 @@ export const GetPostByType = async (type) => {
     }
 }
 
-export const CreatePost = async (post) => {
+export const CreatePost = async (post,id) => {
     try {
-        return await fetch(`${BASIC_URL}/add`, {
+        return await fetch(`${BASIC_URL}/add,${id}`, {
             method: "POST",
             body: JSON.stringify(post),
             headers: { 'Content-Type': 'application/json' }

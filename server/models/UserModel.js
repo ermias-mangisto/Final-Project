@@ -11,8 +11,12 @@ const User = new mongoose.Schema(
     isLogin: { type: Boolean, default: false },
     isAdmin: { type: Boolean, default: false },
     phoneNumber: { type: Number, require: true ,unique: true },
-    cratedPost:{type:Array},
-    joinedPost:{type:Array}
+    cratedPost:[{type:mongoose.Schema.Types.ObjectId,
+    ref:'Post'
+    }],
+    joinedPost:[{type:mongoose.Schema.Types.ObjectId,
+      ref:'Post'
+      }]
   },
   { timestamps: true }
 );
