@@ -4,8 +4,7 @@
     display: grid;   
    width: 60%;
    margin: auto;
-   grid-template-columns: 10% ;
-   grid-auto-rows: 10%;
+   grid-template-columns: 10% ;   
    grid-template-areas:
    'search search search sidebar '
    ' main main main sidebar'
@@ -15,6 +14,7 @@
 margin-top:20px;
 }
 .posts{
+    margin-top: 0;
     text-align: center;
     grid-area: main ;
    
@@ -27,6 +27,7 @@ margin-top:20px;
 }
 .searchBar{
     grid-area: search;
+    max-height: 50px;
    margin-bottom: 0;
 }
 .popup-box {
@@ -54,16 +55,24 @@ margin-top:20px;
   }
    .PopUpCard{
        width: 99%;
+       text-align:left;
    }
    .PopUpText{
        display: flex;
     flex-direction: column;
     margin:auto;
-    text-align:left;
+
+text-align:left;
        width: 80%;
    }
-   .PopUpText h1{
+   .PopUpText p{
+
+text-align:left;
+   
+   }
+   .PopUpText h1 {
        text-align:center;
+       font-size:x-large;
    }
    .nameTag{
        margin-top: 0;
@@ -73,7 +82,6 @@ margin-top:20px;
    .commentInput{
        width: 80%;
        height:200px;
-       text-align:top;
    }
   .close-icon {
     content: 'x';

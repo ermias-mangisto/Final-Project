@@ -1,5 +1,5 @@
 const BASIC_URL = "http://localhost:8100/alert/";
-export const GetAllAlert = async () => {
+export const GetAllAlert = async (page) => {
     try {
         return await fetch(`${BASIC_URL}?page=${page}&limit=10`)
             .then(response => response.json())

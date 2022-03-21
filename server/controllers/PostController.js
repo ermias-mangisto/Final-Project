@@ -1,4 +1,5 @@
 const Post=require('../models/PostModel')
+const User=require('../models/UserModel')
 const Get= async(req, res)=>{
     const {page,limit}=req.query;
   await Post.find().limit(limit).skip((page-1)*limit)
@@ -24,9 +25,13 @@ const GetByProjectType=async(req, res)=>{
     .catch((err)=>res.status(404).send({message: "err"}))
 };
 const Add=async(req, res)=>{
-  await  Post.create(req.body)
-    .then((data)=>{res.send(data)})
-    .catch((err)=>res.send({message: "err"}))
+await  Post.create(req.body)
+  .then((data)=>{User.findOne({_id:req.params.id} )
+  .then((user)=>{user.cratedPost.push(data._id)
+     user.save()})
+ res.send(data)})
+  .catch((err)=>res.send({message: "err"}))
+
 };
 const Update=async(req, res)=>{
   await  Post.findByIdAndUpdate({_id:req.params.id},req.body)
