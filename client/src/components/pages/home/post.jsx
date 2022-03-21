@@ -15,7 +15,10 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import {GetUserById} from '../../../services/userService'
-import PostPopUp from './postPopUp'
+import PostPopUp from './postPopUp';
+import { MdGroups } from "react-icons/md";
+import { MdReportProblem } from "react-icons/md";
+
 const Post = (props) => {
     const [userName,setUserName]=useState("");
     const [isOpen, setIsOpen] = useState(false);
@@ -73,11 +76,11 @@ useEffect(()=>{
         <IconButton aria-label="like">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="join">
+         <MdGroups/>
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="report">
+        <MdReportProblem/>
         </IconButton>
       </CardActions>
     </Card>

@@ -36,6 +36,14 @@ module.exports = {
             .then((data) => { res.send(data) })
             .catch((err) => res.status(404).send({ message: err.message }))
     },
+    GetAllCreatedPosts: async (req, res) => {
+    const posts= await Users.findOne({ _id: req.params.id }).populate("cratedPost")
+       res.send(posts.cratedPost)
+    },
+    GetAllJoinedPosts: async (req, res) => {
+    const posts= await Users.findOne({ _id: req.params.id }).populate("joinedPost")
+       res.send(posts.cratedPost)
+    },
     GetById: async (req, res) => {
         await Users.findById({ _id: req.params.id })
             .then((data) => { 
