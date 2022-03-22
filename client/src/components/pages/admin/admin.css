@@ -1,16 +1,26 @@
-table {
+.table {
     font-family: arial, sans-serif;
-    border-collapse: collapse black;
-    width: 100%;
+    border-collapse: collapse 2pxblack;
+    width: 90%;
+    margin-left: 5%;
   }
-  
-  td, th {
+  .tr{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    
+    background: rgb(59, 49, 49);
+    font-family:'Times New Roman', Times, serif;
+    color: white;
   }
   button{
     border: none;
     background: none;
   }
+.table_details{
+  background: rgb(230, 228, 228);
+  margin-bottom: 5%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  border: 2px solid black;
+}

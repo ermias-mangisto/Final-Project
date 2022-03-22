@@ -6,7 +6,7 @@ export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [displayAlerts,setDisplayAlerts] = useState(false); //! ADDED BY IZHAK
   useEffect(() =>{
     if (localStorage.token!==undefined) {
         const token = localStorage.getItem("token");
@@ -17,12 +17,12 @@ const UserContextProvider = ({ children }) => {
     }
     }, []); 
 
-
   return (
     <UserContext.Provider
       value={{
         user,
         setUser,
+        displayAlerts,setDisplayAlerts, //! ADDED BY IZHAK
         isLoggedIn, setIsLoggedIn
       }}
     >
