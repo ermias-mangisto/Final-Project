@@ -2,16 +2,16 @@ const Comment = require("../models/CommentModel");
 
 //GET
 let Get = async (req, res) => {
-    const {pages,limit}=req.query;
-    await Comment.find().limit(limit).skip((pages-1)*limit)
+    const {page,limit}=req.query;
+    await Comment.find().limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => res.status(404).send({ massage: error }));
 };
 let GetByPost = async (req, res) => {
-    const {pages,limit}=req.query;
-    await Comment.find({postId:req.params.postId}).limit(limit).skip((pages-1)*limit)
+    const {page,limit}=req.query;
+    await Comment.find({postId:req.params.postId}).limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })

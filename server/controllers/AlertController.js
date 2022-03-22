@@ -17,6 +17,11 @@ let GetById = async (req, res) => {
     })
     .catch((err) => res.status(404).send({ massage: error }));
 };
+let GetRequestsSent = async (req, res) => {
+  await Alert.find({sendUserId:req.params.id ,type:"join"})
+  .then((data)=>res.send(data))
+    .catch((err) => res.status(404).send({ massage: error }));
+};
 //POST
 let Add = async (req, res) => {
   await Alert.create(req.body)
@@ -49,4 +54,5 @@ module.exports = {
   Add,
   Update,
   Delete,
+  GetRequestsSent
 };
