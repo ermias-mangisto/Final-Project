@@ -42,7 +42,7 @@ module.exports = {
     },
     GetAllJoinedPosts: async (req, res) => {
     const posts= await Users.findOne({ _id: req.params.id }).populate("joinedPost")
-       res.send(posts.cratedPost)
+       res.send(posts.joinedPost)
     },
     GetById: async (req, res) => {
         await Users.findById({ _id: req.params.id })

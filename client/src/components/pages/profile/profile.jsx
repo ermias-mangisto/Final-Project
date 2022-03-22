@@ -8,8 +8,8 @@ const Profile = () => {
   return (
     <div className="profile">
       <ProfileDetails />
-      <JoinedPosts />
       <CreatedPosts />
+      <JoinedPosts />
     </div>
   );
 };

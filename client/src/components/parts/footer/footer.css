@@ -52,7 +52,7 @@
   position: relative;
   top: 0;
   left: 0;
-  background: #3a3a3a;
+  background-color:rgb(3, 3, 43) ;
 }
 .footer #cont {
   position: relative;
@@ -83,8 +83,6 @@
   padding: 10px;
   display: flex;
   justify-content: space-around;
- 
-
 }
 .hidden-Footer div {
   display: flex;

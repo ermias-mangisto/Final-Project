@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { GetAllPost } from "../../services/postService";
+
 export const PostContext = React.createContext();
 export const PostProvider = ({children})=>{
 const [posts,setPosts] = useState([])
