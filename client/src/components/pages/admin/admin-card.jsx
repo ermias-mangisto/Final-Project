@@ -1,13 +1,14 @@
 import './admin.css'
 import * as React from 'react';
+import ProfileDetails from '../profile/profile-details';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { DeleteReport } from '../../../services/reportService';
 import { CreateAlert } from '../../../services/alertService';
 import { CreateArchive } from '../../../services/archivedPostService';
 import { DeletePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
-const AdminCard = (props) => {
-  const CatchNewArchive = (id) => {
+const AdminTable = (props) => {
+  const CatchAndCreateArchive = (id) => {
     GetPostById(id)
       .then(res =>
         CreateArchive(res)
@@ -21,7 +22,7 @@ const AdminCard = (props) => {
       CreateAlert(object) //! CREATE ALERT
         .then(res => console.log(res))
         .catch(rej => console.error(rej));
-      CatchNewArchive(id) //! CATCH OBJECT BY ID, AND CREATE NEW OBJECT IN ARCHIVE COLLECTION
+      CatchAndCreateArchive(id) //! CATCH OBJECT BY ID IN POST COLLECTION, AND CREATE NEW OBJECT IN ARCHIVE COLLECTION.
       DeletePost(id) //! DELETE POST
         .then(() =>
           alert("Post Deleted"))
@@ -34,6 +35,7 @@ const AdminCard = (props) => {
       DeleteReport(id)
         .then(() =>
           alert("Report Deleted")
+          
         )
         .catch(err => console.error(err))
     }
@@ -41,31 +43,32 @@ const AdminCard = (props) => {
 
   }
   return (
-    <div>
-      <table>
-        <tr>
-          <th>User ID</th>
-          <th>Post ID</th>
-          <th>postUserId</th>
-          <th>text</th>
-          <th>Delete Report</th>
-          <th>Delete Post</th>
+    <div className='table_details'>
+      <ProfileDetails/>
+      <table className='table'>
+        <tr className='tr'>
+          <th className='tr'>User ID</th>
+          <th className='tr'>Post ID</th>
+          <th className='tr'>Post user ID</th>
+          <th className='tr'>text</th>
+          <th className='tr'>Delete Report</th>
+          <th className='tr'>Delete Post</th>
         </tr>
         {
           props.array.map((item, i) =>
-            <tr key={i}>
-              <td >{item.userId}</td>
-              <td >{item.postId}</td>
-              <td >{item.postUserId}</td>
-              <td >{item.text}</td>
-              <td onClick={() => DeleteReportFromTable(item._id)}>{<FaRegTrashAlt />}</td>
-              <td onClick={() =>
+            <tr  className='tr' key={i}>
+              <td  className='tr'>{item.userId}</td>
+              <td  className='tr'>{item.postId}</td>
+              <td  className='tr'>{item.postUserId}</td>
+              <td  className='tr'>{item.text}</td>
+              <td  className='tr' onClick={() => DeleteReportFromTable(item._id)}>{<FaRegTrashAlt />}</td>
+              <td  className='tr' onClick={() =>
                 DeletePostFromTable({
-                  sendUserId: "admin id",
+                  sendUserId: "admin id", //! USER._id
                   postId: item.postId,
-                  receiverUserId: item.userId,
-                  type: "Your post is deleted"
-                }, "622f3a537af30c2bdfcb75cd")
+                  receiverUserId: item.postUserId,
+                  type: "deleted"
+                },item.postId)
               }>{<FaRegTrashAlt />}</td>
             </tr>
           )
@@ -74,4 +77,4 @@ const AdminCard = (props) => {
     </div>
   );
 }
-export default AdminCard;
+export default AdminTable;
