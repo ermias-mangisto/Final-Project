@@ -35,6 +35,7 @@ const NavBar = () => {
   function HandleLogout(){
       setUser({})
       localStorage.removeItem("token")
+      localStorage.removeItem("userId")
       setIsLoggedIn(false)}
   const toggleLogin = () => {
     setLogin(!login);

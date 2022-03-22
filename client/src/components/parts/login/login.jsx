@@ -16,6 +16,7 @@ const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
             localStorage.setItem("token",res.token);
             const token = localStorage.getItem("token");
             const decoded = jwt_decode(token);
+            localStorage.setItem("userId",decoded.user._id);
             setUser(decoded.user);
             setIsLoggedIn(true)
             props.handleClose()}
