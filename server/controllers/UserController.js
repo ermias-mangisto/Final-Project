@@ -31,10 +31,18 @@ module.exports = {
         })
     },
     GetAll: async (req, res) => {
-        const { pages, limit } = req.query;
-        await Users.find().limit(limit).skip((pages - 1) * limit)
+        const { page, limit } = req.query;
+        await Users.find().limit(limit).skip((page - 1) * limit)
             .then((data) => { res.send(data) })
             .catch((err) => res.status(404).send({ message: err.message }))
+    },
+    GetAllCreatedPosts: async (req, res) => {
+    const posts= await Users.findOne({ _id: req.params.id }).populate("cratedPost")
+       res.send(posts.cratedPost)
+    },
+    GetAllJoinedPosts: async (req, res) => {
+    const posts= await Users.findOne({ _id: req.params.id }).populate("joinedPost")
+       res.send(posts.joinedPost)
     },
     GetById: async (req, res) => {
         await Users.findById({ _id: req.params.id })
@@ -44,8 +52,8 @@ module.exports = {
             .catch((err) => res.status(404).send({ message: err.message }))
     },
     GetByName: async (req, res) => {
-        const { pages, limit } = req.query;
-        await Users.find({ firstName: req.params.firstName }).limit(limit).skip((pages - 1) * limit)
+        const { page, limit } = req.query;
+        await Users.find({ firstName: req.params.firstName }).limit(limit).skip((page - 1) * limit)
             .then((data) => { res.send(data) })
             .catch((err) => res.status(404).send({ message: err.message }))
     },

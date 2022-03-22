@@ -1,7 +1,6 @@
-import { useEffect,useState,createContext } from "react";
+import { useEffect, useState, createContext } from "react";
 import setAuthToken from "../../uitls/setAuthToken";
 import jwt_decode from "jwt-decode";
-
 export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -27,7 +26,7 @@ const UserContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </UserContext.Provider> 
+    </UserContext.Provider>
   );
 };
 export default UserContextProvider;

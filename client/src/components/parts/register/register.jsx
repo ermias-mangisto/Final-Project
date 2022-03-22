@@ -51,7 +51,7 @@ function Register(props) {
         </label>
         <label>
           phone:
-          <input onChange={onFieldChange} name="phoneNumber" type="number"/>
+          <input  placeholder="972" onChange={onFieldChange} name="phoneNumber" type="number"/>
         </label>
         <label>
           Password:

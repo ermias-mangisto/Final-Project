@@ -13,7 +13,6 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { FaUserAlt } from "react-icons/fa";
 import {FaHome } from "react-icons/fa";
-
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 
@@ -28,14 +27,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
-  const { isLoggedIn, setIsLoggedIn}=useContext(UserContext)
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
-  const {  user,setUser,displayAlerts,setDisplayAlerts}=useContext(UserContext)
+  const {  user,setUser,displayAlerts,setDisplayAlerts,isLoggedIn, setIsLoggedIn}=useContext(UserContext)
+
   function HandleLogout(){
-      setUser({})
-      localStorage.removeItem("token")
-      setIsLoggedIn(false)}
+    localStorage.removeItem("token")
+    localStorage.removeItem("userId")
+    setUser({})
+    setIsLoggedIn(false)
+    }
   const toggleLogin = () => {
     setLogin(!login);
   }

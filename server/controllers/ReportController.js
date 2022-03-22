@@ -2,8 +2,8 @@ const Report = require("../models/ReportModel");
 
 //GET
 let Get = async (req, res) => {
-    const {pages,limit}=req.query;
-    await Report.find().limit(limit).skip((pages-1)*limit)
+    const {page,limit}=req.query;
+    await Report.find().limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })

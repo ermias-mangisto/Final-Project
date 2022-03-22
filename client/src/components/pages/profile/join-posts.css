@@ -1,0 +1,24 @@
+
+
+.joinedPosts {
+    width: 98%;
+    display: flex;
+    justify-content: space-around;
+  
+  }
+  .post {
+    display: flex;
+    justify-content: space-around;
+    width: 28%;
+    height: 100px;
+    border: 3px black solid;
+    border-radius: 20px;
+    background-color: rgba(180, 129, 228, 0.178);
+   
+  }
+  .postIcon{
+    width: 50px;
+    height: 60px;
+    color: rgba(201, 196, 182, 0.952);
+    margin-top: 15px;
+  }
