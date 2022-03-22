@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
 const NavBar = () => {
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
-  const {  user,setUser,isLoggedIn, setIsLoggedIn}=useContext(UserContext)
+  const {  user,setUser,displayAlerts,setDisplayAlerts,isLoggedIn, setIsLoggedIn}=useContext(UserContext)
+
   function HandleLogout(){
     localStorage.removeItem("token")
     localStorage.removeItem("userId")
@@ -65,7 +66,7 @@ const NavBar = () => {
           </Typography>
           <Button color="inherit" > <Link to="/main"><FaHome className='Icon'/></Link></Button>
           <Button color="inherit" onClick={HandleLogout}><Link to="/"><FiLogOut className='Icon'/></Link></Button>
-          <Button color="inherit" ><Link to="/"><FaBell className='Icon'/></Link></Button>
+          <Button color="inherit" onClick={()=> setDisplayAlerts(!displayAlerts)}><FaBell className='Icon'/></Button>
           <Button color="inherit" > <Link to="/profile">< FaUserAlt className='Icon'/></Link></Button>
 
         </Toolbar>
