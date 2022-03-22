@@ -1,10 +1,10 @@
 const ArchivedPost = require("../models/ArchivedPostModel");
 
 const Get = async (req, res) => {
-  const { pages, limit } = req.query;
+  const { page, limit } = req.query;
   await ArchivedPost.find()
     .limit(limit)
-    .skip((pages - 1) * limit)
+    .skip((page - 1) * limit)
     .then((data) => {
       res.send(data);
     })
@@ -30,10 +30,10 @@ const GetByUserId = async (req, res) => {
 };
 
 const GetByName = async (req, res) => {
-  const { pages, limit } = req.query;
+  const { page, limit } = req.query;
   await ArchivedPost.find({ postName: req.params.postName })
     .limit(limit)
-    .skip((pages - 1) * limit)
+    .skip((page - 1) * limit)
     .then((data) => {
       res.send(data);
     })
@@ -41,10 +41,10 @@ const GetByName = async (req, res) => {
 };
 
 const GetByProjectType = async (req, res) => {
-  const { pages, limit } = req.query;
+  const { page, limit } = req.query;
   await ArchivedPost.find({ projectType: req.params.projectType })
     .limit(limit)
-    .skip((pages - 1) * limit)
+    .skip((page - 1) * limit)
     .then((data) => {
       res.send(data);
     })
