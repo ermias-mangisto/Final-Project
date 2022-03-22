@@ -12,8 +12,6 @@ const Router=()=>{
         <Routes>
             <Route path={"/"} element={<Landing/>}></Route>
             <Route path={"/profile"} element={<Profile/>}></Route>
-            {/* <Route path={"/sculpture"} element={<Sculpture/>}></Route>
-            <Route path={"/photography"} element={<Photography/>}></Route> */}
             <Route path={"/main"} element={<Home/>}></Route>
         </Routes>
         <Footer/>

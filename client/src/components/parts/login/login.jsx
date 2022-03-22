@@ -21,7 +21,7 @@ const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
             setIsLoggedIn(true)
             props.handleClose()}
             alert(res.message)})
-      };
+      }
 
       return (
         <div className="popup-box-login">
