@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.contain{
+    position: absolute;    
+    width: 35%;
+    margin-left: 60%;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+.alerts_message{
+    overflow: auto;
+    height: 300px; 
+    background: rgb(228, 224, 224);
+}
+.title_notification{
+    border-bottom: 2px solid black;
+    text-align: center;
+    background: blue;
+    color: white;
+    height: 60px;
+    font-size: xx-large;
+}
+.table_data{
+    width: 100%;
+}
+.tr_data{
+    height: 70px;
+    background: white;
+    padding: 8px;
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    background: rgb(74, 74, 110);
+    color: white;
+}
