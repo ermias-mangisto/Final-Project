@@ -1,28 +1,29 @@
-import react, { useContext } from "react";
+import react, { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
-import { FaUserAlt } from "react-icons/fa";
-import "./created-posts.css";
+import "./create-posts.css";
+import { GetUserCreatedPosts } from "../../../services/userService";
+import Post from "./post";
+import { FaAward } from "react-icons/fa";
 
-const Post = ({ user }) => {
-  return (
-    <div className="post">
-      {user.image ? user.image : <FaUserAlt className="userIcon" />}
-      {user.firstName}
-      {user.lastName}
-      {user.ceratedPosts}
-    </div>
-  );
-};
-
-const posts = [1, 2, 3, 4, 5];
 const CeratedPosts = () => {
   const { user, setUser } = useContext(UserContext);
+  const [createPost, setCreatedPost] = useState([]);
+  useEffect(() => {
+    const loadPosts = async () => {
+      const id = localStorage.getItem("userId");
+      const Post = await GetUserCreatedPosts(id);
+      setCreatedPost(Post);
+    };
+    loadPosts();
+  }, [user]);
 
   return (
-    <div>
+    <div className="CeratedPostsComponent">
+      <h3>Posts I created :</h3>
+
       <div className="CeratedPosts">
-        {posts.map(() => (
-          <Post user={user} />
+        {createPost.map((item) => (
+          <Post postInfo={item} icon={<FaAward className="postIcon" />} />
         ))}
       </div>
     </div>
