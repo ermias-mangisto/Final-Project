@@ -20,7 +20,7 @@ app.use(passport.initialize())
 app.use('/register',UserRouter);
 app.use('/post',PostRouter);
 app.use('/comment',CommentRouter);
-app.use('/alert/',AlertRouter);
+app.use('/alert',AlertRouter);
 app.use('/report',ReportRouter);
 app.use('/archivedPost',ArchivedPostRouter);
 app.listen(port);

@@ -4,21 +4,20 @@ import {useState,useContext,useEffect} from 'react';
 import {UserContext} from '../../../context/userContext/userContext';
 import {CreateComment} from '../../../services/commentService';
 import {GetPostComment} from '../../../services/commentService';
-import {CommentContext} from '../../../context/commentContext/CommentContext'
 import "./home.css";
 import Comment from './comments'
 function PostPopUp(props){
     const {user}=useContext(UserContext)
     const [comments,setComments]=useState([]);
-    const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(true);
+    const [page, setPage] = useState(1);
     useEffect(()=>{
         const loadComments=async()=>{
             setLoading(true);
-            const newComments=await  GetPostComment(page,props.postId);
-            console.log(newComments);
-            // setComments((prev)=>[...prev,...newComments]);
-            // setLoading(false);
+           const newComments= await GetPostComment(props.postId,page);
+           setComments((prev)=>[...prev,...newComments]);
+           console.log(comments);
+            setLoading(false);
         }
        loadComments();
         
@@ -34,11 +33,17 @@ function PostPopUp(props){
     const MakeComment= async()=>{
   await CreateComment(comment)
     }
-    const scrollRef =useBottomScrollListener(()=>setPage(prev => prev + 1));
-
+    const scrollRef =useBottomScrollListener(()=>setPage(prev => prev + 1),console.log(page));
+    const handleScroll = (event) => {
+      const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+      console.log(scrollHeight,scrollTop,clientHeight)
+      if (scrollHeight - Math.round(scrollTop) == clientHeight) {
+        setPage(prev => prev + 1);
+      }
+    };
     return(
-        <div className="popup-box" ref={scrollRef}>
-          <div className="box">
+        <div className="popup-box" >
+          <div className="box" onScroll={handleScroll} ref={scrollRef}>
             <span className="close-icon" onClick={props.handleClose}>x</span>
             {props.content}
             <div>
@@ -47,7 +52,7 @@ function PostPopUp(props){
             </div>
             {comments.map((comment,i)=>{
     return <Comment commentInfo={comment} key={i}/>
-})}
+             })}
           </div>
         </div>
       );
