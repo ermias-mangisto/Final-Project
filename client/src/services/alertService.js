@@ -19,6 +19,16 @@ export const GetAlertById = async (id) => {
         return error
     }
 }
+export const GetRequestsByUserId = async (id) => {
+
+    try {
+        return await fetch(`${BASIC_URL}/requests/${id}`)
+            .then(response => response.json())
+            .catch(reject => console.error(reject))
+    } catch (error) {
+        return error
+    }
+}
 export const CreateAlert = async (alert) => {
     try {
         return await fetch(`${BASIC_URL}add`, {

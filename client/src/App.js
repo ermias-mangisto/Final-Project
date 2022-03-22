@@ -16,7 +16,6 @@ function App() {
 
       <UserContextProvider>
        <Router/>
-      
      </UserContextProvider>
     </div>
   );

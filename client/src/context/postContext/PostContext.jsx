@@ -3,8 +3,8 @@ import { GetAllPost } from "../../services/postService";
 export const PostContext = React.createContext();
 export const PostProvider = ({children})=>{
 const [posts,setPosts] = useState([])
-const [page, setPage] = useState(1);
 const [loading, setLoading] = useState(true);
+const [page, setPage] = useState(1);
 useEffect(()=>{
     const loadPosts=async()=>{
         setLoading(true);
