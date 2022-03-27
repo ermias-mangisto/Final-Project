@@ -22,7 +22,7 @@ export const loginUser = async (user) => {
 }
 export const GetAll = async(page)=>{
       try {
-          return await fetch(`${BASIC_API}?page=${page}&limit=10`)
+          return await fetch(`${BASIC_API}?page=${page}&limit=100`)
           .then(res => res.json())
           .catch(err => {return err})
       } catch (error) {

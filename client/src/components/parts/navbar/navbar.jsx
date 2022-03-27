@@ -14,6 +14,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import {Navigate} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,12 +37,13 @@ const NavBar = () => {
     setIsLoggedIn,
   } = useContext(UserContext);
 
-  function HandleLogout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    setUser({});
-    setIsLoggedIn(false);
-  }
+  function HandleLogout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("userId")
+    setUser({})
+    setIsLoggedIn(false)
+    Navigate("/")
+    }
   const toggleLogin = () => {
     setLogin(!login);
   };

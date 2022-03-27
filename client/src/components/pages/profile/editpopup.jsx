@@ -3,7 +3,7 @@ import react, { useContext, useState } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
 import { UpdateUser } from "../../../services/userService";
 
-const EditPopUP = (props) => {
+const EditPopUP = (props ) => {
   const { user, setUser } = useContext(UserContext);
   const [editUser, setEditUser] = useState({});
 
