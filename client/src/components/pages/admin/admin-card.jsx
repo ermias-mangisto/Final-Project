@@ -1,14 +1,16 @@
 import './admin.css'
 import * as React from 'react';
-import ProfileDetails from '../profile/profile-details';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { DeleteReport } from '../../../services/reportService';
 import { CreateAlert } from '../../../services/alertService';
 import { CreateArchive } from '../../../services/archivedPostService';
 import { DeletePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
+import { UserContext } from '../../../context/userContext/userContext';
+import { GetUserById } from '../../../services/userService';
 import {DeleteRequests} from "../../../services/alertService"
 const AdminTable = (props) => {
+  const {setDisplayAlerts,displayAlerts} = React.useContext(UserContext)
   const CatchAndCreateArchive = (id) => {
     GetPostById(id)
       .then(res =>
@@ -44,6 +46,16 @@ const AdminTable = (props) => {
     console.log("error");
 
   }
+  const GetUsersById = (id)=>{
+   GetUserById(id)
+   .then(data => console.log(data))
+   .catch(rej => console.error(rej))
+  }
+  const GetPostId =(id)=>{
+    GetPostById(id)
+    .then(data => console.log(data))
+    .catch(rej => console.error(rej))
+  }
   return (
     <div className='table_details'>
       <ProfileDetails />
@@ -59,19 +71,19 @@ const AdminTable = (props) => {
         {
           props.array.map((item, i) =>
             <tr  className='tr' key={i}>
-              <td  className='tr'>{item.userId}</td>
-              <td  className='tr'>{item.postId}</td>
-              <td  className='tr'>{item.postUserId}</td>
+              <td  className='tr'><span onClick={()=>GetUsersById(item.userId)}>{item.userId}</span></td>
+              <td  className='tr'><span onClick={()=>GetPostId(item.postId)}>{item.postId}</span></td>
+              <td  className='tr'><span onClick={()=>GetUsersById(item.postUserId)}>{item.postUserId}</span></td>
               <td  className='tr'>{item.text}</td>
-              <td  className='tr' onClick={() => DeleteReportFromTable(item._id)}>{<FaRegTrashAlt />}</td>
-              <td  className='tr' onClick={() =>
+              <td  className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
+              <td  className='tr' ><span onClick={() =>
                 DeletePostFromTable({
                   sendUserId: "admin id", //! USER._id
                   postId: item.postId,
                   receiverUserId: item.postUserId,
                   type: "deleted"
                 },item.postId)
-              }>{<FaRegTrashAlt />}</td>
+              }><FaRegTrashAlt /></span></td>
             </tr>
           )
         }

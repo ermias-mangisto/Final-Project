@@ -35,6 +35,7 @@ const NavBar = () => {
     setDisplayAlerts,
     isLoggedIn,
     setIsLoggedIn,
+    counter
   } = useContext(UserContext);
 
   function HandleLogout(){
@@ -95,6 +96,7 @@ const NavBar = () => {
               onClick={() => setDisplayAlerts(!displayAlerts)}
             >
               <FaBell className="Icon" />
+              <span className='counter_newNotification'>{counter||""}</span>
             </Button>
             <Button color="inherit" onClick={HandleLogout}>
               <Link to="/">
