@@ -11,7 +11,7 @@ export const GetAllComment = async (page) => {
 }
 export const GetPostComment = async (postId,page) => {
     try {
-        return await fetch(`${BASIC_URL}/postId/${postId}?page=${page}&limit=2`)
+        return await fetch(`${BASIC_URL}/postId/${postId}?page=${page}&limit=10`)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {

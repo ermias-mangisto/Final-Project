@@ -32,6 +32,7 @@ function PostPopUp(props){
       };
     const MakeComment= async()=>{
   await CreateComment(comment)
+  alert("comment sent")
     }
     const scrollRef =useBottomScrollListener(()=>setPage(prev => prev + 1),console.log(page));
     const handleScroll = (event) => {
@@ -42,12 +43,12 @@ function PostPopUp(props){
       }
     };
     return(
-        <div className="popup-box" >
-          <div className="box" onScroll={handleScroll} ref={scrollRef}>
-            <span className="close-icon" onClick={props.handleClose}>x</span>
+        <div className="post-popup-box" >
+          <div className="post-box" onScroll={handleScroll} ref={scrollRef}>
+            <span className="post-close-icon" onClick={props.handleClose}>x</span>
             {props.content}
             <div>
-            <textarea type="text" className="commentInput" onChange={onFieldChange} placeholder="comment on the post" name="commentText"/>
+            <textarea type="text" className="post-commentInput" onChange={onFieldChange} placeholder="comment on the post" name="commentText"/>
             <button type="button" onClick={MakeComment}>comment</button>
             </div>
             {comments.map((comment,i)=>{

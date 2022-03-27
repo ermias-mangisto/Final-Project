@@ -7,6 +7,7 @@ import { CreateAlert } from '../../../services/alertService';
 import { CreateArchive } from '../../../services/archivedPostService';
 import { DeletePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
+import {DeleteRequests} from "../../../services/alertService"
 const AdminTable = (props) => {
   const CatchAndCreateArchive = (id) => {
     GetPostById(id)
@@ -27,6 +28,7 @@ const AdminTable = (props) => {
         .then(() =>
           alert("Post Deleted"))
         .catch(err => console.error(err))
+        DeleteRequests(id)
     }
     console.log("error");
   }
@@ -44,7 +46,7 @@ const AdminTable = (props) => {
   }
   return (
     <div className='table_details'>
-      <ProfileDetails/>
+      <ProfileDetails />
       <table className='table'>
         <tr className='tr'>
           <th className='tr'>User ID</th>

@@ -18,9 +18,8 @@ let GetById = async (req, res) => {
     .catch((err) => res.status(404).send({ massage: error }));
 };
 let GetRequestsSent = async (req, res) => {
-  await Alert.find({sendUserId:req.params.id ,type:"join"})
-  .then((data)=>res.send(data))
-    .catch((err) => res.status(404).send({ massage: error }));
+ const requests =await Alert.find({sendUserId:req.params.id ,type:"join"}).populate("postId")
+  res.send(requests)
 };
 //POST
 let Add = async (req, res) => {
@@ -40,6 +39,13 @@ await Alert.findByIdAndUpdate({_id:req.params.id}, req.body)
     .catch((err) => res.status(404).send({ massage: error }));
 };
 
+let DeleteRequestsSent = async (req, res) => {
+ await Alert.deleteMany({postId:req.params.postId ,type:"join"})
+ .then((data) => {
+  res.send(data);
+})
+.catch((err) => res.status(404).send({ massage: error }));
+ };
 //DELETE
 let Delete = async(req, res) => {
  await Alert.findByIdAndRemove({_id:req.params.id}).then((data) => {
@@ -54,5 +60,6 @@ module.exports = {
   Add,
   Update,
   Delete,
-  GetRequestsSent
+  GetRequestsSent,
+  DeleteRequestsSent
 };
