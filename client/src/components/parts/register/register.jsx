@@ -3,6 +3,7 @@ import {useState,useContext} from 'react';
 import {UserContext} from "../../../context/userContext/userContext"
 import { registerNewUser ,loginUser} from "../../../services/userService";
 import jwt_decode from "jwt-decode";
+import TextField from '@mui/material/TextField';
 import "./register.css"
 function Register(props) {
   const [newUser, setNewUser] = useState({});
@@ -31,32 +32,17 @@ function Register(props) {
     });
   };
   return (
-    <div className="popup-box">
-    <div className="box">
-      <span className="close-icon" onClick={props.handleClose}>x</span>
+    <div className="register-popup-box">
+    <div className="register-box">
+      <span className="register-close-icon" onClick={props.handleClose}>x</span>
       <article className="register">
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          lastName:
-          <input onChange={onFieldChange} name="lastName" type="text" />
-        </label>
-        <label>
-          firstName:
-          <input onChange={onFieldChange} name="firstName" type="text" />
-        </label>
-        <label>
-          email:
-          <input onChange={onFieldChange} name="email" type="email" />
-        </label>
-        <label>
-          phone:
-          <input  placeholder="972" onChange={onFieldChange} name="phoneNumber" type="number"/>
-        </label>
-        <label>
-          Password:
-          <input onChange={onFieldChange} name="password" type="password" />
-        </label>
+        <TextField sx={{margin:2}} id="outlined-basic" label="First-name"name="firstName" variant="outlined" onChange={onFieldChange} placeholder="write your first-name" type="text"/>
+        <TextField sx={{margin:2}} id="outlined-basic" label="Last-name"name="lastName" variant="outlined" onChange={onFieldChange} placeholder="write your last-name" type="text"/>
+        <TextField sx={{margin:2}} id="outlined-basic" label="Email"name="email" variant="outlined" onChange={onFieldChange} placeholder="write your email" type="email"/>
+        <TextField sx={{margin:2}} id="outlined-basic" label="Phone-number"name="phoneNumber" variant="outlined" onChange={onFieldChange} placeholder="+972" type="number"/>
+      <TextField sx={{margin:2}} id="outlined-basic" label="Password" name="password" variant="outlined" onChange={onFieldChange} placeholder="write your password" type="password"/>
         <button>Register</button>
       </form>
       </article>

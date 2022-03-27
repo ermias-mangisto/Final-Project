@@ -8,6 +8,7 @@ import { DeletePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
 import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
+import {DeleteRequests} from "../../../services/alertService"
 const AdminTable = (props) => {
   const {setDisplayAlerts,displayAlerts} = React.useContext(UserContext)
   const CatchAndCreateArchive = (id) => {
@@ -29,6 +30,7 @@ const AdminTable = (props) => {
         .then(() =>
           alert("Post Deleted"))
         .catch(err => console.error(err))
+        DeleteRequests(id)
     }
     console.log("error");
   }
@@ -56,6 +58,7 @@ const AdminTable = (props) => {
   }
   return (
     <div className='table_details'>
+      <ProfileDetails />
       <table className='table'>
         <tr className='tr'>
           <th className='tr'>User ID</th>

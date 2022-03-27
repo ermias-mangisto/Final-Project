@@ -3,6 +3,8 @@ import {UserContext} from "../../../context/userContext/userContext"
 import {loginUser} from "../../../services/userService"
 import jwt_decode from "jwt-decode";
 import "./login.css";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
 function Login(props){
 const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
     const onFieldChange = (e) => {
@@ -27,20 +29,15 @@ const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
         <div className="popup-box-login">
         <div className="box-login">
           <span className="close-icon-login"onClick={props.handleClose}>x</span>
-          <article className="login">
-          <h1>login</h1>
+          <article className="login" >
           <form onSubmit={handleSubmit}>
-            <label>
-              email:
-              <input onChange={onFieldChange} name="email" type="email" />
-            </label>
-            <label>
-              Password:
-              <input onChange={onFieldChange} name="password" type="password" />
-            </label>
-            <button >login</button>
-          </form>
-          </article>
+    <h1>Login</h1>
+      <TextField sx={{margin:2}} id="outlined-basic" label="Email"name="email" variant="outlined" onChange={onFieldChange} placeholder="write your email" type="email"/>
+      <TextField sx={{margin:2}} id="outlined-basic" label="Password" name="password" variant="outlined" onChange={onFieldChange} placeholder="write your password" type="password"/>
+      <button>login</button>
+      </form>
+    </article>
+        
         </div>
       </div>
 
