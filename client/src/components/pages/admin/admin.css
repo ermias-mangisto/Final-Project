@@ -1,26 +1,33 @@
 .table {
     font-family: arial, sans-serif;
-    border-collapse: collapse 2pxblack;
+    border-collapse: collapse 2px black;
     width: 90%;
     margin-left: 5%;
+    margin-top: 15%;
+    margin-bottom: 5%;
   }
   .tr{
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
-    background: rgb(59, 49, 49);
+    background: rgb(128, 118, 118);
+    padding: 20px;
     font-family:'Times New Roman', Times, serif;
-    color: white;
+  }
+  th{
+    text-align: center;
+    font-size: 30px;
+  
   }
   button{
     border: none;
     background: none;
   }
-.table_details{
+/* .table_details{
   background: rgb(230, 228, 228);
   margin-bottom: 5%;
   margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
   border: 2px solid black;
-}
+} */

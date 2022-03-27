@@ -12,3 +12,10 @@
     width: 18px;
     height: 18px;
 }
+.counter_newNotification{
+    background: red;
+    width: 20px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 50%;
+}
