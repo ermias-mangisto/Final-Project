@@ -37,7 +37,7 @@ export default function Requests() {
             </IconButton>
           }
         >
-          <ListItemText primary={`request to join ${item.postId}`} />
+          <ListItemText primary={`request to join ${item.postId.postName}`} />
         </ListItem>
       ))}
     </List>
