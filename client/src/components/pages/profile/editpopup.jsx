@@ -14,9 +14,8 @@ const EditPopUP = (props ) => {
 
   const CreateProfile = (e) => {
     e.preventDefault();
-    UpdateUser(user._id, editUser).then((res) => {}
-    )
-    props.handleClose()
+    UpdateUser(user._id, editUser).then((res) => {});
+    props.handleClose();
   };
 
   return (
@@ -29,28 +28,50 @@ const EditPopUP = (props ) => {
           <h1>edit</h1>
           <form>
             <label>
-              lastName:
-              <input onChange={onFieldChange} name="lastName" type="text" />
+              firstName:
+              <input
+                onChange={onFieldChange}
+                name="firstName"
+                type="text"
+                defaultValue={user.firstName}
+              />
             </label>
             <label>
-              firstName:
-              <input onChange={onFieldChange} name="firstName" type="text" />
+              lastName:
+              <input
+                onChange={onFieldChange}
+                name="lastName"
+                type="text"
+                defaultValue={user.lastName}
+              />
             </label>
             <label>
               email:
-              <input onChange={onFieldChange} name="email" type="email" />
+              <input
+                onChange={onFieldChange}
+                name="email"
+                type="email"
+                defaultValue={user.email}
+              />
             </label>
             <label>
               phone:
               <input
+                defaultValue={user.phoneNumber}
                 onChange={onFieldChange}
                 name="phoneNumber"
                 type="number"
               />
             </label>
             <label>
-              summary:
-              <input onChange={onFieldChange} name="summary" type="text" />
+              <textarea
+                defaultValue={user.summary}
+                className="summary"
+
+                onChange={onFieldChange}
+                name="summary"
+                type="text"
+              />
             </label>
             <button onClick={CreateProfile}>SAVE</button>
           </form>
