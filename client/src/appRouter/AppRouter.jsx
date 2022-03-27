@@ -9,7 +9,7 @@ import AlertsPopUp from "../components/parts/alerts/alerts";
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext/userContext";
 const Router=()=>{
-    const { displayAlerts } = useContext(UserContext);
+    const {  user,displayAlerts } = useContext(UserContext);
     return(
         <BrowserRouter>
         <NavBar/>       
@@ -20,9 +20,7 @@ const Router=()=>{
         }
         <Routes>
             <Route path={"/"} element={<Landing/>}></Route>
-            <Route path={"/profile"} element={<Profile/>}></Route>
-            <Route path={"/admin"} element={<Admin/>}> </Route>
-          
+            <Route path={`/profile/`}  element={user.isAdmin? <Admin/> : <Profile/>}></Route>
             <Route path={"/main"} element={<Home/>}></Route>
         </Routes>
         <Footer/>

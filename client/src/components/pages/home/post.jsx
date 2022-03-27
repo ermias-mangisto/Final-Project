@@ -58,9 +58,9 @@ const MakeAlert= ()=>{
       <>
     {isOpen && <PostPopUp
         content={
- <article className='PopUpCard' >
- <h1 className='nameTag'> posted by:{userName}on {props.postInfo.createdAt}</h1>
-<div className='PopUpText'>
+ <article className='post-PopUpCard' >
+ <h1 className='post-nameTag'> posted by:{userName}on {props.postInfo.createdAt}</h1>
+<div className='post-PopUpText'>
 <h1>
  {`${props.postInfo.postName}-${props.postInfo.projectType}`}
       </h1>   
@@ -74,7 +74,7 @@ const MakeAlert= ()=>{
         handleClose={togglePopup}
       />} 
       {reportPopUp && <ReportPopUp  handleClose={toggleReportPopup} postInfo={props.postInfo}/>}
-    <Card sx={{ maxWidth: 700 ,marginTop:10}} >
+    <Card sx={{ maxWidth: 700 ,marginTop:10 }} >
       <CardHeader
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
@@ -88,7 +88,7 @@ const MakeAlert= ()=>{
       />
     
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" maxHeight="90px" overflow="hidden">
       { props.postInfo.postText}
      Participants required: { props.postInfo.numberOfParticipants}
      Technologies Required: { props.postInfo.technologiesRequired}

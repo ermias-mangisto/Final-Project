@@ -70,3 +70,16 @@ export const DeleteAlert = async (id) => {
     }
 
 }
+export const DeleteRequests = async (postId) => {
+
+    try {
+        return await fetch(`${BASIC_URL}delete-requests/${postId}`, {
+            method: "DELETE"
+        })
+            .then(response => response.json())
+            .catch(reject => console.error(reject))
+    } catch (error) {
+        return error
+    }
+
+}
