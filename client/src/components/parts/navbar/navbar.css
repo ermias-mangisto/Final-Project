@@ -1,16 +1,21 @@
-.navbar {
-  background-color: #f8f5f1;
+
+.navbar{
+    background-color:#f8f5f1;
+
 }
-.navbar a {
-  text-decoration: none;
-  color: rgb(3, 3, 43);
-  display: flex;
+.navbar a{
+    text-decoration: none;
+    color:   rgb(3, 3, 43) ;
+
 }
-.Icon {
-  width: 18px;
-  height: 18px;
+.Icon{
+    width: 18px;
+    height: 18px;
 }
-.Icon:hover {
-    border-bottom:1px solid black ;
+.counter_newNotification{
+    background: red;
+    width: 20px;
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 50%;
 }
-  
