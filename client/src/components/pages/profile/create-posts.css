@@ -3,7 +3,6 @@
   margin-top: 300px;
   height: 100%;
 }
-
 .CeratedPosts {
   width: 90%;
   align-items: center;
@@ -14,7 +13,6 @@
   margin-left: 70px;
   margin: auto;
 }
-
 .post {
   display: flex;
   justify-content: space-around;
@@ -22,10 +20,9 @@
   height: 80px;
   border-radius: 20px;
   border:4px solid rgb(6, 6, 49) ;
-  margin: 10px;
+  
 }
-
-.postIcon {
+.CeratedPostsComponent .postIcon {
   width: 50px;
   height: 80px;
   color: rgb(216, 169, 50);

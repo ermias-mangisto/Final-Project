@@ -29,8 +29,8 @@ const Post = ({ postInfo, icon ,user }) => {
       <div onClick={togglePopup}>{icon}</div>
       <div>
         <p>{postInfo.postName}</p>
-       {/* <p> {postInfo.technologiesRequired}</p> */}
         <p>{postInfo.projectType}</p>
+
       </div>
     </div>
   );
