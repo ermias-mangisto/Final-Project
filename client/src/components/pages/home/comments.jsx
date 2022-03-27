@@ -4,7 +4,7 @@ import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import './home.css';
 const Comment = (props) => {
     return (
-        <div className="comment-box"> 
+        <div className="post-comment-box"> 
 <h1>{props.commentInfo.commentText}</h1>
         </div>
     )
