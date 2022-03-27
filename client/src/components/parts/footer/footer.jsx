@@ -1,5 +1,5 @@
 import "./footer.css";
-
+import { FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -17,10 +17,12 @@ const Footer = () => {
             github
             </a>
             <a href="">yafit642@gmail.com </a>
+
           </div>
           <div>
             <h1>Ermias Mangisto</h1>
             <a href="https://www.linkedin.com/feed/">linkedin </a>
+            {/* <><FaLinkedinIn/></> */}
             <a href="https://github.com/YafitSamuel?tab=repositories">
             github
             </a>
