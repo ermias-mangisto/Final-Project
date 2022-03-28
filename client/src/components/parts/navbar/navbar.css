@@ -1,11 +1,11 @@
-
-.navbar{
-    background-color:#f8f5f1;
+.navbar {
+  background-color: #f8f5f1;
 
 }
-.navbar a{
-    text-decoration: none;
-    color:   rgb(3, 3, 43) ;
+.navbar a {
+  text-decoration: none;
+  color: rgb(3, 3, 43);
+  display: flex;
 
 }
 .Icon{

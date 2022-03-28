@@ -4,7 +4,7 @@
     display: grid;   
    width: 60%;
    margin: auto;
-   grid-template-columns: 10% ;   
+   grid-template-columns: 50% ;  
    grid-template-areas:
    'search search search sidebar '
    ' main main main sidebar'
@@ -17,12 +17,12 @@ margin-top:20px;
     margin-top: 0;
     text-align: center;
     grid-area: main ;
-   
 }
+
 .requestsContainer{
-   
+   /* border:1px solid #ccc; */
     grid-area: sidebar;
-    width: 100%;
+    width: 200px;
 
 }
 .searchBar{
@@ -119,6 +119,9 @@ text-align:left;
     border: 1px solid #999;
     background-color: red;
   }
+  .commentWriter{
+    float: left;
+  }
   .report-popup-box {
     position: fixed;
     background: #00000050;
@@ -202,7 +205,9 @@ cursor: pointer;
       height:40px
   }
   .create-post-btn{
-      margin-top:5px;
+margin: auto;
+margin-top:5px;
+margin-left: 0;
       width:90%;
       height:40px;
       border-radius: 10px;

@@ -10,7 +10,6 @@ import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
 import { DeleteRequests } from "../../../services/alertService"
 const AdminTable = () => {
-  const { setDisplayAlerts, displayAlerts } = React.useContext(UserContext)
   const [report, setReport] = React.useState([]);
   React.useEffect(() => {
       GetAllReport()

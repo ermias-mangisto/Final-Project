@@ -4,7 +4,12 @@ import SearchBar from "./searchBar";
 import Requests from "./requests";
 import CheckAlert from "../../parts/alerts/checkAlert";
 import "./home.css"
+
+import React, { useContext } from "react";
+import { UserContext } from "../../../context/userContext/userContext";
+
 const Home = () => {
+    const {isLoggedIn}=useContext(UserContext)
     return (
         <section className="page-body">
             <CheckAlert />

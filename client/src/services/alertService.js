@@ -1,7 +1,12 @@
-const BASIC_URL = "http://localhost:8100/alert/";
+const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/alert" : "http://localhost:8100/alert/";
 export const GetAllAlert = async (page) => {
+  
     try {
-        return await fetch(`${BASIC_URL}?page=${page}&limit=10`)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=10`,{
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    })
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -10,9 +15,13 @@ export const GetAllAlert = async (page) => {
 
 }
 export const GetAlertById = async (id) => {
-
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
     try {
-        return await fetch(`${BASIC_URL}${id}`)
+        return await fetch(`${BASIC_URL}${id}`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -20,13 +29,17 @@ export const GetAlertById = async (id) => {
     }
 }
 export const GetRequestsByUserId = async (id) => {
-
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}` 
+        }
+    }
     try {
-        return await fetch(`${BASIC_URL}/requests/${id}`)
+        return await fetch(`${BASIC_URL}/requests/${id}`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
-        return error
+     console.log(localStorage.getItem("token"))
     }
 }
 export const CreateAlert = async (alert) => {
@@ -34,7 +47,9 @@ export const CreateAlert = async (alert) => {
         return await fetch(`${BASIC_URL}add`, {
             method: "POST",
             body: JSON.stringify(alert),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
@@ -48,7 +63,9 @@ export const UpdateAlert = async (id, alert) => {
         return await fetch(`${BASIC_URL}update/${id}`, {
             method: "PUT",
             body: JSON.stringify(alert),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
@@ -61,7 +78,10 @@ export const DeleteAlert = async (id) => {
 
     try {
         return await fetch(`${BASIC_URL}delete/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
@@ -74,7 +94,10 @@ export const DeleteRequests = async (postId) => {
 
     try {
         return await fetch(`${BASIC_URL}delete-requests/${postId}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
