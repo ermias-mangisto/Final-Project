@@ -14,9 +14,10 @@ import { FaUserAlt } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import {Navigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
+  
   root: {
     flexGrow: 1,
   },
@@ -26,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
   const {
@@ -40,10 +42,9 @@ const NavBar = () => {
 
   function HandleLogout(){
     localStorage.removeItem("token")
-    localStorage.removeItem("userId")
     setUser({})
     setIsLoggedIn(false)
-    Navigate("/")
+    navigate("/")
     }
   const toggleLogin = () => {
     setLogin(!login);
@@ -80,7 +81,7 @@ const NavBar = () => {
             </Typography>
             <Button color="inherit">
               {" "}
-              <Link to="/profile">
+              <Link to={`/profile/${user._id}`}>
                 <FaUserAlt className="Icon" />
               </Link>
             </Button>

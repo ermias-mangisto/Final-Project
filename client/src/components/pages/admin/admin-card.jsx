@@ -8,7 +8,8 @@ import { DeletePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
 import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
-import {DeleteRequests} from "../../../services/alertService"
+import {DeleteRequests} from "../../../services/alertService";
+import ProfileDetails from "../profile/profile-details";
 const AdminTable = (props) => {
   const {setDisplayAlerts,displayAlerts} = React.useContext(UserContext)
   const CatchAndCreateArchive = (id) => {
