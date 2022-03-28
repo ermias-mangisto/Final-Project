@@ -23,7 +23,7 @@ module.exports = {
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) return res.status(500).json({ message: "error" });
             if (!isMatch) return res.status(403).json({ message: "password is incorrect" });
-            jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "1h" }, (err, token) => {
+            jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "12d" }, (err, token) => {
                 if (err) return res.status(500).json({ message: "error" })
                 res.status(200).json({ message: "login successful", token, success: true })
             })

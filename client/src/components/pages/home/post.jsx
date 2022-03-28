@@ -21,6 +21,7 @@ import { MdReportProblem } from "react-icons/md";
 import {UserContext} from '../../../context/userContext/userContext'
 import {CreateAlert} from '../../../services/alertService'
 import ReportPopUp from "./reportPopUp";
+import {Link} from "react-router-dom"
 const Post = (props) => {
   const {user}=useContext(UserContext);
     const [userName,setUserName]=useState("");
@@ -43,8 +44,7 @@ const Post = (props) => {
 useEffect(()=>{
    const getUserName =async(id)=>{
   const user = await GetUserById(id);
-  setUserName(user.firstName);
-  console.log(user.firstName);
+  setUserName(user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase());
     }  
     getUserName(props.postInfo.userId);
 },[])
@@ -54,12 +54,16 @@ const MakeAlert= ()=>{
   
     }
 
+
   return (
       <>
     {isOpen && <PostPopUp
         content={
  <article className='post-PopUpCard' >
- <h1 className='post-nameTag'> posted by:{userName}on {props.postInfo.createdAt}</h1>
+   <h1 className='post-nameTag'> 
+   <Link to={`/profile/${props.postInfo.userId}`}>
+      posted by:{userName} </Link>
+       on {props.postInfo.createdAt}</h1>
 <div className='post-PopUpText'>
 <h1>
  {`${props.postInfo.postName}-${props.postInfo.projectType}`}
@@ -80,7 +84,7 @@ const MakeAlert= ()=>{
       onClick={togglePopup}
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {userName}
+            <Link to={`/profile/${props.postInfo.userId}`}>{userName}</Link> 
           </Avatar>
         }
         title={`${props.postInfo.postName}-${props.postInfo.projectType}`}

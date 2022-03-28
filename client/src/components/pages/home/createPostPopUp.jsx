@@ -10,9 +10,8 @@ import Select from '@mui/material/Select';
 import {CreatePost} from "../../../services/postService"
 import { UserContext } from "../../../context/userContext/userContext";
 function CreatePostPopUp(props){
-    const{user}=useContext(UserContext)
  const [post,setPost]=useState({
-    userId:user._id
+    userId:props.id
  })
  const onFieldChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +20,7 @@ function CreatePostPopUp(props){
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(post);
-    CreatePost(post,user._id)
+    CreatePost(post,props.id)
     .then((res) =>{
         alert("post published")
         props.handleClose()
