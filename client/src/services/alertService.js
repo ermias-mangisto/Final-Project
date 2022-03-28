@@ -1,4 +1,4 @@
-const BASIC_URL = "http://localhost:8100/alert/";
+const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/alert" : "http://localhost:8100/alert/";
 export const GetAllAlert = async (page) => {
   
     try {
