@@ -24,6 +24,8 @@ const CeratedPosts = ({currentUser}) => {
           <Post postInfo={item}  currentUser={currentUser} icon={<FaAward className="postIcon" />} />
         ))}
       </div>
+
+      <div></div>
     </div>
   );
 };
