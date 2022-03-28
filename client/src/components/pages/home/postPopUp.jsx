@@ -28,15 +28,16 @@ function PostPopUp(props){
     const onFieldChange = (e) => {
         const { name, value } = e.target;
         setComment({ ...comment, [name]: value });
+        
       };
     const MakeComment= async()=>{
-  await CreateComment(comment)
-  alert("comment sent")
+      console.log(comment);
+  await CreateComment(comment).then(()=>{alert("comment sent")})
+  
     }
     const scrollRef =useBottomScrollListener(()=>setPage(prev => prev + 1),console.log(page));
     const handleScroll = (event) => {
       const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
-      console.log(scrollHeight,scrollTop,clientHeight)
       if (scrollHeight - Math.round(scrollTop) == clientHeight) {
         setPage(prev => prev + 1);
       }}
