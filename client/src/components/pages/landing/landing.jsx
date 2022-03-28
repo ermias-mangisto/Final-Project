@@ -7,13 +7,9 @@ import  "./landing.css"
 const Landing = () => {
   return (
     <div className="Landing">
-
-        
-
         <HeroImage />
         <About />
-        <Team/>
-      
+        {/* <Team/> */} 
     </div>
   );
 };

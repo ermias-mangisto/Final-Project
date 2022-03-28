@@ -22,9 +22,15 @@ const CeratedPosts = () => {
       <h3>Posts I created :</h3>
       <div className="CeratedPosts">
         {createPost.map((item) => (
-          <Post postInfo={item}  user={user} icon={<FaAward className="postIcon" />} />
+          <Post
+            postInfo={item}
+            user={user}
+            icon={<FaAward className="postIcon" />}
+          />
         ))}
       </div>
+
+      <div></div>
     </div>
   );
 };
