@@ -10,8 +10,8 @@ useEffect(()=>{
     const loadPosts=async()=>{
         setLoading(true);
         const newPosts=await  GetAllPost(page);
-        console.log(posts);
         setPosts((prev)=>[...prev,...newPosts]);
+        // setPosts(posts.sort((a,b)=>a.createdAt-b.createdAt))
         setLoading(false);
     }
    loadPosts();

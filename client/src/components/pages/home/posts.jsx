@@ -24,8 +24,8 @@ setType(event.target.name)
         
     
     return (
-        <div>
-            <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <div className="postsContainer">
+            <Box sx={{ width: '90%', bgcolor: 'background.paper' }}>
               <Tabs value={value} onChange={handleChange} centered>
                 <Tab label="All"  name="All"onClick={handleClick}/>
                 <Tab label="mobile" name="mobile" onClick={handleClick} />
@@ -35,7 +35,7 @@ setType(event.target.name)
                
               </Tabs>
             </Box>
-            
+         
 {posts.map((post,i)=>{
     if(type=="All"){
 

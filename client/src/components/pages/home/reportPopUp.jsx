@@ -6,6 +6,7 @@ import "./home.css";
 function ReportPopUp(props){
     const {user}=useContext(UserContext);
     const [reportPopUp, setReportPopUp] = useState(false);
+    const [send,setSend]=useState(false);
     const [report, setReport] = useState({
         userId: user._id,
         postId:props.postInfo._id,
@@ -13,7 +14,7 @@ function ReportPopUp(props){
       });
     const MakeReportReason =(e)=>{
         setReport({...report,["text"]:e.target.name})
-       
+       setSend(true);
          }
     const MakeReport =(e)=>{
         CreateReport(report)
@@ -37,7 +38,7 @@ function ReportPopUp(props){
             <button onClick={MakeReportReason} name="bad"> bad</button>
             <button onClick={MakeReportReason} name="bad"> bad</button>
             </div>
-            <button onClick={MakeReport} className="send-report" name="bad"> send report</button>
+           {send &&<button onClick={MakeReport} className="send-report" name="bad"> send report</button>}
           </div>
         </div>
       );
