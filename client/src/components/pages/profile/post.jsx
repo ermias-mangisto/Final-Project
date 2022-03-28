@@ -3,8 +3,6 @@ import PostPopUp from "../home/postPopUp";
 import EditPostPopUP from "./editPostPopUp";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
-import {useState} from "react"
-import PostPopUp from "../home/postPopUp"
 const Post = ({ postInfo, icon ,currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
