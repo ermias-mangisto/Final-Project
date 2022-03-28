@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
 .Landing{
-    background-color: rgb(216, 216, 252) ;
+    height: 100vh;
+    font-family: 'Patrick Hand', cursive;
 }
