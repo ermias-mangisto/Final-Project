@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { GetAllAlert } from "../../services/alertService";
 
-export const AlertProvider = React.createContext();
+export const AlertContext = React.createContext();
 
-export const AlertContext = ({ children }) => {
+export const  AlertProvider= ({ children }) => {
   const [alert, setAlert] = useState([]);
   useEffect(() => {
-    GetAllAlert().then((res) => setAlert(res));
+    setInterval(() => {
+    GetAllAlert().then((res) => setAlert(res));      
+    }, 15000);
   }, []);
   
   return (
-    <AlertProvider.Provider value={{ alert, setAlert }}>
+    <AlertContext.Provider value={{ alert, setAlert }}>
       {children}
-    </AlertProvider.Provider>
+    </AlertContext.Provider>
   );
 };

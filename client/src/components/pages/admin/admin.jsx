@@ -2,19 +2,15 @@ import { useEffect, useState } from "react";
 import AdminTable from "./admin-card";
 import { GetAllReport } from "../../../services/reportService";
 import ProfileDetails from "../profile/profile-details";
+import CheckAlert from "../../parts/alerts/checkAlert";
 const Admin = () => {
-const [report,setReport] = useState([]);
-useEffect(()=>{
-    GetAllReport()
-    .then(data => setReport(data))
-    .catch(err => console.error(err))
-},[])
-return (
+    return (
         <div>
-            <ProfileDetails/>
-            <AdminTable array={report}/>                   
+            <CheckAlert/>
+            <ProfileDetails />
+            <AdminTable />
         </div>
-)
+    )
 }
-    
+
 export default Admin;
