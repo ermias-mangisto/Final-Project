@@ -1,4 +1,4 @@
-const BASIC_URL = "http://localhost:8100/comment";
+const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/comment" :"http://localhost:8100/comment";
 export const GetAllComment = async (page) => {
     let options ={
         headers: {

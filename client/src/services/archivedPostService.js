@@ -1,4 +1,4 @@
-const BASIC_URL = "http://localhost:8100/archivedPost";
+const BASIC_URL =  process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/archivedPost" :"http://localhost:8100/archivedPost";
 export const GetAllArchive = async (page) => {
     try {
         return await fetch(`${BASIC_URL}?page=${page}&limit=10`)

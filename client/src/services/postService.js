@@ -1,4 +1,4 @@
-const BASIC_URL = "http://localhost:8100/post";
+const BASIC_URL =process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/post" : "http://localhost:8100/post";
 export const GetAllPost = async (page)  => {
     let options ={
         headers: {
