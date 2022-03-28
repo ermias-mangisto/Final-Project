@@ -18,7 +18,7 @@ let GetById = async (req, res) => {
     .catch((err) => res.status(404).send({ massage: error }));
 };
 let GetRequestsSent = async (req, res) => {
- const requests =await Alert.find({sendUserId:req.params.id ,type:"join"}).populate("postId  receiverUserId")
+ const requests =await Alert.find({sendUserId:req.params.id ,type:"join"}).populate("postId receiverUserId")
   res.send(requests)
 };
 //POST
