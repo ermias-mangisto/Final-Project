@@ -2,10 +2,11 @@ const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.her
 export const GetAllComment = async (page) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
         }}
     try {
-        return await fetch(`${BASIC_URL}?page=${page}&limit=10`,options)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=4`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -16,10 +17,11 @@ export const GetAllComment = async (page) => {
 export const GetPostComment = async (postId,page) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
         }}
     try {
-        return await fetch(`${BASIC_URL}/postId/${postId}?page=${page}&limit=10`,options)
+        return await fetch(`${BASIC_URL}/postId/${postId}?page=${page}&limit=4`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -30,7 +32,8 @@ export const GetPostComment = async (postId,page) => {
 export const GetCommentById = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
 
@@ -48,7 +51,8 @@ export const CreateComment = async (comment) => {
             method: "POST",
             body: JSON.stringify(comment),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
@@ -64,7 +68,8 @@ export const UpdateComment = async (id, comment) => {
             method: "PUT",
             body: JSON.stringify(comment),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
@@ -80,7 +85,8 @@ export const DeleteComment = async (id) => {
         return await fetch(`${BASIC_URL}/delete/${id}`, {
             method: "DELETE",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())

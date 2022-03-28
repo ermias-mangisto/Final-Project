@@ -26,8 +26,8 @@ const GetByProjectType=async(req, res)=>{
     .catch((err)=>res.status(404).send({message: "err"}))
 };
 const Add=async(req, res)=>{
+  console.log(req.body)
  await  Post.create(req.body)
-.then((data) => {res.send({success:true})})
   .then((data)=>{User.findOne({_id:req.params.id} )
   .then((user)=>{user.cratedPost.push(data._id)
      user.save()})

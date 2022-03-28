@@ -5,10 +5,10 @@ const express=require('express');
 const app=express();
 const cors=require('cors')
 app.use(cors());
-app.use(express.json());
 const passport=require('passport');
 require('./config/passport')(passport);
 const port=process.env.PORT ;
+app.use(express.json());
 
 
 const PostRouter=require('./routes/PostRoute');
