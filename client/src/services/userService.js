@@ -1,4 +1,4 @@
-const BASIC_API ='http://localhost:8100/register';
+const BASIC_API = process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/register" :'http://localhost:8100/register';
 
 export const registerNewUser = async (user) => {
     

@@ -14,7 +14,7 @@ const Profile = () => {
      setCurrentUser(newUser);
   }
      loadCurrentUser();
-  },[currentUser])
+  },[])
   return (
     <div className="profile">
       <ProfileDetails currentUser={currentUser}/>
