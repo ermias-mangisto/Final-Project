@@ -8,8 +8,9 @@ import Home from "../components/pages/home/home";
 import AlertsPopUp from "../components/parts/alerts/alerts";
 import React, { useContext } from "react";
 import { UserContext } from "../context/userContext/userContext";
+import ProtectedRoute from "./ProtectedRoute"
 const Router=()=>{
-    const {  user,displayAlerts ,setDisplayAlerts} = useContext(UserContext);
+    const { isLoggedIn,user,displayAlerts ,setDisplayAlerts} = useContext(UserContext);
     return(
         <BrowserRouter>
         <NavBar/>       
@@ -20,9 +21,12 @@ const Router=()=>{
         }
         <frameElement onClick={()=> setDisplayAlerts(false)}>
         <Routes>
-            <Route path={"/"} element={<Landing/>}></Route>
-            <Route path={`/profile/`}  element={user.isAdmin? <Admin/> : <Profile/>}></Route>
-            <Route path={"/main"} element={<Home/>}></Route>
+            <Route exact path="/" element={<Landing/>}></Route>
+
+            <Route path="/profile/:id"  element={<ProtectedRoute isLoggedIn={isLoggedIn}>{user.isAdmin? <Admin/> : <Profile/>}</ProtectedRoute>}></Route>
+            <Route path="/main" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Home/></ProtectedRoute>}></Route>
+            {/* <Route path="/profile/:id"  element={user.isAdmin? <Admin/> : <Profile/>}></Route>
+            <Route path="/main" element={<Home/>}></Route> */}
         </Routes>            
         </frameElement>
         <Footer/>

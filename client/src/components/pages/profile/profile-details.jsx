@@ -1,6 +1,5 @@
-import react, { useContext, useState } from "react";
+import react, { useContext,useEffect, useState } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
-
 import { FaUserAlt } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaRegEnvelope } from "react-icons/fa";
@@ -8,9 +7,15 @@ import { FaPencilAlt } from "react-icons/fa";
 import EditPopUP from "./editpopup";
 import "./profile-details.css";
 
-const ProfileDetails = () => {
-  const { user, setUser } = useContext(UserContext);
-
+const ProfileDetails = ({ currentUser}) => { 
+  const {user}=useContext(UserContext);
+  const [myProfile,setMyProfile] = useState(false)
+  useEffect(() => {
+if(currentUser._id==user._id) {
+  setMyProfile(true)
+}
+  },[user])
+ 
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
     setOpen(!open);
@@ -21,16 +26,16 @@ const ProfileDetails = () => {
     <div className="ProfileDetails">
       <div className="detail">
         <div className="icon">
-          {user.image ? user.image : <FaUserAlt className="userIcon" />}
+          {currentUser.image ? currentUser.image : <FaUserAlt className="userIcon" />}
         </div>
         
         <h1>
-          {user.firstName} {user.lastName}
+          {currentUser.firstName} {currentUser.lastName}
         </h1>
 
         <h4>
           connect with :
-          <a href={`https://wa.me/${user.phoneNumber}`}>
+          <a href={`https://wa.me/${currentUser.phoneNumber}`}>
             <FaWhatsapp className="WhatsappIcon" />
           </a>
           <a href="mailto:email@echoecho.com?subject=SweetWords">
@@ -39,10 +44,10 @@ const ProfileDetails = () => {
         </h4>
       </div>
       <div>
-        <button className="editButton" onClick={toggleOpen}>
+      { myProfile && <button className="editButton" onClick={toggleOpen}>
           <FaPencilAlt />
-        </button>
-        <p className="summary">{user.summary} </p>
+        </button>}
+        <p className="summary">{currentUser.summary} </p>
         {open && <EditPopUP handleClose={toggleOpen} />}
       </div>
     </div>

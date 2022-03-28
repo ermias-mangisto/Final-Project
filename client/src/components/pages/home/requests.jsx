@@ -13,15 +13,13 @@ export default function Requests() {
     const{user,setUser}=useContext(UserContext)
     useEffect(()=>{
       const loadRequests= async ()=>{
-        const id=localStorage.getItem("userId")
-        const newRequests=await GetRequestsByUserId(id)
+        const newRequests=await GetRequestsByUserId(user._id)
         setRequests(newRequests)
       }
       loadRequests()
-    },[requests])
+    },[user])
     const HandleRequestDelete=(id,i)=>{
           DeleteAlert(id)
-      
           console.log(requests)
     }
   return (

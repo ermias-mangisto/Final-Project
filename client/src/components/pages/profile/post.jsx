@@ -1,7 +1,7 @@
 import { FaUserAlt } from "react-icons/fa";
 import {useState} from "react"
 import PostPopUp from "../home/postPopUp"
-const Post = ({ postInfo, icon ,user }) => {
+const Post = ({ postInfo, icon ,currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
@@ -12,7 +12,7 @@ const Post = ({ postInfo, icon ,user }) => {
        {isOpen && <PostPopUp
         content={
  <article className='post-PopUpCard' >
- <h1 className='post-nameTag'> posted by:{user.firstName}on {postInfo.createdAt}</h1>
+ <h1 className='post-nameTag'> posted by:{currentUser.firstName}on {postInfo.createdAt}</h1>
 <div className='post-PopUpText'>
 <h1>
  {`${postInfo.postName}-${postInfo.projectType}`}
@@ -22,7 +22,7 @@ const Post = ({ postInfo, icon ,user }) => {
  <p>  Technologies Required: { postInfo.technologiesRequired}</p>
        </div>
       </article>}
-        name={user.firstName}
+        name={currentUser.firstName}
         postId={postInfo._id}
         handleClose={togglePopup}
       />} 
