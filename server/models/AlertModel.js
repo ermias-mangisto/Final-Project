@@ -3,9 +3,11 @@ const Alert = new mongoose.Schema(
   {
     sendUserId: { type: String, require: true },
     postId: {type:mongoose.Schema.Types.ObjectId,
-    ref:'Post'
-    },
-    receiverUserId: { type: String, require: true},
+      ref:'Post'
+      },
+      receiverUserId: {type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+        },
     type:{ type: String, require: true }//comment, deleted ,join ,accepted
   },
   { timestamps: true }
