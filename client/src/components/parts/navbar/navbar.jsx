@@ -14,7 +14,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import {Navigate} from "react-router-dom"
+import { Navigate } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,7 +73,7 @@ const NavBar = () => {
         </AppBar>
       )}
       {isLoggedIn && (
-        <AppBar position="static" color="#inherit">
+        <AppBar position="static" color="inherit">
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
               <Link to="/">TEAMWARE</Link>
@@ -96,7 +96,9 @@ const NavBar = () => {
               onClick={() => setDisplayAlerts(!displayAlerts)}
             >
               <FaBell className="Icon" />
-              <span className='counter_newNotification'>{counter||""}</span>
+              
+              {counter?<span className="counter_newNotification">{counter}</span>:""}
+              
             </Button>
             <Button color="inherit" onClick={HandleLogout}>
               <Link to="/">

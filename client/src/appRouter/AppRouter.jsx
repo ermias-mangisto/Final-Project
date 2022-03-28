@@ -18,13 +18,13 @@ const Router=()=>{
             <AlertsPopUp/>:
             <div></div>
         }
-        <frameElement onClick={()=> setDisplayAlerts(false)}>
+        <div onClick={()=> setDisplayAlerts(false)}>
         <Routes>
             <Route path={"/"} element={<Landing/>}></Route>
-            <Route path={`/profile/`}  element={user.isAdmin? <Admin/> : <Profile/>}></Route>
+            <Route path={`/profile/`}  element={ user.isAdmin==true? <Admin/> : user.isAdmin==false?<Profile/>:null}></Route>
             <Route path={"/main"} element={<Home/>}></Route>
         </Routes>            
-        </frameElement>
+        </div>
         <Footer/>
         </BrowserRouter>
     )
