@@ -15,6 +15,7 @@ function PostPopUp(props){
         const loadComments=async()=>{
             setLoading(true);
            const newComments= await GetPostComment(props.postId,page);
+           console.log(newComments)
            setComments((prev)=>[...prev,...newComments]);
             setLoading(false);
         }
