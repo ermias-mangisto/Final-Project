@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext } from "react";
 import setAuthToken from "../../uitls/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { GetAllAlert } from "../../services/alertService";
 export const UserContext = createContext();
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -15,13 +16,14 @@ const UserContextProvider = ({ children }) => {
         setIsLoggedIn(true)
     }
     }, []); 
-
+const [counter,setCounter] = useState(0); //! ADDED BY IZHAK
   return (
     <UserContext.Provider
       value={{
         user,
         setUser,
         displayAlerts,setDisplayAlerts, //! ADDED BY IZHAK
+        counter,setCounter, //! ADDED BY IZHAK
         isLoggedIn, setIsLoggedIn
       }}
     >

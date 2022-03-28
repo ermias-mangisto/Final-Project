@@ -34,6 +34,7 @@
     text-align: center;
     border-radius: 20px;
     color: rgb(5, 5, 4);
+   
 }
 td{
     font-size: larger;
@@ -49,6 +50,7 @@ td{
     width: 50px;
     height: 40px;
     border-radius: 90px;
+    cursor: pointer;
 }
 .cancel_button{
     background: red;
@@ -56,22 +58,68 @@ td{
     width: 50px;
     height: 40px;
     border-radius: 90px;  
+    cursor: pointer;
 }
 .tr_userName{
     color: rgb(16, 182, 238);
+    cursor: pointer;
 }
 .tr_delete{
     color: red;
+    cursor: pointer;
 }
 .tr_accepted{
-   color: blueviolet
+   color: blueviolet;
+   cursor: pointer;
 }
 .tr_comment{
     color: rgb(111, 119, 99);
-}
-.tr_team{
-    color: rgb(41, 199, 199);
+    cursor: pointer;
 }
 .general_btn{
     margin-left: 100px;
+}
+.btn_cleanAlert{
+position: relative;
+left: 5%;
+}
+.btn_deleteComment{
+position: relative;
+left: 4%;
+background: rgb(56, 53, 53);
+color: white;
+padding: 3px;
+border-radius: 50px;
+width: 20px;
+cursor: pointer;
+}
+.btn_deleteAccepted{
+    position: relative;
+    left: 0.5%;
+    background: rgb(56, 53, 53);
+    color: white;
+    padding: 3px;
+    border-radius: 50px;
+    width: 20px;   
+    cursor: pointer;
+}
+.btn_deleteDeleteAlert{
+    position: relative;
+    left: 4.5%;
+    background: rgb(56, 53, 53);
+    color: white;
+    padding: 3px;
+    border-radius: 50px;
+    width: 20px;  
+    cursor: pointer; 
+}
+.btn_deleteJoin{
+    position: relative;
+    left: 6%;
+    background: rgb(56, 53, 53);
+    color: white;
+    padding: 3px;
+    border-radius: 50px;
+    width: 20px;   
+    cursor: pointer;
 }
