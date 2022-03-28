@@ -5,6 +5,7 @@ import './home.css';
 const Comment = (props) => {
     return (
         <div className="post-comment-box"> 
+<span className="commentWriter">by {props.commentInfo.userId.firstName}</span>
 <h1>{props.commentInfo.commentText}</h1>
         </div>
     )
