@@ -3,6 +3,7 @@ import "./profile.css";
 import CreatedPosts from "./created-posts";
 import JoinedPosts from "./joined-posts";
 import ProfileDetails from "./profile-details";
+import CheckAlert from "../../parts/alerts/checkAlert";
 import {useParams} from "react-router-dom";
 import {GetUserById} from "../../../services/userService"
 const Profile = () => {
@@ -17,6 +18,7 @@ const Profile = () => {
   },[])
   return (
     <div className="profile">
+      <CheckAlert /> 
       <ProfileDetails currentUser={currentUser}/>
       <CreatedPosts currentUser={currentUser}/>
       <JoinedPosts currentUser={currentUser}/>
