@@ -1,4 +1,4 @@
-import {useState,useEffect}  from 'react';
+import {useState,useEffect ,useContext}  from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
@@ -8,18 +8,24 @@ import SearchIcon from '@mui/icons-material/Search';
 import {GetAll} from "../../../services/userService"
 import CreatePostPopUp from './createPostPopUp';
 import Profile from "../../pages/profile/profile";
+import { UserContext } from "../../../context/userContext/userContext";
+import {Link} from "react-router-dom"
 export default function SearchBar() {
+  const{user}=useContext(UserContext)
   const [search,setSearch]=useState(false)
+  useEffect(()=>{ 
+    if(search===true){
+       const loadUsers = async () =>{
+       const newUsers = await GetAll()
+       setUsers(newUsers)
+        }
+        loadUsers();
+    }
+    
+  },[search]) 
   const [name,setName]=useState("")
   const [users,setUsers]=useState([])
    const [createPost,setCreatePost]= useState(false)
-
-  const loadUsers = async() =>{
-     const newUsers =await GetAll()
-     setUsers(newUsers)
-     console.log(users)
-     setSearch(true)
-      }
   function toggleSearchOff(){
     setSearch(false)
   }
@@ -27,11 +33,10 @@ export default function SearchBar() {
     setCreatePost(!createPost)
   }
    function SearchName(e){
-    setSearch(true)
-     setName(e.target.value)
+     setName(e.target.value)  
+     setSearch(true)
    }
- 
-  
+     
   return (
       <div className="searchBar">
     <Paper
@@ -42,8 +47,7 @@ export default function SearchBar() {
       <IconButton sx={{ p: '10px' }} aria-label="menu">
       </IconButton>
       <InputBase
-      onChange={SearchName}
-      onMouseEnter={loadUsers}
+      onInput={SearchName}
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search"
         inputProps={{ 'aria-label': 'search ' }}
@@ -55,18 +59,18 @@ export default function SearchBar() {
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
       </IconButton>
-    </Paper>{search&&  <div className="search-box" onMouseLeave={toggleSearchOff}>
-           {users.map((user,i) => {
-    let userName=user.firstName || "";
+    </Paper>{search &&  <div className="search-box" onMouseLeave={toggleSearchOff}>
+           { users.map((user,i) => {
+    let userName=`${user.firstName} ${user.lastName}`|| "";
   if (name === "") {
-  return <div className="user-result" key={i} onClick={Profile(user)}>{user.firstName} {user.lastName}</div>
+  return <div className="user-result" key={i}><Link to={`/profile/${user._id}`}>{user.firstName} {user.lastName}</Link></div>
   } else if (userName.toLowerCase().includes(name.toLowerCase())) {
     //returns filtered array
-    return <div  className="user-result" key={i}>{user.firstName} {user.lastName}</div>
+    return <div  className="user-result" key={i}><Link to={`/profile/${user._id}`}>{user.firstName} {user.lastName}</Link></div>
   }
 })}
             </div>}
-            {createPost && <CreatePostPopUp handleClose={toggleCreate}/>} 
+            {createPost && <CreatePostPopUp   id={user._id}handleClose={toggleCreate}/>} 
             <button className="create-post-btn" onClick={toggleCreate}>create</button>
           
             </div>

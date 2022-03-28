@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminTable from "./admin-card";
 import { GetAllReport } from "../../../services/reportService";
+import ProfileDetails from "../profile/profile-details";
 const Admin = () => {
 const [report,setReport] = useState([]);
 useEffect(()=>{
@@ -10,6 +11,7 @@ useEffect(()=>{
 },[])
 return (
         <div>
+            <ProfileDetails/>
             <AdminTable array={report}/>                   
         </div>
 )

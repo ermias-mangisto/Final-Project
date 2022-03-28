@@ -1,6 +1,7 @@
-const BASIC_API ='http://localhost:8100/register';
+const BASIC_API = process.env.NODE_ENV === 'production' ? "https://team-ware.herokuapp.com/register" :'http://localhost:8100/register';
 
 export const registerNewUser = async (user) => {
+    
     return await fetch(`${BASIC_API}`, {
         method: 'POST', body: JSON.stringify(user), headers: {
             'Content-Type': 'application/json'
@@ -21,8 +22,13 @@ export const loginUser = async (user) => {
         .catch((err)=>{return err});
 }
 export const GetAll = async(page)=>{
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
       try {
-          return await fetch(`${BASIC_API}?page=${page}&limit=100`)
+          return await fetch(`${BASIC_API}?page=${page}&limit=100`,options)
           .then(res => res.json())
           .catch(err => {return err})
       } catch (error) {
@@ -30,8 +36,13 @@ export const GetAll = async(page)=>{
       }
 } 
 export const GetUserById = async (id) => {
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
     try {
-        return await fetch(`${BASIC_API}/${id}`)
+        return await fetch(`${BASIC_API}/${id}`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -39,8 +50,13 @@ export const GetUserById = async (id) => {
     }
 }
 export const GetUserCreatedPosts = async (id) => {
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
     try {
-        return await fetch(`${BASIC_API}/created/${id}`)
+        return await fetch(`${BASIC_API}/created/${id}`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -48,8 +64,13 @@ export const GetUserCreatedPosts = async (id) => {
     }
 }
 export const GetUserJoinedPosts = async (id) => {
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
     try {
-        return await fetch(`${BASIC_API}/joined/${id}`)
+        return await fetch(`${BASIC_API}/joined/${id}`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -57,8 +78,13 @@ export const GetUserJoinedPosts = async (id) => {
     }
 }
 export const GetUserByName = async (name,page) => {
+    let options ={
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")} `
+        }
+    }
     try {
-        return await fetch(`${BASIC_API}/name/${name}?page=${page}&limit=10`)
+        return await fetch(`${BASIC_API}/name/${name}?page=${page}&limit=10`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
@@ -70,7 +96,9 @@ export const UpdateUser = async (id, user) => {
         return await fetch(`${BASIC_API}/update/${id}`, {
             method: "PUT",
             body: JSON.stringify(user),
-            headers: { 'Content-Type': 'application/json' }
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
         .then(response => response.json())
         .catch(reject => console.log("errr"))
@@ -82,7 +110,10 @@ export const UpdateUser = async (id, user) => {
 export const DeleteUser = async (id) => {
     try {
         return await fetch(`${BASIC_API}/delete/${id}`, {
-            method: "DELETE"
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")} `
+            }
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
