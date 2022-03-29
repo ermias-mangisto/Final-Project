@@ -23,7 +23,7 @@ import {CreateAlert} from '../../../services/alertService'
 import ReportPopUp from "./reportPopUp";
 import {Link} from "react-router-dom"
 const Post = (props) => {
-  const {user}=useContext(UserContext);
+  const {user,setUser}=useContext(UserContext);
     const [userName,setUserName]=useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [reportPopUp, setReportPopUp] = useState(false);
