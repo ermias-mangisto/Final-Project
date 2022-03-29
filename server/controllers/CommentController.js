@@ -11,7 +11,7 @@ let Get = async (req, res) => {
 };
 let GetByPost = async (req, res) => {
     const {page,limit}=req.query;
-    await Comment.find({postId:req.params.postId}).limit(limit).skip((page-1)*limit)
+    await Comment.find({postId:req.params.postId}).populate('userId').limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })

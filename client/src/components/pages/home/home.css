@@ -119,6 +119,9 @@ text-align:left;
     border: 1px solid #999;
     background-color: red;
   }
+  .commentWriter{
+      float:left;
+  }
   .report-popup-box {
     position: fixed;
     background: #00000050;
