@@ -54,7 +54,6 @@ const AlertsTemplate = () => {
                         <th className="title_notification">Notification</th>
                     </tr>
                 </thead>
-
                 <tbody className="contain_tr">
                     {
                         alert.sort((a, b) => {

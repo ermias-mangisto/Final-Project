@@ -6,7 +6,7 @@ import CheckAlert from "../../parts/alerts/checkAlert";
 const Admin = () => {
     return (
         <div>
-            <CheckAlert/>
+            {/* <CheckAlert/> */}
             <ProfileDetails />
             <AdminTable />
         </div>
