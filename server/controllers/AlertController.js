@@ -2,7 +2,7 @@ const Alert = require("../models/AlertModel");
 
 //GET
 let Get = async (req, res) => {
-    await Alert.find()
+    await Alert.find().populate("postId sendUserId")
     .then((data) => {
       res.send(data);
     })

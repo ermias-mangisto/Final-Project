@@ -4,7 +4,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { DeleteReport, GetAllReport } from '../../../services/reportService';
 import { CreateAlert } from '../../../services/alertService';
 import { CreateArchive } from '../../../services/archivedPostService';
-import { DeletePost } from '../../../services/postService';
+import { DeletePost,UpdatePost } from '../../../services/postService';
 import { GetPostById } from '../../../services/postService';
 import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
@@ -30,22 +30,23 @@ if(currentUser._id === user._id) {
           .catch(err => console.error(err))
 
   }, [])
-  const CatchAndCreateArchive = (id) => {
-    GetPostById(id)
-      .then(res =>
-        CreateArchive(res)
-          .then(data => console.log(data))
-          .catch(rej => console.error(rej))
-      )
-      .catch(err => console.error(err))
-  }
+  // const CatchAndCreateArchive = (id) => {
+  //   GetPostById(id)
+  //     .then(res =>
+  //       CreateArchive(res)
+  //         .then(data => console.log(data))
+  //         .catch(rej => console.error(rej))
+  //     )
+  //     .catch(err => console.error(err))
+  // }
+
   const DeletePostFromTable = (object, id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       CreateAlert(object) //! CREATE ALERT
         .then(res => console.log(res))
         .catch(rej => console.error(rej));
-      CatchAndCreateArchive(id) //! CATCH OBJECT BY ID IN POST COLLECTION, AND CREATE NEW OBJECT IN ARCHIVE COLLECTION.
-      DeletePost(id) //! DELETE POST
+      // CatchAndCreateArchive(id) //! CATCH OBJECT BY ID IN POST COLLECTION, AND CREATE NEW OBJECT IN ARCHIVE COLLECTION.
+      UpdatePost(id,{archivePost:true}) //! DELETE POST
         .then(() =>
           alert("Post Deleted"))
         .catch(err => console.error(err))
