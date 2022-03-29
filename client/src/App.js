@@ -1,5 +1,6 @@
 import { AlertProvider } from "./context/alertContext/AlertContext";
 import UserContextProvider from "./context/userContext/userContext"
+import { ModeProvider } from "./context/modeContext/ModeContext";
 import React from "react";
 import "./App.css";
 import Landing from "./components/pages/landing/landing";
@@ -8,11 +9,14 @@ import Profile from "./components/pages/profile/profile";
 function App() {
   return (
     <div className="App">
-      <AlertProvider>
-        <UserContextProvider>
-          <Router />
-        </UserContextProvider>
-      </AlertProvider>
+      <ModeProvider>
+        <AlertProvider>
+          <UserContextProvider>
+            <Router />
+          </UserContextProvider>
+        </AlertProvider>
+      </ModeProvider>
+
     </div>
   );
 }

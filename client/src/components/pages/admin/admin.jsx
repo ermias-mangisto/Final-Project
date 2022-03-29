@@ -5,6 +5,7 @@ import ProfileDetails from "../profile/profile-details";
 import CheckAlert from "../../parts/alerts/checkAlert";
 import {useParams} from "react-router-dom";
 import {GetUserById} from "../../../services/userService"
+import AlertsTemplate from "../../parts/alerts/alerts-template";
 const Admin = () => {
     const {id} =useParams()
   const [currentUser,setCurrentUser]=useState("");
