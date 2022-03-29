@@ -6,11 +6,15 @@ import { GetPostById, UpdatePost } from "../../../services/postService"
 import { GetUserById, UpdateUser } from "../../../services/userService"
 import { AlertContext } from "../../../context/alertContext/AlertContext"
 import CheckAlert from "./checkAlert";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import PostPopUp from "../../pages/home/postPopUp"
 const AlertsTemplate = () => {
     const { user, setCounter } = useContext(UserContext)
     const { alerts, setAlert } = useContext(AlertContext)
-
+    const [isOpen, setIsOpen] = useState(false);
+    const togglePopup = () => {
+      setIsOpen(!isOpen);
+    };
     const GetYourPostId = (object) => {
         GetPostById(object) //! Get Post By Id
             .then(res => console.log(res))
@@ -75,21 +79,21 @@ const AlertsTemplate = () => {
                                     case "deleted": {
                                         return (
                                             <tr className="tr_data" key={i}>
-                                                <td>Your post was <span className="tr_delete" onClick={() => GetYourPostId(data.postId)}> DELETED </span>by manager<button onClick={() => DeleteTRow(data)} className="btn_deleteDeleteAlert">x</button> </td>
+                                                <td>Your post {data.postId.postName} was <span className="tr_delete" onClick={() => GetYourPostId(data.postId)}> DELETED </span>by manager<button onClick={() => DeleteTRow(data)} className="btn_deleteDeleteAlert">x</button> </td>
                                             </tr>
                                         )
                                     }
                                     case "join": {
                                         return (
                                             <tr className="tr_data" key={i} >
-                                                <td> <Link to={`/profile/${data.sendUserId==null?"id":data.sendUserId._id}`}><span className="tr_userName">{data.sendUserId==null?"id":data.sendUserId.firstName}</span></Link> wants to join your team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
+                                                <td> <Link to={`/profile/${data.sendUserId==null?"id":data.sendUserId._id}`}><span className="tr_userName">{data.sendUserId==null?"id":data.sendUserId.firstName}</span></Link> wants to join your {data.postId==null?"id":data.postId.postName} team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
                                                     <span className="general_btn">
                                                         <button onClick={() => AcceptRequest({
                                                             sendUserId: user._id,
-                                                            postId: data.postId,
-                                                            receiverUserId: data.sendUserId,
+                                                            postId: data.postId._id,
+                                                            receiverUserId:data.sendUserId._id,
                                                             type: "accepted"
-                                                        }, data.postId, data.sendUserId, data._id)} className="ok_button">✔️</button>
+                                                        }, data.postId._id, data.sendUserId._id, data._id)} className="ok_button">✔️</button>
                                                         <button onClick={() => CancelRequest(data._id)
                                                         } className="cancel_button">✖️</button>
                                                     </span></td>
@@ -99,14 +103,26 @@ const AlertsTemplate = () => {
                                     case "accepted": {
                                         return (
                                             <tr className="tr_data" key={i}>
-                                                <td>You have been <span className="tr_accepted" onClick={() => GetYourPostId(data.postId)}>ACCEPTED</span> to web team <button onClick={() => DeleteTRow(data)} className="btn_deleteAccepted">x</button></td>
+                                                       {isOpen && <PostPopUp
+                                   postInfo={data.postId ==null? "id":data.postId}
+                                  name={data.sendUserId ==null? "id":data.sendUserId.firstName}
+                                  postId={data.postId ==null?"id":data.postId._id}
+                                        handleClose={togglePopup}
+                                                />}
+                                                <td>You have been <span className="tr_accepted" >ACCEPTED</span > to <span onClick={togglePopup}>{data.postId.postName==null? "id":data.postId.postName}</span> team <button onClick={() => DeleteTRow(data)} className="btn_deleteAccepted">x</button></td>
                                             </tr>
                                         )
                                     }
                                     case "comment": {
                                         return (
                                             <tr className="tr_data" key={i}>
-                                                <td><span className="tr_comment" onClick={() => GetSenderData(data.sendUserId)}>SOMEONE</span> commented on your post <button onClick={() => DeleteTRow(data)} className="btn_deleteComment">x</button></td>
+                                                        {isOpen && <PostPopUp
+                                   postInfo={data.postId ==null? "id":data.postId}
+                                  name={data.receiverUserId ==null? "id":data.receiverUserId.firstName}
+                                  postId={data.postId ==null?"id":data.postId._id}
+                                        handleClose={togglePopup}
+                                                />}
+                                                <td><Link to={`/profile/${data.sendUserId ==null? "id":data.sendUserId._id}`}><span className="tr_comment" >{data.sendUserId ==null? "id":data.sendUserId.firstName}</span></Link> commented on your <span onClick={togglePopup}>{data.postId.postName==null? "id":data.postId.postName}</span> post <button onClick={() => DeleteTRow(data)} className="btn_deleteComment">x</button></td>
                                             </tr>
                                         )
                                     }
