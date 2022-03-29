@@ -1,41 +1,37 @@
- 
-.CeratedPostsComponent{
+.CeratedPostsComponent {
   margin-top: 300px;
   height: 100%;
-  
-} 
+}
 .CeratedPosts {
-  width: 90%;
+  width: 80%;
   align-items: center;
   display: flex;
   justify-content: space-around;
   margin-left: 70px;
   margin: auto;
   flex-wrap: wrap;
-  border: 2px solid rgb(6, 6, 49);
   border-radius: 20px;
 }
+
 .CeratedPosts .post {
   display: flex;
   justify-content: space-around;
-  width: 33%;
-    height: 72px;
-  border-radius: 20px;
-  border:2px solid rgb(6, 6, 49) ;
-  background-color: rgb(247, 247, 103);
+  width: 30%;
+  height: 72px;
+  border-radius: 10px;
+  border: 1px solid rgb(33, 34, 34);
+  margin: 8px;
 }
-
 .CeratedPostsComponent .postIcon {
   width: 60px;
   height: 60px;
-  color: rgb(216, 169, 50);
+  color: rgb(5, 5, 46);
 }
-
-
 .CeratedPosts .editButton {
-  width: 30px;
-  height: 20px;
-  color:rgb(6, 6,49) ;
+  width: 15px;
+  height: 15px;
+  color: rgb(5, 5, 46);
   margin-top: 30px;
-  float: left;
+  margin-left: 60px;
 }
+

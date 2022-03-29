@@ -25,7 +25,7 @@ const EditPopUP = (props) => {
           x
         </span>
         <article className="edit">
-          <h1>edit</h1>
+          <h1>Edit profile</h1>
           <form>
             <label>
               firstName:
@@ -64,10 +64,18 @@ const EditPopUP = (props) => {
               />
             </label>
             <label>
+              image:
+              <input
+                defaultValue={user.image}
+                onChange={onFieldChange}
+                name="image"
+                type="string"
+              />
+            </label>
+            <label>
               <textarea
                 defaultValue={user.summary}
                 className="summary"
-
                 onChange={onFieldChange}
                 name="summary"
                 type="text"
