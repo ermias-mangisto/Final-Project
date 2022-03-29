@@ -12,7 +12,11 @@
   flex-wrap: wrap;
   border-radius: 20px;
 }
-
+h3 {
+  width: 200px;
+  height: 40px;
+  margin-left: 100px;
+}
 .CeratedPosts .post {
   display: flex;
   justify-content: space-around;
@@ -35,3 +39,12 @@
   margin-left: 60px;
 }
 
+@media  only screen  and (min-width:425px) and (max-width:768px){
+  .CeratedPosts .editButton {
+    width: 15px;
+    height: 15px;
+    color: rgb(5, 5, 46);
+    margin-top: 30px;
+    margin-left: 40px;
+  }
+}
