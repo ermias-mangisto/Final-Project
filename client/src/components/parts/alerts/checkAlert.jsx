@@ -4,7 +4,7 @@ import { AlertContext} from "../../../context/alertContext/AlertContext";
 import { GetAllAlert } from "../../../services/alertService";
 const CheckAlert = () => {
     const { user, setCounter } = useContext(UserContext);
-    const { alert } = useContext(AlertContext)
+    const { alerts } = useContext(AlertContext)
     let count = 0;
     useEffect(() => {   //! when the component is didmount the setcounter doing assignment to counter According to count
         setCounter(count)
@@ -12,14 +12,11 @@ const CheckAlert = () => {
     return (
         <div>
             {
-                alert.map(data => {
+                alerts.map(data => {
                     if (localStorage.getItem("newAlert") === null) {
-                        console.log("Ddd");
                         localStorage.setItem("newAlert", `${alert[alert.length - 1].createdAt}`);
                     }else if (data.receiverUserId == user._id) {
                         if (new Date(localStorage.getItem("newAlert")) < new Date(data.createdAt)) {
-                            console.log(new Date(localStorage.getItem("newAlert"))+" "+"LOCAL STORAGE");
-                            console.log(new Date(data.createdAt)+" "+"data base");
                             count++
                         }
                         console.log("false")
