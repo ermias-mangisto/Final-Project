@@ -11,14 +11,14 @@ const CeratedPosts = ({currentUser}) => {
   useEffect(() => {
     const loadPosts = async () => {
       const Post = await GetUserCreatedPosts(id);
-      setCreatedPost(Post);
+      setCreatedPost(Post.filter(post => post.archivePost==false));
     };
     loadPosts();
   }, []);
 
   return (
     <div className="CeratedPostsComponent">
-      <h3>Posts I created :</h3>
+      <h3 className="h3">Posts I created :</h3>
       <div className="CeratedPosts">
         {createPost.map((item) => (
           <Post postInfo={item}  currentUser={currentUser} icon={<FaAward className="postIcon" />} />

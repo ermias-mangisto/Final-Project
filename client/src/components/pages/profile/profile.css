@@ -1,4 +1,15 @@
-* {
+
+.profile{
+  background-color: #F2F2F2;
   font-family: "Patrick Hand", cursive;
 }
 @import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap");
+.delete-btn{
+  float: left;
+cursor: pointer;
+width: 100px;
+height: 40px;
+font-size:large;
+background-color:rgb(255, 30, 30);
+border: 1px solid rgb(255, 1, 1);
+}

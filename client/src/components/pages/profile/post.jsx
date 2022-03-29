@@ -6,13 +6,13 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 const Post = ({ postInfo, icon ,currentUser }) => {
   const {user}=useContext(UserContext);
-  const [isOpen, setIsOpen] = useState(false);
   const [myProfile,setMyProfile] = useState(false)
   useEffect(() => {
-if(currentUser._id === user._id) {
-  setMyProfile(true)
-}
+    if(currentUser._id === user._id) {
+      setMyProfile(true)
+    }
   },[currentUser])
+  const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
@@ -22,23 +22,27 @@ if(currentUser._id === user._id) {
   };
   return (
     <div className="post">
-       {isOpen && <PostPopUp
-        content={
- <article className='post-PopUpCard' >
- <h1 className='post-nameTag'> posted by:{currentUser.firstName}on {postInfo.createdAt}</h1>
-<div className='post-PopUpText'>
-<h1>
- {`${postInfo.postName}-${postInfo.projectType}`}
-      </h1>   
-        <p>    { postInfo.postText}</p>
- <p>  Participants required: { postInfo.numberOfParticipants}</p>
- <p>  Technologies Required: { postInfo.technologiesRequired}</p>
-       </div>
-      </article>}
-        name={currentUser.firstName}
-        postId={postInfo._id}
-        handleClose={togglePopup}
-      />} 
+      {isOpen && (
+        <PostPopUp
+          content={
+            <article className="post-PopUpCard">
+              <h1 className="post-nameTag">
+                {" "}
+                posted by:{currentUser.firstName}on {postInfo.createdAt}
+              </h1>
+              <div className="post-PopUpText">
+                <h1>{`${postInfo.postName}-${postInfo.projectType}`}</h1>
+                <p> {postInfo.postText}</p>
+                <p> Participants required: {postInfo.numberOfParticipants}</p>
+                <p> Technologies Required: {postInfo.technologiesRequired}</p>
+              </div>
+            </article>
+          }
+          name={currentUser.firstName}
+          postId={postInfo._id}
+          handleClose={togglePopup}
+        />
+      )}
       <div onClick={togglePopup}>{icon}</div>
       <div>
         <p>{postInfo.postName}</p>

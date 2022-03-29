@@ -76,6 +76,7 @@ const NavBar = () => {
         </AppBar>
       )}
       {isLoggedIn && (
+
         <AppBar position="static" color="inherit" style={{background:mode.headerFoteer,color:mode.color}}>
           <Toolbar>
             <Modes/>

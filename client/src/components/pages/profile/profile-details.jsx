@@ -28,7 +28,7 @@ if(currentUser._id === user._id) {
     <div className="ProfileDetails" style={{border:mode.border}}>
       <div className="detail">
         <div className="icon">
-          {currentUser.image ? currentUser.image : <FaUserAlt className="userIcon" />}
+          {currentUser.image ? currentUser.image ==<img src=""/> : <FaUserAlt className="userIcon" />}
         </div>
         
         <h1>

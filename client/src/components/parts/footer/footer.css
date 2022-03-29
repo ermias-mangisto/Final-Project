@@ -23,7 +23,7 @@
 .footer #button {
   width: 35px;
   height: 35px;
-  border: rgb(3, 3, 43) 12px solid;
+  border: rgb(62, 71, 68) 12px solid;
   border-radius: 35px;
   margin: 0 auto;
   position: relative;
@@ -31,7 +31,7 @@
 .footer #button:hover {
   width: 35px;
   height: 35px;
-  border: #3a3a3a 12px solid;
+  border: #272525 12px solid;
   position: relative;
 }
 
@@ -56,7 +56,8 @@
   position: relative;
   top: 0;
   left: 0;
-  background-color: rgb(3, 3, 43);
+  background-color: rgb(8, 8, 43);
+
 }
 .footer #cont {
   position: relative;
@@ -74,7 +75,6 @@
   text-align: center;
 }
 .hidden-Footer h3 {
-  
   font-size: 30px;
   font-weight: 100;
   margin-bottom: 200px;
@@ -83,9 +83,12 @@
 }
 .hidden-Footer {
   font-size: 10px;
-  width: 100%;
+  width:97%;
   text-align: center;
-  color: rgb(247, 247, 103);
+ color: #F2F2F2;
+  
+
+;
   height: 50%;
   padding: 10px;
   display: flex;
@@ -103,7 +106,9 @@
 }
 .hidden-Footer a {
   text-decoration: none;
-  color: rgb(247, 247, 103);
+  color: #F2F2F2;
+
+;
   font-size: medium;
 }
 .hidden-Footer h1 {
@@ -116,7 +121,9 @@ p{
 .logoa img {
   width: 100px;
   height: 100px;
-  border: 3px solid rgb(247, 247, 103);
+  border: 3px solid ;
+  color: #2b6777;
+;
 }
 .logoa {
   width: 20%;
