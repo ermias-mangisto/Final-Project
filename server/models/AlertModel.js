@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const Alert = new mongoose.Schema(
   {
-    sendUserId: { type: String, require: true },
+    sendUserId:{type:mongoose.Schema.Types.ObjectId,
+      ref:'User'
+      },
     postId: {type:mongoose.Schema.Types.ObjectId,
     ref:'Post'
     },
