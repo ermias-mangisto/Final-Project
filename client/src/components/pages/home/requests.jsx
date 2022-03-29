@@ -20,7 +20,8 @@ export default function Requests() {
     },[user])
     const HandleRequestDelete=(id,i)=>{
           DeleteAlert(id)
-          console.log(requests)
+          const updatedRequests= requests.filter(item=>item._id != id)
+          setRequests(updatedRequests)
     }
   return (
       <div className="requestsContainer">

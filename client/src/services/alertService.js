@@ -2,7 +2,7 @@ const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.her
 export const GetAllAlert = async (page) => {
   
     try {
-        return await fetch(`${BASIC_URL}?page=${page}&limit=10`,{
+        return await fetch(`${BASIC_URL}?page=${page}&limit=100`,{
         headers: { "content-type": "application/json",
         "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
