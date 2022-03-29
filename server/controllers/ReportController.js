@@ -3,7 +3,7 @@ const Report = require("../models/ReportModel");
 //GET
 let Get = async (req, res) => {
     const {page,limit}=req.query;
-    await Report.find().limit(limit).skip((page-1)*limit)
+    await Report.find().populate("postId userId").limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })
