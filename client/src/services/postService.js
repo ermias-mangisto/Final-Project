@@ -2,7 +2,8 @@ const BASIC_URL =process.env.NODE_ENV === 'production' ? "https://team-ware.hero
 export const GetAllPost = async (page)  => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -17,7 +18,8 @@ export const GetAllPost = async (page)  => {
 export const GetPostById = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }}
     try {
         return await fetch(`${BASIC_URL}/${id}`,options)
@@ -30,7 +32,8 @@ export const GetPostById = async (id) => {
 export const GetPostByName = async (name,page) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }}
     try {
         return await fetch(`${BASIC_URL}/name/${name}?page=${page}&limit=10`,options)
@@ -44,7 +47,8 @@ export const GetPostByName = async (name,page) => {
 export const GetPostByType = async (type) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -60,10 +64,11 @@ export const CreatePost = async (post,id) => {
     try {
         return await fetch(`${BASIC_URL}/add/${id}`, {
             method: "POST",
-            body: JSON.stringify(post),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
-            }
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
+            } ,
+               body: JSON.stringify(post)
         })
             .then(response => response.json())
             .catch(reject => console.error(reject))
@@ -78,7 +83,8 @@ export const UpdatePost = async (id, post) => {
             method: "PUT",
             body: JSON.stringify(post),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
@@ -94,7 +100,8 @@ export const DeletePost = async (id) => {
         return await fetch(`${BASIC_URL}/delete/${id}`, {
             method: "DELETE",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())

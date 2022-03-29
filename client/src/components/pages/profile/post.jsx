@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useContext,useEffect, useState } from "react";
+import { UserContext } from "../../../context/userContext/userContext";
 import PostPopUp from "../home/postPopUp";
 import EditPostPopUP from "./editPostPopUp";
 import { FaPencilAlt } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 const Post = ({ postInfo, icon ,currentUser }) => {
+  const {user}=useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [myProfile,setMyProfile] = useState(false)
+  useEffect(() => {
+if(currentUser._id === user._id) {
+  setMyProfile(true)
+}
+  },[currentUser])
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
@@ -36,9 +44,10 @@ const Post = ({ postInfo, icon ,currentUser }) => {
         <p>{postInfo.postName}</p>
         <p>{postInfo.projectType}</p>
       </div>
-     
-
-      <div onClick={togglePopup}>{icon}</div>
+      {postEditOpen && (
+        <EditPostPopUP handleClose={togglePostEditOpen} postInfo={postInfo} />
+      )}
+     {myProfile && <div onClick={togglePostEditOpen}> <FaPencilAlt className="editButton"/></div>}
     </div>
   );
 };
