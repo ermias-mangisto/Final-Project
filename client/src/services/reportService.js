@@ -7,7 +7,7 @@ export const GetAllReport = async (page) => {
         }
     }
     try {
-        return await fetch(`${BASIC_URL}?page=${page}&limit=10`,options)
+        return await fetch(`${BASIC_URL}?page=${page}&limit=100`,options)
             .then(response => response.json())
             .catch(reject => console.error(reject))
     } catch (error) {
