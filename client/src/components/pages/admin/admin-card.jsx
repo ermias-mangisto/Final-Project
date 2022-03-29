@@ -1,5 +1,5 @@
 import './admin.css'
-import * as React from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import { FaRegTrashAlt } from "react-icons/fa";
 import { DeleteReport, GetAllReport } from '../../../services/reportService';
 import { CreateAlert } from '../../../services/alertService';
@@ -9,7 +9,20 @@ import { GetPostById } from '../../../services/postService';
 import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
 import { DeleteRequests } from "../../../services/alertService"
+import PostPopUp from "../home/postPopUp"
+import {Link ,useNavigate} from "react-router-dom"
 const AdminTable = ({currentUser}) => {
+  const {user}=useContext(UserContext); 
+  const [myProfile,setMyProfile] = useState(false)
+  useEffect(() => {
+if(currentUser._id === user._id) {
+  setMyProfile(true)
+}
+  },[currentUser])
+  const [isOpen, setIsOpen] = useState(false);
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
   const [report, setReport] = React.useState([]);
   React.useEffect(() => {
       GetAllReport()
@@ -61,8 +74,8 @@ const AdminTable = ({currentUser}) => {
       .catch(rej => console.error(rej))
   }
   return (
-    <div className='table_details'>
-      <table className='table'>
+   <div className='table_details'>
+   {  myProfile && <table className='table'>
         <thead>
           <tr className='tr'>
             <th className='tr'>User ID</th>
@@ -76,10 +89,26 @@ const AdminTable = ({currentUser}) => {
         <tbody>
           {
             report.map((item, i) =>
-
-              <tr className='tr' key={i}>
-                <td className='tr'><span onClick={() => GetUsersById(item.userId)}>{item.userId}</span></td>
-                <td className='tr'><span onClick={() => GetPostId(item.postId)}>{item.postId}</span></td>
+            <tr className='tr' key={i}>
+                {isOpen && <PostPopUp
+        content={
+ <article className='post-PopUpCard' >
+ <h1 className='post-nameTag'> posted by:{item.userId ==null? "id":item.userId.firstName}on {item.postId ==null?"id":item.postId.createdAt}</h1>
+<div className='post-PopUpText'>
+<h1>
+ {`${item.postId ==null?"id":item.postId.postName}-${item.postId ==null?"id":item.postId.projectType}`}
+      </h1>   
+        <p>    {item.postId ==null?"id": item.postId.postText}</p>
+ <p>  Participants required: { item.postId ==null?"id":item.postId.numberOfParticipants}</p>
+ <p>  Technologies Required: {item.postId ==null?"id": item.postId.technologiesRequired}</p>
+       </div>
+      </article>}
+        name={item.userId ==null? "id":item.userId.firstName}
+        postId={item.postId ==null?"id":item.postId._id}
+        handleClose={togglePopup}
+      />}
+                <td className='tr'><Link to={`/profile/${item.userId ==null? "id" :item.userId._id}`}><span>{item.userId ==null? "id" :item.userId._id}</span></Link></td>
+                <td className='tr'><span onClick={togglePopup}>{item.postId ==null? "id" :item.postId._id}</span></td>
                 <td className='tr'><span onClick={() => GetUsersById(item.postUserId)}>{item.postUserId}</span></td>
                 <td className='tr'>{item.text}</td>
                 <td className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
@@ -96,7 +125,7 @@ const AdminTable = ({currentUser}) => {
           }
         </tbody>
 
-      </table>
+      </table>}
     </div>
   );
 }

@@ -18,7 +18,7 @@ const Profile = () => {
   },[])
   return (
     <div className="profile">
-      <CheckAlert /> 
+      {/* <CheckAlert />  */}
       <ProfileDetails currentUser={currentUser}/>
       <CreatedPosts currentUser={currentUser}/>
       <JoinedPosts currentUser={currentUser}/>
