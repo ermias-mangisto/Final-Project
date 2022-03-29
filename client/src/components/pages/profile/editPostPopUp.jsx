@@ -12,6 +12,13 @@ const EditPostPopUP = (props) => {
     setEditPost({ ...editPost, [name]: value });
   };
 
+  const DeletePost=()=>{
+window.confirm("are you sure you want to delete this post?");
+UpdatePost(props.postInfo._id,{archivePost:true})
+.then(()=>{alert("Post deleted successfully!")})
+.then(()=>{props.handleClose()})
+  }
+
   const CreatePost = (e) => {
     e.preventDefault();
     UpdatePost(props.postInfo._id, editPost).then((res) => {});
@@ -24,6 +31,9 @@ const EditPostPopUP = (props) => {
         <span className="close-icon" onClick={props.handleClose}>
           x
         </span>
+        <button className="delete-btn" onClick={DeletePost}>
+         Delete post
+        </button>
         <article className="edit">
           <h1>edit post</h1>
 

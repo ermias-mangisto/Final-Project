@@ -4,7 +4,7 @@
 }
 .contain{
     position: absolute;    
-    width: 28%;
+    /* width: 28%; */
     margin-left: 71%;
     border-radius: 5px;
     border: 2px solid black;
@@ -34,7 +34,7 @@
     text-align: center;
     border-radius: 20px;
     color: rgb(5, 5, 4);
-   
+    /* width: 100%; */
 }
 td{
     font-size: larger;
@@ -43,7 +43,7 @@ td{
 .contain_tr{
     overflow: auto;
     height: 350px;
-    width: 100%;
+    /* width: 100%; */
 }
 .ok_button{
     background: rgb(12, 233, 12);
@@ -60,6 +60,7 @@ td{
     border-radius: 90px;  
     cursor: pointer;
 }
+
 .tr_userName{
     color: rgb(16, 182, 238);
     cursor: pointer;
@@ -79,10 +80,12 @@ td{
 .general_btn{
     margin-left: 100px;
 }
-.btn_cleanAlert{
+/* .btn_cleanAlert{
 position: relative;
 left: 5%;
-}
+} */
+
+/*! delete alert */
 .btn_deleteComment{
 position: relative;
 left: 4%;
