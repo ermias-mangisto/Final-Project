@@ -1,11 +1,14 @@
 import react,{useState,useContext} from "react";
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
  import {GetPostComment} from '../../../services/commentService'
+import {Link} from "react-router-dom"
 import './home.css';
 const Comment = (props) => {
     return (
         <div className="post-comment-box"> 
-<h1>{props.commentInfo.commentText}</h1>
+<Link to={`/profile/${props.commentInfo.userId._id}`}>
+    <span className="commentWriter">{props.commentInfo.userId.firstName}</span></Link>
+<p>{props.commentInfo.commentText}</p>
         </div>
     )
 }

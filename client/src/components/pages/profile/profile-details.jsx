@@ -11,10 +11,10 @@ const ProfileDetails = ({ currentUser}) => {
   const {user}=useContext(UserContext);
   const [myProfile,setMyProfile] = useState(false)
   useEffect(() => {
-if(currentUser._id==user._id) {
+if(currentUser._id === user._id) {
   setMyProfile(true)
 }
-  },[user])
+  },[currentUser])
  
   const [open, setOpen] = useState(false);
   const toggleOpen = () => {
@@ -44,11 +44,11 @@ if(currentUser._id==user._id) {
         </h4>
       </div>
       <div>
-       <button className="editButton" onClick={toggleOpen}>
-          <FaPencilAlt />
-        </button>
-        <p className="summary">{currentUser.summary} </p>
         {open && <EditPopUP handleClose={toggleOpen} />}
+      { myProfile && <button className="editButton" onClick={toggleOpen}>
+          <FaPencilAlt />
+        </button>}
+        <p className="summary">{currentUser.summary} </p>
       </div>
     </div>
     </div>

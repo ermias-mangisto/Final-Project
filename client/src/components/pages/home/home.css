@@ -114,10 +114,20 @@ text-align:left;
   .post-comment-box{
     width: 90%;
     height: 100px;
-    word-wrap: break-word;
+    
+   
+  
     margin:auto;
     border: 1px solid #999;
     background-color: red;
+  }
+  .post-comment-box p{
+    text-align: left;
+     margin-top:20px; 
+      word-wrap: break-word;
+  }
+  .commentWriter{
+      float:left;
   }
   .report-popup-box {
     position: fixed;

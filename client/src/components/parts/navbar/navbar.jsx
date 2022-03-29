@@ -97,7 +97,9 @@ const NavBar = () => {
               onClick={() => setDisplayAlerts(!displayAlerts)}
             >
               <FaBell className="Icon" />
-              <span className='counter_newNotification'>{counter||""}</span>
+              
+              {counter?<span className="counter_newNotification">{counter}</span>:""}
+              
             </Button>
             <Button color="inherit" onClick={HandleLogout}>
               <Link to="/">

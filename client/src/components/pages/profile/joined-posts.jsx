@@ -23,7 +23,7 @@ const JoinedPost = ({currentUser}) => {
       <div className="JoinedPost">
        
         {joinPost.map((item) => (
-          <Post postInfo={item} icon={<FaAward className="postIcon" />} />
+          <Post postInfo={item} currentUser={currentUser} icon={<FaAward className="postIcon" />} />
         ))}
       </div>
     </div>

@@ -16,9 +16,11 @@
 .counter_newNotification{
  
     width: 20px;
-    border-radius: 5px;
-    position: relative;
+    height: 22px;
+    border-radius: 10px;
     margin-bottom: 50%;
+    position: absolute;
+    right:10px;
 }
 /* @media  only screen  and (min-width:320px) and (max-width:375px){} */
 /* @media  only screen  and (min-width:375px) and (max-width:425px){} */
