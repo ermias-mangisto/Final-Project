@@ -8,9 +8,10 @@ const [loading, setLoading] = useState(true);
 const [page, setPage] = useState(1);
 useEffect(()=>{
     const loadPosts=async()=>{
+
         setLoading(true);
         const newPosts=await  GetAllPost(page);
-        setPosts((prev)=>[...prev,...newPosts]);
+        setPosts((prev)=>[...prev,...newPosts].filter(post => post.archivePost==false || post.numberOfParticipants<post.participants.length));
         // setPosts(posts.sort((a,b)=>a.createdAt-b.createdAt))
         setLoading(false);
     }

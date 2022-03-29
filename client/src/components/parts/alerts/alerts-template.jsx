@@ -5,7 +5,8 @@ import { CreateAlert, DeleteAlert, GetAllAlert } from "../../../services/alertSe
 import { GetPostById, UpdatePost } from "../../../services/postService"
 import { GetUserById, UpdateUser } from "../../../services/userService"
 import { AlertContext } from "../../../context/alertContext/AlertContext"
-import CheckAlert from "./checkAlert"
+import CheckAlert from "./checkAlert";
+import {Link} from "react-router-dom"
 const AlertsTemplate = () => {
     const { user, setCounter } = useContext(UserContext)
     const { alert, setAlert } = useContext(AlertContext)
@@ -74,7 +75,7 @@ const AlertsTemplate = () => {
                                     case "join": {
                                         return (
                                             <tr className="tr_data" key={i} >
-                                                <td> <span className="tr_userName" onClick={() => GetSenderData(data.sendUserId)}>SOMEONE</span> wants to join your team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
+                                                <td> <Link to={`/profile/${data.sendUserId==null?"id":data.sendUserId._id}`}><span className="tr_userName">{data.sendUserId==null?"id":data.sendUserId.firstName}</span></Link> wants to join your team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
                                                     <span className="general_btn">
                                                         <button onClick={() => AcceptRequest({
                                                             sendUserId: user._id,
