@@ -58,21 +58,7 @@ const MakeAlert= ()=>{
   return (
       <>
     {isOpen && <PostPopUp
-        content={
- <article className='post-PopUpCard' >
-   <h1 className='post-nameTag'> 
-   <Link to={`/profile/${props.postInfo.userId}`}>
-      posted by:{userName} </Link>
-       on {props.postInfo.createdAt}</h1>
-<div className='post-PopUpText'>
-<h1>
- {`${props.postInfo.postName}-${props.postInfo.projectType}`}
-      </h1>   
-        <p>    { props.postInfo.postText}</p>
- <p>  Participants required: { props.postInfo.numberOfParticipants}</p>
- <p>  Technologies Required: { props.postInfo.technologiesRequired}</p>
-       </div>
-      </article>}
+    postInfo={props.postInfo}
         name={userName}
         postId={props.postInfo._id}
         handleClose={togglePopup}
