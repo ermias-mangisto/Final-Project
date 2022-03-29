@@ -59,9 +59,8 @@ if(currentUser._id === user._id) {
       const RemoveReport = report.filter(item => item._id != id)
       setReport(RemoveReport);
       DeleteReport(id)
-        .then(() =>
-          alert("Report Deleted")
-        ).catch(err => console.error(err))
+        .then(res => {return res})
+        .catch(err => console.error(err))
     }
   }
   const GetUsersById = (id) => {
@@ -115,7 +114,7 @@ if(currentUser._id === user._id) {
                 <td className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
                 <td className='tr' ><span onClick={() =>
                   DeletePostFromTable({
-                    sendUserId: "admin id", //! USER._id
+                    sendUserId:currentUser._id, //! USER._id
                     postId: item.postId,
                     receiverUserId: item.postUserId,
                     type: "deleted"
