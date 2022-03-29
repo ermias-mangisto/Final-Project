@@ -1,10 +1,11 @@
 .navbar {
-  background-color: #f8f5f1;
+  background-color: #f5f1f8;
 
 }
 .navbar a {
   text-decoration: none;
   color: rgb(3, 3, 43);
+
   display: flex;
 
 }
@@ -13,7 +14,7 @@
     height: 18px;
 }
 .counter_newNotification{
-    background: red;
+ 
     width: 20px;
     height: 22px;
     border-radius: 10px;
@@ -21,3 +22,6 @@
     position: absolute;
     right:10px;
 }
+/* @media  only screen  and (min-width:320px) and (max-width:375px){} */
+/* @media  only screen  and (min-width:375px) and (max-width:425px){} */
+/* @media  only screen  and (min-width:425px) and (max-width:768px){} */

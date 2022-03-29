@@ -1,35 +1,34 @@
 .JoinedPost {
-  width: 90%;
+  width: 80%;
   align-items: center;
   display: flex;
   justify-content: space-around;
   margin-left: 70px;
   margin: auto;
   flex-wrap: wrap;
-  border: 2px solid rgb(6, 6, 49);
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .JoinedPost .post {
   display: flex;
   justify-content: space-around;
-  width: 33%;
-  height: 76px;
-  border-radius: 20px;
-  border: 2px solid rgb(6, 6, 49);
-  background-color: rgb(247, 247, 103);
+  width: 30%;
+  height: 74px;
+  border-radius: 10px;
+  border: 1px solid #52AB89 ;
 }
 
-.postIcon {
+.JoinedPost .postIcon {
   width: 50px;
   height: 80px;
-  color: rgb(216, 169, 50);
-  margin-top: 5px;
+  color: #52AB89 ;
+ 
+ 
 }
 
 h3 {
   margin-top: 50px;
-  margin-left: 70px;
+  margin-left: 90px;
   color: rgb(6, 6, 49);
 }
 
@@ -46,3 +45,5 @@ h3 {
 
   margin-top: 30px;
 }
+
+
