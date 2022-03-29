@@ -2,7 +2,7 @@ const Alert = require("../models/AlertModel");
 
 //GET
 let Get = async (req, res) => {
-    await Alert.find().populate("postId sendUserId receiverUserId")
+    await Alert.find()
     .then((data) => {
       res.send(data);
     })
@@ -11,14 +11,14 @@ let Get = async (req, res) => {
 
 //GET:ID
 let GetById = async (req, res) => {
-  await Alert.findById({_id:req.params.id}).populate("postId sendUserId receiverUserId")
+  await Alert.findById({_id:req.params.id})
     .then((data) => {
       res.send(data);
     })
     .catch((err) => res.status(404).send({ massage: error }));
 };
 let GetRequestsSent = async (req, res) => {
- const requests =await Alert.find({sendUserId:req.params.id ,type:"join"}).populate("postId  receiverUserId")
+ const requests =await Alert.find({sendUserId:req.params.id ,type:"join"}).populate("postId")
   res.send(requests)
 };
 //POST

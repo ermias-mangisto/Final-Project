@@ -2,7 +2,8 @@ const Comment = require("../models/CommentModel");
 
 //GET
 let Get = async (req, res) => {
-    await Comment.find().populate("userId")
+    const {page,limit}=req.query;
+    await Comment.find().limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })
@@ -10,7 +11,7 @@ let Get = async (req, res) => {
 };
 let GetByPost = async (req, res) => {
     const {page,limit}=req.query;
-    await Comment.find({postId:req.params.postId}).populate("userId").limit(limit).skip((page-1)*limit)
+    await Comment.find({postId:req.params.postId}).populate('userId').limit(limit).skip((page-1)*limit)
     .then((data) => {
       res.send(data);
     })
@@ -19,7 +20,7 @@ let GetByPost = async (req, res) => {
 
 //GET:ID
 let GetById = async (req, res) => {
-  await Comment.findById({_id:req.params.id}).populate("userId")
+  await Comment.findById({_id:req.params.id})
     .then((data) => {
       res.send(data);
     })

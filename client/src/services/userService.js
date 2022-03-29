@@ -24,7 +24,8 @@ export const loginUser = async (user) => {
 export const GetAll = async(page)=>{
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
       try {
@@ -38,7 +39,8 @@ export const GetAll = async(page)=>{
 export const GetUserById = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -52,7 +54,8 @@ export const GetUserById = async (id) => {
 export const GetUserCreatedPosts = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -66,7 +69,8 @@ export const GetUserCreatedPosts = async (id) => {
 export const GetUserJoinedPosts = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -80,7 +84,8 @@ export const GetUserJoinedPosts = async (id) => {
 export const GetUserByName = async (name,page) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -97,7 +102,8 @@ export const UpdateUser = async (id, user) => {
             method: "PUT",
             body: JSON.stringify(user),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
         .then(response => response.json())
@@ -112,7 +118,8 @@ export const DeleteUser = async (id) => {
         return await fetch(`${BASIC_API}/delete/${id}`, {
             method: "DELETE",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())

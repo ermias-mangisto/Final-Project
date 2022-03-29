@@ -120,7 +120,7 @@ text-align:left;
     background-color: red;
   }
   .commentWriter{
-    float: left;
+      float:left;
   }
   .report-popup-box {
     position: fixed;

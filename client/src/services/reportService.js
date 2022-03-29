@@ -2,7 +2,8 @@ const BASIC_URL = process.env.NODE_ENV === 'production' ? "https://team-ware.her
 export const GetAllReport = async (page) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -17,7 +18,8 @@ export const GetAllReport = async (page) => {
 export const GetReportById = async (id) => {
     let options ={
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")} `
+            "content-type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")} `
         }
     }
     try {
@@ -35,7 +37,8 @@ export const CreateReport = async (report) => {
             method: "POST",
             body: JSON.stringify(report),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
@@ -51,7 +54,8 @@ export const UpdateReport = async (id, report) => {
             method: "PUT",
             body: JSON.stringify(report),
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
@@ -67,7 +71,8 @@ export const DeleteReport = async (id) => {
         return await fetch(`${BASIC_URL}/delete/${id}`, {
             method: "DELETE",
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")} `
+                "content-type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")} `
             }
         })
             .then(response => response.json())
