@@ -6,13 +6,13 @@ import { FaPencilAlt } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 const Post = ({ postInfo, icon ,currentUser }) => {
   const {user}=useContext(UserContext);
-  const [isOpen, setIsOpen] = useState(false);
   const [myProfile,setMyProfile] = useState(false)
   useEffect(() => {
-if(currentUser._id === user._id) {
-  setMyProfile(true)
-}
+    if(currentUser._id === user._id) {
+      setMyProfile(true)
+    }
   },[currentUser])
+  const [isOpen, setIsOpen] = useState(false);
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };

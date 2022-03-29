@@ -2,7 +2,7 @@ import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
 import Footer from "../components/parts/footer/footer";
 import NavBar from "../components/parts/navbar/navbar";
 import Landing from "../components/pages/landing/landing";
-import Profile from "../components/pages/profile/profile";
+import ProfileRoute from "../components/pages/profile/ProfileRoute";
 import Admin from "../components/pages/admin/admin";
 import Home from "../components/pages/home/home";
 import AlertsPopUp from "../components/parts/alerts/alerts";
@@ -24,7 +24,8 @@ const Router=()=>{
           
             <Route exact path="/" element={<Landing/>}></Route>
 
-            <Route path="/profile/:id"  element={<ProtectedRoute isLoggedIn={isLoggedIn}>{ user.isAdmin==true? <Admin/> : user.isAdmin==false?<Profile/>:null}</ProtectedRoute>}></Route>
+            <Route path="/profile/:id"  element={<ProtectedRoute isLoggedIn={isLoggedIn}><ProfileRoute/></ProtectedRoute>}></Route>
+            {/* <Route path="/profile/:id"  element={<ProtectedRoute isLoggedIn={isLoggedIn}>{ user.isAdmin==true? <Admin/> : user.isAdmin==false?<Profile/>:null}</ProtectedRoute>}></Route> */}
             <Route path="/main" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Home/></ProtectedRoute>}></Route>
 
         </Routes>            
