@@ -9,7 +9,7 @@ import { GetPostById } from '../../../services/postService';
 import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
 import { DeleteRequests } from "../../../services/alertService"
-const AdminTable = () => {
+const AdminTable = ({currentUser}) => {
   const [report, setReport] = React.useState([]);
   React.useEffect(() => {
       GetAllReport()
