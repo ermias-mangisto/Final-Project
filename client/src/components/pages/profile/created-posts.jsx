@@ -11,7 +11,7 @@ const CeratedPosts = ({currentUser}) => {
   useEffect(() => {
     const loadPosts = async () => {
       const Post = await GetUserCreatedPosts(id);
-      setCreatedPost(Post);
+      setCreatedPost(Post.filter(post => post.archivePost==false));
     };
     loadPosts();
   }, []);
