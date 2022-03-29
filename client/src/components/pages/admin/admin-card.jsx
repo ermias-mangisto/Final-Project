@@ -91,18 +91,7 @@ if(currentUser._id === user._id) {
             report.map((item, i) =>
             <tr className='tr' key={i}>
                 {isOpen && <PostPopUp
-        content={
- <article className='post-PopUpCard' >
- <h1 className='post-nameTag'> posted by:{item.userId ==null? "id":item.userId.firstName}on {item.postId ==null?"id":item.postId.createdAt}</h1>
-<div className='post-PopUpText'>
-<h1>
- {`${item.postId ==null?"id":item.postId.postName}-${item.postId ==null?"id":item.postId.projectType}`}
-      </h1>   
-        <p>    {item.postId ==null?"id": item.postId.postText}</p>
- <p>  Participants required: { item.postId ==null?"id":item.postId.numberOfParticipants}</p>
- <p>  Technologies Required: {item.postId ==null?"id": item.postId.technologiesRequired}</p>
-       </div>
-      </article>}
+       postInfo={item.postId ==null? "id":item.postId}
         name={item.userId ==null? "id":item.userId.firstName}
         postId={item.postId ==null?"id":item.postId._id}
         handleClose={togglePopup}

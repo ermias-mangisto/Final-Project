@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="footer" >
       <div id="button"></div>
-      <div id="container"style={{background:mode.background,color:mode.color}}>
-        <article className=" hidden-Footer" style={{background:mode.background,color:mode.color}}>
+      <div id="container">
+        <article className=" hidden-Footer">
           <div className="logoa">
             <img src="https://i.ibb.co/7CsT864/ddaf023ec64044ebaeb29ebf4545b423.png" alt="" />
           </div>
