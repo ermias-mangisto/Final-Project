@@ -26,7 +26,7 @@ if(currentUser._id==user._id) {
     <div className="ProfileDetails">
       <div className="detail">
         <div className="icon">
-          {currentUser.image ? currentUser.image : <FaUserAlt className="userIcon" />}
+          {currentUser.image ? currentUser.image ==<img src=""/> : <FaUserAlt className="userIcon" />}
         </div>
         
         <h1>
@@ -44,9 +44,9 @@ if(currentUser._id==user._id) {
         </h4>
       </div>
       <div>
-      { myProfile && <button className="editButton" onClick={toggleOpen}>
+       <button className="editButton" onClick={toggleOpen}>
           <FaPencilAlt />
-        </button>}
+        </button>
         <p className="summary">{currentUser.summary} </p>
         {open && <EditPopUP handleClose={toggleOpen} />}
       </div>

@@ -74,7 +74,7 @@ const NavBar = () => {
         </AppBar>
       )}
       {isLoggedIn && (
-        <AppBar position="static" color="#inherit">
+        <AppBar position="static" color="#inherit"  style={{backgroundColor:"#F2F2F2"}}>
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
               <Link to="/">TEAMWARE</Link>

@@ -40,7 +40,7 @@ function PostPopUp(props){
       if (scrollHeight - Math.round(scrollTop) == clientHeight) {
         setPage(prev => prev + 1);
       }
-
+    }
   return (
     <div className="post-popup-box">
       <div className="post-box" onScroll={handleScroll} ref={scrollRef}>
@@ -66,5 +66,5 @@ function PostPopUp(props){
       </div>
     </div>
   );
-}}
+}
 export default PostPopUp ;

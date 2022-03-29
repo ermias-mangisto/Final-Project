@@ -1,7 +1,5 @@
-import react, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../context/userContext/userContext";
-import { GetUserCreatedPosts } from "../../../services/userService";
-// import { GetUserJoinedPosts } from "../../../services/userService";
+import react, {  useEffect, useState } from "react";
+import { GetUserJoinedPosts } from "../../../services/userService";
 
 import "./join-posts.css";
 import Post from "./post";
@@ -13,8 +11,8 @@ const JoinedPost = ({currentUser}) => {
 
   useEffect(() => {
     const loadPosts = async () => {
-      const Post = await GetUserCreatedPosts(id);
-      // const Post = await GetUserJoinedPosts(id);
+     
+      const Post = await GetUserJoinedPosts(id);
       setJoinedPost(Post);
     };
     loadPosts();
