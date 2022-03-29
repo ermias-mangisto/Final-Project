@@ -15,7 +15,8 @@ import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import {useNavigate} from "react-router-dom"
-
+import { ModeContext } from "../../../context/modeContext/ModeContext";
+import Modes from "../mode/modes";
 const useStyles = makeStyles((theme) => ({
   
   root: {
@@ -30,6 +31,7 @@ const NavBar = () => {
   const navigate = useNavigate();
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
+  const { mode } = useContext(ModeContext);
   const {
     user,
     setUser,
@@ -55,11 +57,11 @@ const NavBar = () => {
   const classes = useStyles();
 
   return (
-    <div className="navbar">
+    <div className="navbar" >
       {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
       {!isLoggedIn && (
-        <AppBar position="static" color="inherit">
+        <AppBar position="static" color="inherit" style={{background:mode.headerFoteer,color:mode.color}}>
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
               TEAMWARE
@@ -74,8 +76,9 @@ const NavBar = () => {
         </AppBar>
       )}
       {isLoggedIn && (
-        <AppBar position="static" color="inherit">
+        <AppBar position="static" color="inherit" style={{background:mode.headerFoteer,color:mode.color}}>
           <Toolbar>
+            <Modes/>
             <Typography variant="h5" className={classes.title}>
               <Link to="/">TEAMWARE</Link>
             </Typography>
@@ -102,6 +105,7 @@ const NavBar = () => {
               
             </Button>
             <Button color="inherit" onClick={HandleLogout}>
+
               <Link to="/">
                 <FiLogOut className="Icon" />
               </Link>

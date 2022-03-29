@@ -33,8 +33,7 @@ const AdminTable = ({currentUser}) => {
         .catch(rej => console.error(rej));
       CatchAndCreateArchive(id) //! CATCH OBJECT BY ID IN POST COLLECTION, AND CREATE NEW OBJECT IN ARCHIVE COLLECTION.
       DeletePost(id) //! DELETE POST
-        .then(() =>
-          alert("Post Deleted"))
+        .then(res => {return res})
         .catch(err => console.error(err))
       DeleteRequests(id)
     }
@@ -45,9 +44,8 @@ const AdminTable = ({currentUser}) => {
       const RemoveReport = report.filter(item => item._id != id)
       setReport(RemoveReport);
       DeleteReport(id)
-        .then(() =>
-          alert("Report Deleted")
-        ).catch(err => console.error(err))
+        .then(res => {return res})
+        .catch(err => console.error(err))
     }
   }
   const GetUsersById = (id) => {
@@ -85,7 +83,7 @@ const AdminTable = ({currentUser}) => {
                 <td className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
                 <td className='tr' ><span onClick={() =>
                   DeletePostFromTable({
-                    sendUserId: "admin id", //! USER._id
+                    sendUserId:currentUser._id, //! USER._id
                     postId: item.postId,
                     receiverUserId: item.postUserId,
                     type: "deleted"

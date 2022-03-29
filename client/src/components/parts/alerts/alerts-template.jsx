@@ -5,32 +5,39 @@ import { CreateAlert, DeleteAlert, GetAllAlert } from "../../../services/alertSe
 import { GetPostById, UpdatePost } from "../../../services/postService"
 import { GetUserById, UpdateUser } from "../../../services/userService"
 import { AlertContext } from "../../../context/alertContext/AlertContext"
-import CheckAlert from "./checkAlert"
 const AlertsTemplate = () => {
     const { user, setCounter } = useContext(UserContext)
-    const { alert, setAlert } = useContext(AlertContext)
+    const { alerts, setAlert } = useContext(AlertContext)
 
     const GetYourPostId = (object) => {
         GetPostById(object) //! Get Post By Id
             .then(res => console.log(res))
     }
-    const AcceptRequest = (newObject, postId, participantId) => {
-        CreateAlert(newObject)
-            .then(res => console.log(res))
-            .catch(rej => console.error(rej))
+    const AcceptRequest = (newObject, postId, participantId, id) => {
+        if (window.confirm("Are you sure that you to join this user to your team?")) {
+            CreateAlert(newObject)
+                .then(res => console.log(res))
+                .catch(rej => console.error(rej))
+            UpdatePost(postId, { $push: { participants: participantId } }) //! update array participants in post colleation
+                .then(res => console.log(res))
+                .catch(rej => console.error(rej))
+            UpdateUser(participantId, { $push: { joinedPost: postId } }) //! update array joinedPost in user colleation
+                .then(() => alert("user are added to your team"))
+                .catch(rej => console.error(rej))
+            const RenderAlerts = alerts.filter(item => item._id != id);
+            setAlert(RenderAlerts);
+            DeleteAlert(id)
+                .then(res => console.log(res))
+                .catch(rej => console.error(rej))
+        }
 
-        UpdatePost(postId, { $push: { participants: participantId } }) //! update array participants in post colleation
-            .then(res => console.log(res))
-            .catch(rej => console.error(rej))
-
-        UpdateUser(participantId, { $push: { joinedPost: postId } }) //! update array joinedPost in user colleation
-            .then(res => console.log(res))
-            .catch(rej => console.error(rej))
     }
     const CancelRequest = (id) => {
         DeleteAlert(id)
             .then(res => console.log(res))
             .catch(rej => console.error(rej))
+        const RenderAlerts = alerts.filter(item => item._id != id);
+        setAlert(RenderAlerts);
     }
     const GetSenderData = (userId,) => {
         GetUserById(userId)
@@ -39,13 +46,12 @@ const AlertsTemplate = () => {
 
     }
     const DeleteTRow = async (data) => {
-        const RenderAlerts = alert.filter(item => item._id != data._id);
+        const RenderAlerts = alerts.filter(item => item._id != data._id);
         setAlert(RenderAlerts);
         await DeleteAlert(data._id)
             .then(res => console.log("gilad", res))
             .catch(rej => console.error(rej))
     }
-
     return (
         <div className="contain">
             <table className="table_data" >
@@ -54,15 +60,15 @@ const AlertsTemplate = () => {
                         <th className="title_notification">Notification</th>
                     </tr>
                 </thead>
-                <tbody className="contain_tr">
+                <div className="contain_tr">
                     {
-                        alert.sort((a, b) => {
+                        alerts.sort((a, b) => {
                             let dateA = new Date(a.createdAt)
                             let dateB = new Date(b.createdAt)
                             return dateB > dateA ? 1 : -1;
                         }).map((data, i) => {
                             if (data.receiverUserId === user._id) {
-                                localStorage.setItem("newAlert", `${alert[0].createdAt}`);
+                                localStorage.setItem("newAlert", `${alerts[0].createdAt}`);
                                 switch (data.type.toLowerCase()) {
                                     case "deleted": {
                                         return (
@@ -81,7 +87,7 @@ const AlertsTemplate = () => {
                                                             postId: data.postId,
                                                             receiverUserId: data.sendUserId,
                                                             type: "accepted"
-                                                        }, data.postId, data.sendUserId)} className="ok_button">✔️</button>
+                                                        }, data.postId, data.sendUserId, data._id)} className="ok_button">✔️</button>
                                                         <button onClick={() => CancelRequest(data._id)
                                                         } className="cancel_button">✖️</button>
                                                     </span></td>
@@ -111,7 +117,7 @@ const AlertsTemplate = () => {
                         )
 
                     }
-                </tbody>
+                </div>
             </table >
         </div >
     )

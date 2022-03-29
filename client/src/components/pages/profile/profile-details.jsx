@@ -6,9 +6,11 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import EditPopUP from "./editpopup";
 import "./profile-details.css";
-
+import { ModeContext } from "../../../context/modeContext/ModeContext";
 const ProfileDetails = ({ currentUser}) => { 
   const {user}=useContext(UserContext);
+  const {mode}=useContext(ModeContext);
+
   const [myProfile,setMyProfile] = useState(false)
   useEffect(() => {
 if(currentUser._id === user._id) {
@@ -23,7 +25,7 @@ if(currentUser._id === user._id) {
   return (
     
     <div className="ProfileDetailsComp">
-    <div className="ProfileDetails">
+    <div className="ProfileDetails" style={{border:mode.border}}>
       <div className="detail">
         <div className="icon">
           {currentUser.image ? currentUser.image : <FaUserAlt className="userIcon" />}
