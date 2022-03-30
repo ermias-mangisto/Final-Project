@@ -64,7 +64,7 @@ function PostPopUp(props){
    <Link to={`/profile/${props.postInfo.userId}`}>
       posted by:{props.name} </Link>
        on {props.postInfo.createdAt}</h1>
-<div className='post-PopUpText'>
+<div className='post-PopUpText'style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
 <h1>
  {`${props.postInfo.postName}-${props.postInfo.projectType}`}
       </h1>   
