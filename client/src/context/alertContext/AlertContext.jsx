@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { GetAllAlert } from "../../services/alertService";
-
 export const AlertContext = React.createContext();
 
 export const AlertProvider = ({ children }) => {
@@ -8,10 +7,9 @@ export const AlertProvider = ({ children }) => {
   
   useEffect(() => {
     GetAllAlert().then((res) => setAlert(res));
-    console.log("first");
     setInterval(() => {
       GetAllAlert().then((res) => setAlert(res));
-    }, 15000);
+    }, 3000);
   }, []);
 
   return (

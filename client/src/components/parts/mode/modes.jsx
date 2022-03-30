@@ -1,17 +1,21 @@
 import { useContext } from "react";
 import { ModeContext } from "../../../context/modeContext/ModeContext";
-const Modes = ()=>{
-const { setMode } = useContext(ModeContext);
-const BlueMode = {background:"#191970",color:"white",border:"white 2px solid"}; 
-const BrownMode = {background:"#cd853f",color:"#ffdead",border:"white 2px solid"};
-const OliveMode = {background:"#c19a6b",color:"#d1bea8",border:"white 2px solid"};
-return(
+import {  FaRegMoon,FaRegSun } from "react-icons/fa";
+// import { BsSun } from "react-icons";
+const Modes = () => {
+    const { setMode, mode } = useContext(ModeContext);
+    const DarkMode = {backgroundNav:"rgb(8, 8, 43)",backgroundScreen:"#F2F2F2",colorTitle:"rgb(8, 8, 43)",color:"#F2F2F2",colorText: "#F2F2F2",border:"rgb(8, 8, 43) 2px solid" ,defultBorder:"black  2px solid",isMode:false};
+    const LightMose ={backgroundNav: "#F2F2F2",backgroundScreen:"rgb(8, 8, 43)", colorTitle:"#F2F2F2",color: "rgb(8, 8, 43)",colorText: "#F2F2F2", border: "#F2F2F2 2px solid",defultBorder:"black  2px solid", isMode: true };
+    const ChangeColor = () => {
+        mode.isMode?
+        setMode(DarkMode) :
+        setMode(LightMose)
+}
+return (
     <div>
-         <button className="button"></button>
-         <button className="button button2 " onClick={()=> setMode(BlueMode)}>blue</button>
-         <button className="button button3" onClick={()=> setMode(BrownMode)}>borwn</button>
-         <button className="button button4" onClick={()=> setMode(OliveMode)}>olive</button>
+        <button onClick={ChangeColor}>{mode.isMode?<FaRegSun/>:<FaRegMoon style={{color:"white"}}/>}</button>
+        
     </div>
-)    
+)
 }
 export default Modes;

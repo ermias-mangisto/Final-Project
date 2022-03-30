@@ -25,7 +25,7 @@ if(currentUser._id === user._id) {
   return (
     
     <div className="ProfileDetailsComp">
-    <div className="ProfileDetails" style={{border:mode.border}}>
+    <div className="ProfileDetails" style={{border:mode.border,color:mode.colorText}}>
       <div className="detail">
         <div className="icon">
           {currentUser.image ? <img className="imageProfile" src={currentUser.image}/> : <FaUserAlt className="userIcon" />}
@@ -39,19 +39,19 @@ if(currentUser._id === user._id) {
         <h4>
           connect with :
           <a href={`https://wa.me/${currentUser.phoneNumber}`} target="_blank">
-            <FaWhatsapp className="WhatsappIcon" target="_blank" />
+            <FaWhatsapp className="WhatsappIcon" target="_blank" style={{color:mode.colorText}}/>
           </a>
           <a href="mailto:email@echoecho.com?subject=SweetWords">
-            <FaRegEnvelope className="emailIcon" />
+            <FaRegEnvelope className="emailIcon" style={{color:mode.colorText}}/>
           </a>
         </h4>
       </div>
       <div>
         {open && <EditPopUP handleClose={toggleOpen} />}
-      { myProfile && <button className="editButton" onClick={toggleOpen}>
-          <FaPencilAlt />
+      { myProfile && <button className="editButton" onClick={toggleOpen} style={{color:mode.colorTitle,border:mode.border}}>
+          <FaPencilAlt/>
         </button>}
-        <p className="summary">{currentUser.summary} </p>
+        <p className="summary" style={{color:mode.colorTitle}}>{currentUser.summary} </p>
       </div>
     </div>
     </div>
