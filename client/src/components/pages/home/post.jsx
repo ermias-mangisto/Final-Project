@@ -28,6 +28,7 @@ import { ModeContext } from '../../../context/modeContext/ModeContext';
 const Post = (props) => {
 
   const {user,setUser}=useContext(UserContext);
+  const { mode } = useContext(ModeContext);
     const [userName,setUserName]=useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [reportPopUp, setReportPopUp] = useState(false);
@@ -114,8 +115,8 @@ const MakeAlert= ()=>{
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
         avatar={
-          <Avatar sx={{ bgcolor: red[500]}} aria-label="recipe">
-           <Link  className="avatar" to={`/profile/${props.postInfo.userId}`}>{userName.short}</Link> 
+          <Avatar sx={{ bgcolor: red[500]}} aria-label="recipe"style={{background:mode.backgroundScreen,border:mode.border}}>
+           <Link  className="avatar" to={`/profile/${props.postInfo.userId}`} style={{color:mode.colorTitle}}>{userName.short}</Link> 
           </Avatar>
         }
         title={`${props.postInfo.postName}-${props.postInfo.projectType}`}
