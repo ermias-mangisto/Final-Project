@@ -4,6 +4,7 @@
     display: grid;   
    width: 75%;
    max-width: 75%;
+  
    margin: auto;
    grid-template-columns: 50% ;  
    grid-template-areas:
@@ -19,6 +20,7 @@
     text-align: center;
     grid-area: main ;
     width:100%;
+    min-height:10vh;
 }
 
 .requestsContainer{
@@ -137,6 +139,7 @@ text-align:left;
     text-align: left;
      margin-top:20px; 
       word-wrap: break-word;
+      width: 80%;
   }
   .commentWriter{
       float:left;
@@ -394,22 +397,22 @@ margin:auto
   }
   @media screen and (max-width: 450px){
     .page-body{
-      width:60%;
-      max-width: 60%;
-      margin-left: 0px;
+      width:100%;
+      max-width: 100%;
+      margin:auto;
+      margin-left: 0;
     }
 .posts{
-
-  max-width:80%;
+  max-width:60%;
  
 }
 .searchBar{
-  max-width: 70%;
+  max-width: 60%;
  
   }
 
   .requestsContainer{
-    max-width: 60%;
+    max-width: 50%;
  
   }
   }

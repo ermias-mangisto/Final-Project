@@ -51,18 +51,20 @@ flex-direction: column;
    }
    
   .register-close-icon {
+    float: right;
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: calc(35% - 10px);
-    top: calc(100vh - 95vh );
-    background: black;
-    color: white;
+    
+    color: black;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
     line-height: 20px;
     text-align: center;
-    border: 1px solid #999;
-    font-size: 20px;
+    font-size: 15px;
   }
+  @media screen and (max-width: 768px){
+    .register-box{
+      width: 60%;
+    }
+      }
