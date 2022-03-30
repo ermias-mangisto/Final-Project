@@ -8,7 +8,7 @@ export const ModeProvider = ({ children }) => {
         const ConstMode = localStorage.getItem("currentMode");
         ConstMode ?
             setMode(JSON.parse(ConstMode)) :
-            setMode({})
+            setMode(DarkMode)
     }, [])
     useEffect(() => {
         localStorage.setItem("currentMode", JSON.stringify(mode));

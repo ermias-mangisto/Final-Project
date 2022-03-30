@@ -8,7 +8,8 @@ const Post = new mongoose.Schema(
     technologiesRequired: { type: String, require: true },
     projectType: { type: String, require: true },
     participants: { type: Array },
-    archivePost :{type: Boolean , default:false}
+    archivePost :{type: Boolean , default:false},
+    likes:{type: Array ,required: true}
   },
   { timestamps: true }
 );
