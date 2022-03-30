@@ -62,7 +62,7 @@ const NavBar = () => {
       {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
       {!isLoggedIn && (
-        <AppBar position="static" color="inherit" style={{background:mode.backgroundNav,color:mode.color}}>
+        <AppBar position="static" color="inherit" >
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
               TEAMWARE
@@ -80,9 +80,8 @@ const NavBar = () => {
 
         <AppBar position="static" color="inherit" className="home_nav" style={{background:mode.backgroundNav,color:mode.color}}>
           <Toolbar>
-            <Modes/>
             <Typography variant="h5" className={classes.title}>
-              <Link to="/">TW</Link>
+              <Link to="/" style={{color:mode.color}}>TW</Link>
             </Typography>
             
             <Button color="inherit" >

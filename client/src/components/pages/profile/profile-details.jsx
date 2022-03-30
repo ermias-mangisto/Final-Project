@@ -27,14 +27,9 @@ if(currentUser._id === user._id) {
     <div className="ProfileDetailsComp">
     <div className="ProfileDetails" style={{border:mode.border,color:mode.colorText}}>
       <div className="detail">
-<<<<<<< HEAD
-        <div className="icon" >
-          {currentUser.image ? currentUser.image ==<img  src=""/> : <FaUserAlt  className="userIcon" />}
-=======
         <div className="icon">
           {currentUser.image ? <img className="imageProfile" src={currentUser.image}/> : <FaUserAlt className="userIcon" />}
           {/* {<FaUserAlt className="userIcon" />} */}
->>>>>>> 440f15a2e02a6f279f478a55981439a954f55107
         </div>
         
         <h1>
@@ -43,13 +38,8 @@ if(currentUser._id === user._id) {
 
         <h4>
           connect with :
-<<<<<<< HEAD
-          <a href={`https://wa.me/${currentUser.phoneNumber}`}>
-            <FaWhatsapp className="WhatsappIcon" style={{color:mode.colorText}}/>
-=======
           <a href={`https://wa.me/${currentUser.phoneNumber}`} target="_blank">
-            <FaWhatsapp className="WhatsappIcon" target="_blank" />
->>>>>>> 440f15a2e02a6f279f478a55981439a954f55107
+            <FaWhatsapp className="WhatsappIcon" target="_blank" style={{color:mode.colorText}}/>
           </a>
           <a href="mailto:email@echoecho.com?subject=SweetWords">
             <FaRegEnvelope className="emailIcon" style={{color:mode.colorText}}/>
