@@ -32,23 +32,23 @@ if(currentUser._id === user._id) {
         
         </div>
         
-        <h1>
+        <h1 style={{color:mode.colorTitle}}>
           {currentUser.firstName} {currentUser.lastName}
         </h1>
 
-        <h4>
+        <h4 style={{color:mode.colorTitle}}>
           connect with :
           <a href={`https://wa.me/${currentUser.phoneNumber}`} target="_blank">
-            <FaWhatsapp className="WhatsappIcon" target="_blank" style={{color:mode.colorText}}/>
+            <FaWhatsapp className="WhatsappIcon" target="_blank" style={{color:mode.colorTitle}}/>
           </a>
           <a href="mailto:email@echoecho.com?subject=SweetWords">
-            <FaRegEnvelope className="emailIcon" style={{color:mode.colorText}}/>
+            <FaRegEnvelope className="emailIcon" style={{color:mode.colorTitle}}/>
           </a>
         </h4>
       </div>
       <div>
         {open && <EditPopUP handleClose={toggleOpen} />}
-      { myProfile && <button className="editButton" onClick={toggleOpen} style={{color:mode.colorTitle,border:mode.border}}>
+      { myProfile && <button className="editButton" onClick={toggleOpen} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
           <FaPencilAlt/>
         </button>}
         <p className="summary" style={{color:mode.colorTitle}}>{currentUser.summary} </p>

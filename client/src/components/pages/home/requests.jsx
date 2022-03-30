@@ -8,8 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import { MdOutlineDeleteOutline } from "react-icons/md";
 import {GetRequestsByUserId} from '../../../services/alertService';
 import {DeleteAlert} from '../../../services/alertService';
+import { ModeContext } from '../../../context/modeContext/ModeContext';
 export default function Requests() { 
     const[requests,setRequests]=useState([])
+    const { mode } = useContext(ModeContext)
     const{user,setUser}=useContext(UserContext)
     useEffect(()=>{
       const loadRequests= async ()=>{
@@ -24,17 +26,18 @@ export default function Requests() {
           setRequests(updatedRequests)
     }
   return (
-      <div className="requestsContainer">
+      <div className="requestsContainer"  style={{ color: mode.colorTitle, background: mode.backgroundScreen }}>
         <h1>Requests Sent</h1> 
         <div className="requestsBox">
     <List className="requestsList" sx={{ width: '100%', maxWidth: "360", bgcolor: ''}}>
       {requests.map((item,i) => (
         <ListItem
+        style={{ border: mode.border}}
         sx={{border: '1px solid black', borderRadius: '10px',padding: '10px',margin:"auto", width: '90%'}}
           key={i}
           disableGutters
           secondaryAction={
-            <IconButton onClick={()=>HandleRequestDelete(item._id,i)}>
+            <IconButton onClick={()=>HandleRequestDelete(item._id,i)} style={{color:mode.colorTitle}}>
                <MdOutlineDeleteOutline/>
             </IconButton>
           }

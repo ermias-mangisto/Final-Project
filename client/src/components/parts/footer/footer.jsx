@@ -3,9 +3,8 @@ import { ModeContext } from "../../../context/modeContext/ModeContext";
 import { useContext } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
-  const { mode } = useContext(ModeContext);
   return (
-    <footer className="footer" style={{ background: mode.backgroundNav }}>
+    <footer className="footer" >
       <div id="button"></div>
       <div id="container">
         <article className="hidden-Footer">
