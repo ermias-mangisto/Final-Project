@@ -48,3 +48,22 @@ h3 {
     margin-left: 40px;
   }
 }
+@media  only screen  and (min-width:375px) and (max-width:426px){
+  .CeratedPosts .editButton {
+    width: 10px;
+    height: 10px;
+    color: rgb(5, 5, 46);
+    
+  }
+  .CeratedPostsComponent .postIcon {
+    width: 34px;
+    height: 60px;
+    color: rgb(5, 5, 46);
+  }
+  p {
+    width: 0px;
+   margin-top: 18px;
+ 
+  }
+
+}

@@ -28,8 +28,8 @@ if(currentUser._id === user._id) {
     <div className="ProfileDetails" style={{border:mode.border}}>
       <div className="detail">
         <div className="icon">
-          {/* {currentUser.image ? currentUser.image  : <FaUserAlt className="userIcon" />} */}
-          {<FaUserAlt className="userIcon" />}
+          {currentUser.image ? <img className="imageProfile" src={currentUser.image}/> : <FaUserAlt className="userIcon" />}
+          {/* {<FaUserAlt className="userIcon" />} */}
         </div>
         
         <h1>
@@ -38,8 +38,8 @@ if(currentUser._id === user._id) {
 
         <h4>
           connect with :
-          <a href={`https://wa.me/${currentUser.phoneNumber}`}>
-            <FaWhatsapp className="WhatsappIcon" />
+          <a href={`https://wa.me/${currentUser.phoneNumber}`} target="_blank">
+            <FaWhatsapp className="WhatsappIcon" target="_blank" />
           </a>
           <a href="mailto:email@echoecho.com?subject=SweetWords">
             <FaRegEnvelope className="emailIcon" />

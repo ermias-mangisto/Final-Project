@@ -7,7 +7,6 @@
   margin: auto;
   flex-wrap: wrap;
   border-radius: 10px;
-
 }
 .JoinedPost .post {
   display: flex;
@@ -15,15 +14,14 @@
   width: 30%;
   height: 74px;
   border-radius: 10px;
-  border: 1px solid #52AB89 ;
+  border: 1px solid #52ab89;
   margin-bottom: 60px;
-
 }
 
 .JoinedPost .postIcon {
   width: 50px;
   height: 80px;
-  color: #52AB89 ;
+  color: #52ab89;
 }
 
 h3 {
@@ -45,4 +43,28 @@ h3 {
   margin-top: 30px;
 }
 
-
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+  .JoinedPost .editButton {
+    width: 15px;
+    height: 15px;
+    color: rgb(5, 5, 46);
+    margin-top: 30px;
+    margin-left: 40px;
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 426px) {
+  .JoinedPost .editButton {
+    width: 10px;
+    height: 10px;
+    color: rgb(5, 5, 46);
+  }
+  .JoinedPost .postIcon {
+    width: 34px;
+    height: 60px;
+    color: #52ab89;
+  }
+  p {
+    width: 0px;
+    /* margin-top: 18px; */
+  }
+}
