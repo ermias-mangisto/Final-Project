@@ -126,3 +126,8 @@ cursor: pointer;
     width: 20px;   
     cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+    .contain{
+        margin-left:40%;
+    }
+}
