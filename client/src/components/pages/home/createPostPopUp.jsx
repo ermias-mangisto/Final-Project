@@ -37,12 +37,13 @@ function CreatePostPopUp(props){
             <span className="create-post-close-icon" onClick={props.handleClose} style={{color:mode.colorTitle}}>close</span>
             <form onSubmit={handleSubmit}>
 
-            <TextField style={{background:"white"}} sx={{margin:2 , width:500}} id="outlined-basic" label="post-name"name="postName" variant="outlined" onChange={onFieldChange} placeholder="write your post-name" type="text" required/>
-            <TextareaAutosize style={{background:"white", width: 500 }}  aria-label="minimum height"  minRows={15} label="post-text" name="postText" onChange={onFieldChange}  required
+            <TextField style={{background:"white"}} sx={{margin:"auto" , width:"80%"}} id="outlined-basic" label="post-name"name="postName" variant="outlined" onChange={onFieldChange} placeholder="write your post-name" type="text" required/>
+            <TextareaAutosize aria-label="minimum height"  minRows={15} label="post-text" name="postText" onChange={onFieldChange}  style={{ background:"white",width: "80%" ,margin:"auto"}} required
       placeholder="write the idea of your project add as many details as you can " minLength={200}/>
-            <TextField  style={{background:"white"}}  sx={{margin:2 , width:500}} id="outlined-basic" label="number Of Participants"name="numberOfParticipants" variant="outlined" onChange={onFieldChange} placeholder="chose how many people you need" type="number" required/>
-            <TextField  style={{background:"white"}}  sx={{margin:2 , width:500}} id="outlined-basic" label="technologies Required"name="technologiesRequired" variant="outlined" onChange={onFieldChange} placeholder="write down all technologies and languages you are going to need" type="text" required/>
-            <Box  style={{background:"white"}}  sx={{ width: 500 , margin:"auto"}}>
+            <TextField style={{background:"white"}}  sx={{margin:"auto" , width:"80%"}} id="outlined-basic" label="number Of Participants"name="numberOfParticipants" variant="outlined" onChange={onFieldChange} placeholder="chose how many people you need" type="number" required/>
+            <TextField style={{background:"white"}}  sx={{margin:"auto" , width:"80%"}} id="outlined-basic" label="technologies Required"name="technologiesRequired" variant="outlined" onChange={onFieldChange} placeholder="write down all technologies and languages you are going to need" type="text" required/>
+            <Box style={{background:"white"}} sx={{ width: "80%" , margin:"auto"}}>
+
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">project-Type</InputLabel>
         <Select

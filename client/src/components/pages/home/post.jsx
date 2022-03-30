@@ -20,10 +20,13 @@ import { MdGroups } from "react-icons/md";
 import { MdReportProblem } from "react-icons/md";
 import {UserContext} from '../../../context/userContext/userContext'
 import {CreateAlert} from '../../../services/alertService'
+import {GetRequestsByUserId} from '../../../services/alertService'
+import {UpdatePost} from '../../../services/postService'
 import ReportPopUp from "./reportPopUp";
 import {Link} from "react-router-dom"
 import { ModeContext } from '../../../context/modeContext/ModeContext';
 const Post = (props) => {
+
   const {user,setUser}=useContext(UserContext);
   const { mode } = useContext(ModeContext);
     const [userName,setUserName]=useState({});
@@ -34,9 +37,40 @@ const Post = (props) => {
       postId:props.postInfo._id,
       receiverUserId:props.postInfo.userId,
       type:"join"
-    });
+    }); 
+const [likes,setLikes]=useState(false)
+useEffect(() => {
+  if(props.postInfo.likes==null){
+    props.postInfo.likes=[];
+    if(props.postInfo.likes.includes(user._id)){
+      setLikes(true)
+  
+    }
+  }
+  else if(props.postInfo.likes.includes(user._id)){
+    setLikes(true)
+   
+  }
+  
+  else{setLikes(false)
 
-
+  }
+},[])
+const [sentJoin,setSentJoin]=useState(false)
+useEffect(() => {
+  const getRequests= async()=>{
+    const requests= await GetRequestsByUserId(user._id);
+     const sentRequest=requests.filter(item => item.postId._id == props.postInfo._id)
+     if(sentRequest.length>0){
+      
+      setSentJoin(true)
+     } else{
+     
+      setSentJoin(false)
+     }  
+}
+getRequests();
+},[])
     const togglePopup = () => {
       setIsOpen(!isOpen);
     }
@@ -45,15 +79,25 @@ const Post = (props) => {
     }
 useEffect(()=>{
    const getUserName =async(id)=>{
-  const user = await GetUserById(id);
-  setUserName({name:`${user.firstName} ${user.lastName}`,short:`${user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase()}`});
+  const postUser = await GetUserById(id);
+  setUserName({name:`${postUser.firstName} ${postUser.lastName}`,short:`${postUser.firstName[0].toUpperCase()+postUser.lastName[0].toUpperCase()}`});
     }  
     getUserName(props.postInfo.userId);
 },[])
 const MakeAlert= ()=>{
    CreateAlert(joinAlert)
-   .then((res)=>{alert("request sent");});
-  
+   .then((res)=>{alert("request sent");})
+  .then((res)=> {setSentJoin(true)})
+    }
+
+    const Like=()=>{
+
+      UpdatePost(props.postInfo._id,{$push:{likes:user._id}}).then(()=>{setLikes(true)})
+    }
+    const UnLike=()=>{
+     const index=props.postInfo.likes.indexOf();
+     const newLikes=props.postInfo.likes.filter(like=>like != user._id)
+      UpdatePost(props.postInfo._id,{likes:newLikes}).then(()=>{setLikes(false)})
     }
 
 
@@ -66,7 +110,7 @@ const MakeAlert= ()=>{
         handleClose={togglePopup}
       />} 
       {reportPopUp && <ReportPopUp  handleClose={toggleReportPopup} postInfo={props.postInfo}/>}
-    <Card sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
+    <Card className="Card" sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
       <CardHeader
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
@@ -87,15 +131,22 @@ const MakeAlert= ()=>{
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="like">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="join" >
-         <MdGroups onClick={MakeAlert}/>
-        </IconButton>
-        <IconButton aria-label="report">
-        <MdReportProblem  onClick={toggleReportPopup}/>
-        </IconButton>
+        {likes && <IconButton aria-label="like" onClick={UnLike}>
+          <FavoriteIcon sx={{color:"darkRed"}}/>
+        </IconButton>}
+        {!likes &&<IconButton aria-label="like" onClick={Like}>
+          <FavoriteIcon sx={{color:"lightBlue"}}/>
+        </IconButton>}
+       {!sentJoin && <IconButton aria-label="join" sx={{color:"lightBlue"}}onClick={MakeAlert}>
+         <MdGroups />
+        </IconButton>}
+       {sentJoin && <IconButton aria-label="join" sx={{color:"Yellow"}} >
+         <MdGroups />
+        </IconButton>}
+    
+        <IconButton aria-label="report" onClick={toggleReportPopup}>
+        <MdReportProblem  sx={{color:"lightBlue"}}/>
+        </IconButton >
       </CardActions>
     </Card>
     </>
