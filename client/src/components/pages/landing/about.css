@@ -12,9 +12,15 @@
   width: 60%;
   padding: 20px;
   height: 27vh;
-  margin-top: 400px;
-  margin-right: 400px;
+  margin-top: 420px;
+  margin-right: 300px;
   font-size: medium 
   
+}
+@media screen and (max-width:768px){
+  .About p {
+
+    margin-right: 200px;
+  }
 }
 @import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap');
