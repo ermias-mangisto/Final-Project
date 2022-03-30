@@ -25,9 +25,12 @@ export default function Requests() {
     }
   return (
       <div className="requestsContainer">
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <h1>Requests Sent</h1> 
+        <div className="requestsBox">
+    <List className="requestsList" sx={{ width: '100%', maxWidth: "360", bgcolor: ''}}>
       {requests.map((item,i) => (
         <ListItem
+        sx={{border: '1px solid black', borderRadius: '10px',padding: '10px',margin:"auto", width: '90%'}}
           key={i}
           disableGutters
           secondaryAction={
@@ -36,10 +39,10 @@ export default function Requests() {
             </IconButton>
           }
         >
-          <ListItemText primary={`request to join ${item.postId.postName}`} />
+          <ListItemText primary={`Sent To ${item.postId.postName} `} />
         </ListItem>
       ))}
-    </List>
+    </List></div>
     </div>
   );
 }

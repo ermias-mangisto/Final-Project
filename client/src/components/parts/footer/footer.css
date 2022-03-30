@@ -129,3 +129,9 @@ p{
   width: 20%;
   padding: 35px;
 }
+
+@media screen and (max-width: 450px){
+  .footer{
+    max-width: 96%;
+  }
+    }
