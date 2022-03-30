@@ -2,6 +2,8 @@ import "./editpopup.css";
 import react, { useContext, useState } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
 import { UpdateUser } from "../../../services/userService";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
 
 const EditPopUP = (props) => {
   const { user, setUser } = useContext(UserContext);
@@ -27,33 +29,16 @@ const EditPopUP = (props) => {
         <article className="edit">
           <h1>Edit profile</h1>
           <form>
-            <label>
-              firstName:
-              <input
-                onChange={onFieldChange}
-                name="firstName"
-                type="text"
-                defaultValue={user.firstName}
-              />
-            </label>
-            <label>
-              lastName:
-              <input
-                onChange={onFieldChange}
-                name="lastName"
-                type="text"
-                defaultValue={user.lastName}
-              />
-            </label>
-            <label>
-              email:
-              <input
-                onChange={onFieldChange}
-                name="email"
-                type="email"
-                defaultValue={user.email}
-              />
-            </label>
+  <TextField sx={{margin:2}} id="outlined-basic" label="firstName"name="firstName" variant="outlined" onChange={onFieldChange} placeholder="Enter your firstName" type="string"  defaultValue={user.firstName}/>
+  <TextField sx={{margin:2}} id="outlined-basic" label="lastName" name="lastName" variant="outlined" onChange={onFieldChange} placeholder="Enter your lastName" type="string"  defaultValue={user.lastName}/> 
+  <TextField sx={{margin:2}} id="outlined-basic" label="email" name="email" variant="outlined" onChange={onFieldChange} placeholder="Enter your email" type="string"  defaultValue={user.email}/>
+  <TextField sx={{margin:2}} id="outlined-basic" label="phoneNumber" name="phoneNumber" variant="outlined" onChange={onFieldChange} placeholder="Enter your phoneNumber" type="number"   defaultValue={user.phoneNumber}/>
+  <TextField sx={{margin:2}} id="outlined-basic" label="image" name="image" variant="outlined" onChange={onFieldChange} placeholder="Enter your image" type="string"   defaultValue={user.image}/>
+
+              <button onClick={CreateProfile}>SAVE</button>
+
+         
+            {/* <label>
             <label>
               phone:
               <input
@@ -80,13 +65,12 @@ const EditPopUP = (props) => {
                 name="summary"
                 type="text"
               />
-            </label>
-            <button onClick={CreateProfile}>SAVE</button>
+            </label> */}
           </form>
         </article>
       </div>
     </div>
-  );
-};
-
-export default EditPopUP;
+  )
+ 
+  }
+export default EditPopUP ;
