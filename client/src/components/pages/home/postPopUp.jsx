@@ -7,7 +7,9 @@ import { GetPostComment } from "../../../services/commentService";
 import {CreateAlert} from "../../../services/alertService"
 import "./home.css";
 import Comment from './comments'
+import { ModeContext } from "../../../context/modeContext/ModeContext";
 function PostPopUp(props){
+    const {mode} = useContext(ModeContext)
     const {user}=useContext(UserContext)
     const [comments,setComments]=useState([]);
     const [loading, setLoading] = useState(true);
@@ -52,12 +54,12 @@ function PostPopUp(props){
       }}
 
   return (
-    <div className="post-popup-box">
-      <div className="post-box" onScroll={handleScroll} ref={scrollRef}>
+    <div className="post-popup-box" >
+      <div className="post-box" onScroll={handleScroll} ref={scrollRef} style={{background:mode.backgroundScreen,color:mode.colorText}}>
         <span className="post-close-icon" onClick={props.handleClose}>
           close
         </span>
-        <article className='post-PopUpCard' >
+        <article className='post-PopUpCard' style={{background:mode.backgroundScreen}}>
    <h1 className='post-nameTag'> 
    <Link to={`/profile/${props.postInfo.userId}`}>
       posted by:{props.name} </Link>
@@ -80,7 +82,7 @@ function PostPopUp(props){
             name="commentText"
           />
           <div className="comment-btn" >
-          <button type="button" onClick={MakeComment}>
+          <button type="button" onClick={MakeComment} style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
             comment
           </button></div>
         </div>
