@@ -65,7 +65,7 @@ const MakeAlert= ()=>{
         handleClose={togglePopup}
       />} 
       {reportPopUp && <ReportPopUp  handleClose={toggleReportPopup} postInfo={props.postInfo}/>}
-    <Card sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
+    <Card className="Card" sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
       <CardHeader
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
