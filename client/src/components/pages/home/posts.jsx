@@ -5,8 +5,9 @@ import {GetAllPost} from "../../../services/postService"
 import { useBottomScrollListener } from 'react-bottom-scroll-listener';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
+import Tabs, { tabsClasses } from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+
 
 const Posts = () => {
     const {posts,setPosts,page, setPage,
@@ -24,17 +25,31 @@ setType(event.target.name)
         
     
     return (
+
         <div className="postsContainer">
-            <Box sx={{ width: '90%', bgcolor: 'background.paper' }}>
-              <Tabs value={value} onChange={handleChange} centered>
-                <Tab label="All"  name="All"onClick={handleClick}/>
+             <Box
+      sx={{
+        flexGrow: 1,
+        bgcolor: 'background.paper',
+        width: '90%', bgcolor: 'background.paper',margin:"auto" , marginTop:"5px" 
+      }}
+    >
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        variant="scrollable" scrollButtons aria-label="visible arrows tabs example"
+        sx={{ [`& .${tabsClasses.scrollButtons}`]: {  '&.Mui-disabled': { opacity: 0.3 },
+          },
+        }}
+      >
+           <Tab  label="All"  name="All"onClick={handleClick}/>
                 <Tab label="mobile" name="mobile" onClick={handleClick} />
                 <Tab label="web"  name="web" onClick={handleClick}/>
                 <Tab label="desktop" name="desktop"onClick={handleClick}/>
                 <Tab label="Game" name="game"onClick={handleClick}/>
-               
-              </Tabs>
-            </Box>
+      </Tabs>
+    </Box>
+          
          
 {posts.map((post,i)=>{
     if(type=="All"){

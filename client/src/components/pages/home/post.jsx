@@ -24,7 +24,7 @@ import ReportPopUp from "./reportPopUp";
 import {Link} from "react-router-dom"
 const Post = (props) => {
   const {user,setUser}=useContext(UserContext);
-    const [userName,setUserName]=useState("");
+    const [userName,setUserName]=useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [reportPopUp, setReportPopUp] = useState(false);
     const [joinAlert, setJoinAlert] = useState({
@@ -44,7 +44,7 @@ const Post = (props) => {
 useEffect(()=>{
    const getUserName =async(id)=>{
   const user = await GetUserById(id);
-  setUserName(user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase());
+  setUserName({name:`${user.firstName} ${user.lastName}`,short:`${user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase()}`});
     }  
     getUserName(props.postInfo.userId);
 },[])
@@ -59,18 +59,18 @@ const MakeAlert= ()=>{
       <>
     {isOpen && <PostPopUp
     postInfo={props.postInfo}
-        name={userName}
+        name={userName.name}
         postId={props.postInfo._id}
         handleClose={togglePopup}
       />} 
       {reportPopUp && <ReportPopUp  handleClose={toggleReportPopup} postInfo={props.postInfo}/>}
-    <Card sx={{ maxWidth: 700 ,marginTop:10 }} >
+    <Card sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
       <CardHeader
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            <Link to={`/profile/${props.postInfo.userId}`}>{userName}</Link> 
+          <Avatar sx={{ bgcolor: red[500]}} aria-label="recipe">
+           <Link  className="avatar" to={`/profile/${props.postInfo.userId}`}>{userName.short}</Link> 
           </Avatar>
         }
         title={`${props.postInfo.postName}-${props.postInfo.projectType}`}
