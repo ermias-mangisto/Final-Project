@@ -9,10 +9,11 @@ const CheckAlert = () => {
     useEffect(() => {   //! when the component is didmount the setcounter doing assignment to counter According to count
         setCounter(count)
     })
+
     return (
         <div>
             {   
-                alerts?
+                alerts != undefined?
                 alerts.map(data => {
                     if (localStorage.getItem("newAlert") === null) {
                         localStorage.setItem("newAlert", `${alerts[alerts.length - 1].createdAt}`);
@@ -24,7 +25,7 @@ const CheckAlert = () => {
                         console.log("false")
                     }
                 }):
-                console.log("l")
+                console.log("dddd")
             }
         </div>
     )
