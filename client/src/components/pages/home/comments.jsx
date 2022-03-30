@@ -7,7 +7,7 @@ import { ModeContext } from "../../../context/modeContext/ModeContext";
 const Comment = (props) => {
     const { mode } = useContext(ModeContext)
     return (
-        <div className="post-comment-box"  style={{background:mode.backgroundScreen,color:mode.colorText}}> 
+        <div className="post-comment-box"  style={{background:mode.backgroundScreen,color:mode.colorTitle}}> 
 <Link to={`/profile/${props.commentInfo.userId._id}`}>
     <span className="commentWriter"style={{color:mode.colorTitle}}>{props.commentInfo.userId.firstName}{props.commentInfo.userId.lastName}</span></Link>
 <p>{props.commentInfo.commentText}</p>

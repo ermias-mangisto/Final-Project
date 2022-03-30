@@ -40,7 +40,7 @@ UpdatePost(props.postInfo._id,{archivePost:true})
 
           <form>
             <TextField
-              sx={{ margin: 2 }}
+              sx={{ margin: 2 ,background:"white"}}
               id="outlined-basic"
               label="postName"
               name="postName"
@@ -50,7 +50,7 @@ UpdatePost(props.postInfo._id,{archivePost:true})
               type="string"
             />
             <TextField
-              sx={{ margin: 2 }}
+              sx={{ margin: 2 ,background:"white"} }
               id="outlined-basic"
               label="postText"
               name="postText"
@@ -60,7 +60,7 @@ UpdatePost(props.postInfo._id,{archivePost:true})
               type="string"
             />
             <TextField
-              sx={{ margin: 2 }}
+              sx={{ margin: 2  ,background:"white"}}
               id="outlined-basic"
               label="numberOfParticipants"
               name="numberOfParticipants"
@@ -70,7 +70,7 @@ UpdatePost(props.postInfo._id,{archivePost:true})
               type="string"
             />
             <TextField
-              sx={{ margin: 2 }}
+              sx={{ margin: 2 ,background:"white"}}
               id="outlined-basic"
               label="projectType"
               name="projectType"

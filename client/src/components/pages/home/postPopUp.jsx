@@ -56,10 +56,10 @@ function PostPopUp(props){
   return (
     <div className="post-popup-box" >
       <div className="post-box" onScroll={handleScroll} ref={scrollRef} style={{background:mode.backgroundScreen,color:mode.colorText}}>
-        <span className="post-close-icon" onClick={props.handleClose}>
+        <span className="post-close-icon" onClick={props.handleClose} style={{color:mode.colorTitle}}>
           close
         </span>
-        <article className='post-PopUpCard' style={{background:mode.backgroundScreen}}>
+        <article className='post-PopUpCard' style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
    <h1 className='post-nameTag'> 
    <Link to={`/profile/${props.postInfo.userId}`}>
       posted by:{props.name} </Link>

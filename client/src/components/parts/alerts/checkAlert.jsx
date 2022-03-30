@@ -20,12 +20,10 @@ const CheckAlert = () => {
                     }else if (data.receiverUserId == user._id) {
                         if (new Date(localStorage.getItem("newAlert")) < new Date(data.createdAt)) {
                             count++
-                            console.log(count);
                         }
-                        console.log("false")
                     }
                 }):
-                console.log("dddd")
+                console.log("check")
             }
         </div>
     )
