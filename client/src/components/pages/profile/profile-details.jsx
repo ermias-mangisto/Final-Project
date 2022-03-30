@@ -29,7 +29,7 @@ if(currentUser._id === user._id) {
       <div className="detail">
         <div className="icon">
           {currentUser.image ? <img className="imageProfile" src={currentUser.image}/> : <FaUserAlt className="userIcon" />}
-          {/* {<FaUserAlt className="userIcon" />} */}
+        
         </div>
         
         <h1>
