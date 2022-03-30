@@ -22,6 +22,7 @@ import {UserContext} from '../../../context/userContext/userContext'
 import {CreateAlert} from '../../../services/alertService'
 import ReportPopUp from "./reportPopUp";
 import {Link} from "react-router-dom"
+import { ModeContext } from '../../../context/modeContext/ModeContext';
 const Post = (props) => {
   const {user,setUser}=useContext(UserContext);
     const [userName,setUserName]=useState({});

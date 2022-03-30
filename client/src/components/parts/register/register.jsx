@@ -43,7 +43,7 @@ function Register(props) {
   return (
     <div className="register-popup-box">
     <div className="register-box">
-      <span className="register-close-icon" onClick={props.handleClose}>x</span>
+      <span className="register-close-icon" onClick={props.handleClose}>close</span>
       <article className="register">
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
