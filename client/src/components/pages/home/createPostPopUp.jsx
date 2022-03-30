@@ -58,6 +58,8 @@ function CreatePostPopUp(props){
           <MenuItem value={"mobile"}>mobile</MenuItem>
           <MenuItem value={"desktop"}>desktop</MenuItem>
           <MenuItem value={"game"}>game</MenuItem>
+          <MenuItem value={"System Software"}>System Software</MenuItem>
+          <MenuItem value={"data Software"}>data Software</MenuItem>
         </Select>
       </FormControl>
     </Box>

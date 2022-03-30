@@ -4,11 +4,7 @@ const About=()=> {
     return (
       <div className="About">
       {/* <h1>About us </h1> */}
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis reprehenderit delectus 
-        voluptas autem, ea voluptates rerum minima consequatur nihil! Doloremque eum cumque placeat rerum ita
-        que nostrum illum dolor id culpa.8em ipsum dolor sit amet consectetur adipisicing elit. Debitis reprehenderit delectus 
-        voluptas autem, ea voem ipsum dolor sit amet consectetur adipisicing elit. Debitis reprehenderit delectus 
-        voluptas autem, ea voluptatluptat</p>
+      <p>A place where you can find your DreamTeam to work on any project you want</p>
       </div>
        
      
