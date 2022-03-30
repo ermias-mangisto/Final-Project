@@ -1,8 +1,9 @@
 .page-body{
-    
+    overflow:none;
     text-align: center;
     display: grid;   
-   width: 60%;
+   width: 75%;
+   max-width: 75%;
    margin: auto;
    grid-template-columns: 50% ;  
    grid-template-areas:
@@ -11,30 +12,44 @@
    ' main main main sidebar'
    ' main main main sidebar'
    ;
-margin-top:20px;
 }
+
 .posts{
     margin-top: 0;
     text-align: center;
     grid-area: main ;
+    width:100%;
 }
 
 .requestsContainer{
    /* border:1px solid #ccc; */
     grid-area: sidebar;
     width: 200px;
+    margin-top: 20px;
 
 }
 .searchBar{
     grid-area: search;
     max-height: 100px;
+    margin: auto;
    margin-bottom: 0;
+   width: 90%;
+   margin-top: 20px;
+
+}
+.avatar{
+  color:black ;
+  text-decoration: none;
+}
+.avatar:hover{
+  font-weight: bold;
+  font-size:larger;
 }
 .post-popup-box {
     position: fixed;
     background: #00000050;
-    width: 100%;
-    height: 100vh;
+    width: 99%;
+    height: 1000vh;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -89,37 +104,34 @@ text-align:left;
        font-size:small;
        float: left;
    }
-   .post-commentInput{
-       width: 80%;
-       height:200px;
-   }
+   
   .post-close-icon {
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: calc(25% - 45px);
+    right: calc(25% - 20px);
     top: calc(100vh - 93vh - 33px);
-    background: #ededed;
-    width: 25px;
-    color:white;
+    width: 45px;
+    color:black;
     height: 25px;
-    border-radius: 50%;
     line-height: 20px;
     text-align: center;
-    background-color: black;
-    border: 1px solid #999;
     font-size: 20px;
   }
-
+  .post-close-icon:hover{
+ font-weight: bold;
+  }
+.post-commentInput{
+       width: 80%;
+       height:200px;
+       margin-bottom: 0;
+   }
   .post-comment-box{
     width: 90%;
     height: 100px;
-    
-   
-  
     margin:auto;
     border: 1px solid #999;
-    background-color: red;
+    background-color: white;
   }
   .post-comment-box p{
     text-align: left;
@@ -128,6 +140,22 @@ text-align:left;
   }
   .commentWriter{
       float:left;
+      cursor: pointer;
+      text-decoration: none;
+      color:black
+  }
+  .commentWriter:hover{
+font-weight: bold;
+  }
+  .comment-btn{
+margin-top:0;
+height:70px;
+width: 80%;
+margin:  auto;
+  }
+  .comment-btn button{
+margin-top:0;
+float: right;
   }
   .report-popup-box {
     position: fixed;
@@ -186,21 +214,20 @@ cursor: pointer;
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: calc(30% - 60px);
+    right: calc(30% - 50px);
     top: calc(100vh - 80vh );
-    background: #ededed;
-    width: 25px;
+    width: 45px;
+    color:black;
     height: 25px;
-    border-radius: 50%;
     line-height: 20px;
     text-align: center;
-    color:white;
-    background-color: black;
-    border: 1px solid #999;
     font-size: 20px;
   }
+  .report-close-icon:hover{
+ font-weight: bold;
+  }
   .search-box{
-      background-color:red;
+      background-color:white;
       position: relative;
       height:200px;
       z-index: 100;
@@ -208,14 +235,25 @@ cursor: pointer;
       text-align: left;
   }
   .user-result{
-      border-bottom: 1px solid black;
-      height:40px
+      /* border-bottom: 1px solid black; */
+      height:40px;
+      color: black
+  }
+  .user-result a{
+    text-decoration: none;
+    color: black
+   
+  }
+  .user-result a:hover{
+   font-weight: bold;
+   font-size:large
+   
   }
   .create-post-btn{
 margin: auto;
 margin-top:5px;
 margin-left: 0;
-      width:90%;
+      width:100%;
       height:40px;
       border-radius: 10px;
       background-color:wheat;
@@ -254,19 +292,124 @@ margin-left: 0;
       cursor: pointer;
   }
     .create-post-close-icon {
-        content: 'x';
-        cursor: pointer;
-        position: fixed;
-        right: calc(25% - 45px);
-        top: calc(100vh - 93vh - 33px);
-        background: #ededed;
-        width: 25px;
-        color:white;
-        height: 25px;
-        border-radius: 50%;
-        line-height: 20px;
-        text-align: center;
-        background-color: black;
-        border: 1px solid #999;
-        font-size: 20px;
-      }
+      content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(25% - 20px);
+    top: calc(100vh - 93vh - 33px);
+    width: 45px;
+    color:black;
+    height: 25px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 20px;
+  }
+  .create-post-close-icon:hover{
+ font-weight: bold;
+  }
+  .requestsBox{
+    
+    border: '1px solid black'
+   }
+  
+  @media screen and (max-width: 1024px) {
+    /* .page-body{
+      margin:auto;
+      width: 20%;
+      max-width: 40%;
+      grid-template-areas:
+      'search search search  '
+      'sidebar sidebar sidebar'
+      ' main main main '
+      ' main main main '
+      ' main main main '
+      ;
+    } */
+  
+    .requestsContainer {
+      text-align:center;
+      max-width:150px;
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .page-body{
+      text-align: center;
+      margin:auto;
+      width: 90%;
+      max-width: 90%;
+      grid-template-areas:
+      'search search search  '
+      'sidebar sidebar sidebar'
+      ' main main main '
+      ' main main main '
+      ' main main main '
+      ;
+    }
+    .requestsList{
+      display:flex;
+      flex-wrap: wrap;
+      height: 100px;
+  
+    }
+    .requestsBox{
+     overflow-y: scroll;
+    }
+    
+    .requestsList li{
+      background-color: #999;
+      width:100%;
+  
+    }
+    .requestsContainer {
+  width: 100%;
+  margin: auto;
+    max-width: 600px;
+    
+    }
+  }
+  @media screen and (max-width: 490px){
+    .create-post-box{
+      width: 80%;
+    }
+    .create-post-box input{
+      width: 40%;
+    }
+    .page-body{
+      width:99%;
+      max-width:99%;
+    }
+.searchBar{
+max-width: 70%;
+margin:auto
+}
+.posts{
+  max-width: 90%;
+  margin: auto
+}
+.requestsContainer{
+  max-width: 70%;
+  margin: auto
+}
+
+  }
+  @media screen and (max-width: 450px){
+    .page-body{
+      width:60%;
+      max-width: 60%;
+      margin-left: 0px;
+    }
+.posts{
+
+  max-width:80%;
+ 
+}
+.searchBar{
+  max-width: 70%;
+ 
+  }
+
+  .requestsContainer{
+    max-width: 60%;
+ 
+  }
+  }

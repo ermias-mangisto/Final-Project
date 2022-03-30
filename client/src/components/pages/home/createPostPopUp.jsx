@@ -30,7 +30,8 @@ function CreatePostPopUp(props){
     return(
         <div className="create-post-popup-box" >
           <div className="create-post-box">
-            <span className="create-post-close-icon" onClick={props.handleClose}>x</span>
+            <h1>Create Post</h1>
+            <span className="create-post-close-icon" onClick={props.handleClose}>close</span>
             <form onSubmit={handleSubmit}>
             <TextField sx={{margin:2 , width:500}} id="outlined-basic" label="post-name"name="postName" variant="outlined" onChange={onFieldChange} placeholder="write your post-name" type="text" required/>
             <TextareaAutosize aria-label="minimum height"  minRows={15} label="post-text" name="postText" onChange={onFieldChange}  style={{ width: 500 }} required

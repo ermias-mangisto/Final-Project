@@ -42,7 +42,7 @@ export default function SearchBar() {
     <Paper
   
       component="form" 
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 700 }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: "99%" }}
     >
       <IconButton sx={{ p: '10px' }} aria-label="menu">
       </IconButton>
@@ -53,9 +53,6 @@ export default function SearchBar() {
         inputProps={{ 'aria-label': 'search ' }}
   
       />
-      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-        <SearchIcon />
-      </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       <IconButton color="primary" sx={{ p: '10px' }} aria-label="directions">
       </IconButton>
