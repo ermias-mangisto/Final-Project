@@ -1,18 +1,59 @@
-*{
-  padding: 0;
-  margin: 0;
-}
+@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap");
+
 .table {
+  width: 80%;
+  margin-bottom: 5%;
+  font-family: "Patrick Hand", cursive;
+  border-radius: 10px;
+  border: 2px solid rgb(6, 6, 49);
+  margin: auto;
+  margin-top: 20%;
+  margin-bottom: 40px;
+  color: rgb(6, 6, 49);
+  height: 350px;
+}
+.tr {
+  border: 1px solid #dddddd;
+  text-align: left;
+  border: 2px solid rgb(6, 6, 49);
+  border-radius: 5px;
+  color: rgb(6, 6, 49);
+}
+th {
+  font-size: 20px;
+  color: rgb(6, 6, 49);
+  border: 2px solid rgb(6, 6, 49);
+border-radius: 5px;
+color: rgb(6, 6, 49);
+
+}
+.button {
+  color: rgb(6, 6, 49);
+}
+
+
+@media only screen and (min-width: 425px) and (max-width: 768px) {
+@import url("https://fonts.googleapis.com/css2?family=Sedgwick+Ave&display=swap");
+
+  .table {
     font-family: arial, sans-serif;
     border-collapse: collapse 2px black;
+<<<<<<< HEAD
     width: 90%;
     margin-left: 1%;
     margin-top: 20%;
     /* margin-bottom: 5%; */
+=======
+    height: 30%;
+    margin-top: 35%;
+    font-family: "Times New Roman", Times, serif;
+    color: rgb(6, 6, 49);
+>>>>>>> 440f15a2e02a6f279f478a55981439a954f55107
   }
-  .tr{
+  .tr {
     border: 1px solid #dddddd;
     text-align: left;
+<<<<<<< HEAD
     padding: 8px;
     background: rgb(8, 8, 43);;
     padding: 20px;
@@ -23,8 +64,27 @@
     text-align: center;
     font-size: 30px;
   
+=======
+    padding: 0px;
+    color: rgb(6, 6, 49);
+    width: 8px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 16.5px;
+    border: 2px solid rgb(6, 6, 49);
+    border-radius: 5px;
+>>>>>>> 440f15a2e02a6f279f478a55981439a954f55107
   }
-  button{
-    border: none;
-    background: none;
+
+  button {
+    color: rgb(6, 6, 49);
+    border: 2px solid rgb(6, 6, 49);
+    border-radius: 5px;
+
   }
+<<<<<<< HEAD
+=======
+}
+
+/* @media  only screen  and (min-width:320px) and (max-width:375px){} */
+/* @media  only screen  and (min-width:375px) and (max-width:425px){} */
+>>>>>>> 440f15a2e02a6f279f478a55981439a954f55107

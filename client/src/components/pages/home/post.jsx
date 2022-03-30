@@ -25,8 +25,7 @@ import {Link} from "react-router-dom"
 import { ModeContext } from '../../../context/modeContext/ModeContext';
 const Post = (props) => {
   const {user,setUser}=useContext(UserContext);
-const { mode } = useContext(ModeContext)
-    const [userName,setUserName]=useState("");
+    const [userName,setUserName]=useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [reportPopUp, setReportPopUp] = useState(false);
     const [joinAlert, setJoinAlert] = useState({
@@ -46,7 +45,7 @@ const { mode } = useContext(ModeContext)
 useEffect(()=>{
    const getUserName =async(id)=>{
   const user = await GetUserById(id);
-  setUserName(user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase());
+  setUserName({name:`${user.firstName} ${user.lastName}`,short:`${user.firstName[0].toUpperCase()+user.lastName[0].toUpperCase()}`});
     }  
     getUserName(props.postInfo.userId);
 },[])
@@ -60,33 +59,19 @@ const MakeAlert= ()=>{
   return (
       <>
     {isOpen && <PostPopUp
-        content={
- <article className='post-PopUpCard' style={{color:mode.colorTitle}}>
-   <h1 className='post-nameTag'> 
-   <Link to={`/profile/${props.postInfo.userId}`}>
-      posted by:{userName} </Link>
-       on {props.postInfo.createdAt}</h1>
-<div className='post-PopUpText'>
-<h1>
- {`${props.postInfo.postName}-${props.postInfo.projectType}`}
-      </h1>   
-        <p>    { props.postInfo.postText}</p>
- <p>  Participants required: { props.postInfo.numberOfParticipants}</p>
- <p>  Technologies Required: { props.postInfo.technologiesRequired}</p>
-       </div>
-      </article>}
-        name={userName}
+    postInfo={props.postInfo}
+        name={userName.name}
         postId={props.postInfo._id}
         handleClose={togglePopup}
       />} 
       {reportPopUp && <ReportPopUp  handleClose={toggleReportPopup} postInfo={props.postInfo}/>}
-    <Card sx={{ maxWidth: 700 ,marginTop:10 }} >
+    <Card sx={{ maxWidth: "90%" ,marginTop:"15px" ,marginLeft:"auto" ,marginRight:"auto" }} >
       <CardHeader
       sx={{cursor:"pointer"}}
       onClick={togglePopup}
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            <Link to={`/profile/${props.postInfo.userId}`}>{userName}</Link> 
+          <Avatar sx={{ bgcolor: red[500]}} aria-label="recipe">
+           <Link  className="avatar" to={`/profile/${props.postInfo.userId}`}>{userName.short}</Link> 
           </Avatar>
         }
         title={`${props.postInfo.postName}-${props.postInfo.projectType}`}

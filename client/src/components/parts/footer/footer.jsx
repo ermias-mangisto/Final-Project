@@ -7,8 +7,13 @@ const Footer = () => {
   return (
     <footer className="footer" style={{background:mode.backgroundNav}}>
       <div id="button"></div>
+<<<<<<< HEAD
       <div id="container"  style={{background:mode.backgroundNav,color:mode.color}}>
         <article className="hidden-Footer"  style={{background:mode.backgroundNav,color:mode.color}}>
+=======
+      <div id="container">
+        <article className=" hidden-Footer">
+>>>>>>> 440f15a2e02a6f279f478a55981439a954f55107
           <div className="logoa">
             <img src="https://i.ibb.co/7CsT864/ddaf023ec64044ebaeb29ebf4545b423.png" alt="" />
           </div>

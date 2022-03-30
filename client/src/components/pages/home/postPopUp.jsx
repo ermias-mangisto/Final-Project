@@ -1,9 +1,10 @@
 import { useBottomScrollListener } from "react-bottom-scroll-listener";
-
+import {Link} from "react-router-dom"
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
 import { CreateComment } from "../../../services/commentService";
 import { GetPostComment } from "../../../services/commentService";
+import {CreateAlert} from "../../../services/alertService"
 import "./home.css";
 import Comment from './comments'
 import { ModeContext } from "../../../context/modeContext/ModeContext";
@@ -23,6 +24,7 @@ function PostPopUp(props){
        loadComments();
         
     },[page])
+    
     const [comment,setComment]=useState({
       userId:user._id,
       postId:props.postId
@@ -35,7 +37,14 @@ function PostPopUp(props){
     const MakeComment= async()=>{
       console.log(comment);
   await CreateComment(comment).then(()=>{alert("comment sent")})
-  
+  .then(()=>{CreateAlert({
+    sendUserId:user._id,
+    postId:props.postId,
+    receiverUserId:props.postInfo.userId,
+    type: "comment",
+
+  })})
+
     }
     const scrollRef =useBottomScrollListener(()=>setPage(prev => prev + 1),console.log(page));
     const handleScroll = (event) => {
@@ -48,10 +57,23 @@ function PostPopUp(props){
     <div className="post-popup-box" >
       <div className="post-box" onScroll={handleScroll} ref={scrollRef} style={{background:mode.backgroundScreen,color:mode.colorText}}>
         <span className="post-close-icon" onClick={props.handleClose}>
-          x
+          close
         </span>
-        {props.content}
-        <div style={{background:mode.backgroundScreen}}>
+        <article className='post-PopUpCard' style={{background:mode.backgroundScreen}}>
+   <h1 className='post-nameTag'> 
+   <Link to={`/profile/${props.postInfo.userId}`}>
+      posted by:{props.name} </Link>
+       on {props.postInfo.createdAt}</h1>
+<div className='post-PopUpText'>
+<h1>
+ {`${props.postInfo.postName}-${props.postInfo.projectType}`}
+      </h1>   
+        <p>    { props.postInfo.postText}</p>
+ <p>  Participants required: { props.postInfo.numberOfParticipants}</p>
+ <p>  Technologies Required: { props.postInfo.technologiesRequired}</p>
+       </div>
+      </article>
+        <div>
           <textarea
             type="text"
             className="post-commentInput"
@@ -59,10 +81,11 @@ function PostPopUp(props){
             placeholder="comment on the post"
             name="commentText"
           />
-          <button type="button" onClick={MakeComment}  style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
+          <div className="comment-btn" >
+          <button type="button" onClick={MakeComment} style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
             comment
-          </button>
-        </div >
+          </button></div>
+        </div>
         {comments.map((comment, i) => {
           return <Comment commentInfo={comment} key={i} />;
         })}

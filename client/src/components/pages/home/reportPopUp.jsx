@@ -25,18 +25,18 @@ function ReportPopUp(props){
     return(
         <div className="report-popup-box" >
           <div className="report-box" >
-            <span className="report-close-icon" onClick={props.handleClose}>x</span>
+            <span className="report-close-icon" onClick={props.handleClose}>close</span>
             <h1>pick one of the choices as the reason for the report</h1> 
             <div className="report-reason">
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
-            <button onClick={MakeReportReason} name="bad"> bad</button>
+            <button onClick={MakeReportReason} name="Harassment"> Harassment</button>
+            <button onClick={MakeReportReason} name="Hate"> Hate</button>
+            <button onClick={MakeReportReason} name="Copyright violation"> Copyright violation</button>
+            <button onClick={MakeReportReason} name="Misinformation"> Misinformation</button>
+            <button onClick={MakeReportReason} name="Breaks site rules"> Breaks site rules</button>
+            <button onClick={MakeReportReason} name="Impersonation"> Impersonation</button>
+            <button onClick={MakeReportReason} name="Spam"> Spam</button>
+            <button onClick={MakeReportReason} name="Sharing personal information"> Sharing personal information</button>
+            <button onClick={MakeReportReason} name="Non-consensual intimate media"> Non-consensual intimate media</button>
             </div>
            {send &&<button onClick={MakeReport} className="send-report" name="bad"> send report</button>}
           </div>

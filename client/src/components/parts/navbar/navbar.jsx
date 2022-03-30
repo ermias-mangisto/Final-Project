@@ -80,8 +80,9 @@ const NavBar = () => {
 
         <AppBar position="static" color="inherit" className="home_nav" style={{background:mode.backgroundNav,color:mode.color}}>
           <Toolbar>
-            <Typography variant="h5" className={classes.title} >
-              <Link to="/" style={{color:mode.color}}>TEAMWARE</Link>
+            <Modes/>
+            <Typography variant="h5" className={classes.title}>
+              <Link to="/">TW</Link>
             </Typography>
             
             <Button color="inherit" >

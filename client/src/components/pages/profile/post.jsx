@@ -27,20 +27,7 @@ const Post = ({ postInfo, icon ,currentUser }) => {
     <div className="post" style={{color:mode.colorTitle,border:mode.border}} >
       {isOpen && (
         <PostPopUp
-          content={
-            <article className="post-PopUpCard">
-              <h1 className="post-nameTag"  >
-                {" "}
-                posted by:{currentUser.firstName}on {postInfo.createdAt}
-              </h1>
-              <div style={{color:mode.colorText}} className="post-PopUpText">
-                <h1>{`${postInfo.postName}-${postInfo.projectType}`}</h1>
-                <p> {postInfo.postText}</p>
-                <p> Participants required: {postInfo.numberOfParticipants}</p>
-                <p> Technologies Required: {postInfo.technologiesRequired}</p>
-              </div>
-            </article>
-          }
+          postInfo={postInfo}
           name={currentUser.firstName}
           postId={postInfo._id}
           handleClose={togglePopup}
