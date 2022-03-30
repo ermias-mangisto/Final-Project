@@ -47,6 +47,8 @@ setType(event.target.name)
                 <Tab label="web"  name="web" onClick={handleClick}/>
                 <Tab label="desktop" name="desktop"onClick={handleClick}/>
                 <Tab label="Game" name="game"onClick={handleClick}/>
+                <Tab label="System Software" name="System Software"onClick={handleClick}/>
+                <Tab label="data Software" name="data Software"onClick={handleClick}/>
       </Tabs>
     </Box>
           
