@@ -34,9 +34,9 @@ function CreatePostPopUp(props){
  
           <div className="create-post-box"style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
             <h1>Create Post</h1>
-            <span className="create-post-close-icon" onClick={props.handleClose}>close</span>
+            <span className="create-post-close-icon" onClick={props.handleClose} style={{color:mode.colorTitle}}>close</span>
             <form onSubmit={handleSubmit}>
-              {/* <h1>Create post</h1> */}
+
             <TextField style={{background:"white"}} sx={{margin:2 , width:500}} id="outlined-basic" label="post-name"name="postName" variant="outlined" onChange={onFieldChange} placeholder="write your post-name" type="text" required/>
             <TextareaAutosize style={{background:"white", width: 500 }}  aria-label="minimum height"  minRows={15} label="post-text" name="postText" onChange={onFieldChange}  required
       placeholder="write the idea of your project add as many details as you can " minLength={200}/>
