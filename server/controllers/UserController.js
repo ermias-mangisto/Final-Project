@@ -18,11 +18,11 @@ module.exports = {
         const { email, password } = req.body;
         const user = await Users.findOne({ email: email });
         if (user == null) {
-            return res.status(400).json({ message: "user does not exist" })
+            return res.status(400).json({ message: "one of the details is incorrect" })
         }
         bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) return res.status(500).json({ message: "error" });
-            if (!isMatch) return res.status(403).json({ message: "password is incorrect" });
+            if (!isMatch) return res.status(403).json({ message:"one of the details is incorrect" });
             jwt.sign({ user }, process.env.SECRET_KEY, { expiresIn: "12d" }, (err, token) => {
                 if (err) return res.status(500).json({ message: "error" })
                 res.status(200).json({ message: "login successful", token, success: true })

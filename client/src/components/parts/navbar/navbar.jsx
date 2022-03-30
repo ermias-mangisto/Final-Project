@@ -81,7 +81,7 @@ const NavBar = () => {
           <Toolbar>
             <Modes/>
             <Typography variant="h5" className={classes.title}>
-              <Link to="/">TEAMWARE</Link>
+              <Link to="/">TW</Link>
             </Typography>
             <Button color="inherit">
               {" "}

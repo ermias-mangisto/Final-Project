@@ -55,7 +55,7 @@ function PostPopUp(props){
     <div className="post-popup-box">
       <div className="post-box" onScroll={handleScroll} ref={scrollRef}>
         <span className="post-close-icon" onClick={props.handleClose}>
-          x
+          close
         </span>
         <article className='post-PopUpCard' >
    <h1 className='post-nameTag'> 
@@ -79,9 +79,10 @@ function PostPopUp(props){
             placeholder="comment on the post"
             name="commentText"
           />
+          <div className="comment-btn" >
           <button type="button" onClick={MakeComment}>
             comment
-          </button>
+          </button></div>
         </div>
         {comments.map((comment, i) => {
           return <Comment commentInfo={comment} key={i} />;
