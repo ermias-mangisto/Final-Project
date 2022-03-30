@@ -10,9 +10,11 @@ import { UserContext } from '../../../context/userContext/userContext';
 import { GetUserById } from '../../../services/userService';
 import { DeleteRequests } from "../../../services/alertService"
 import PostPopUp from "../home/postPopUp"
+import { ModeContext } from '../../../context/modeContext/ModeContext';
 import {Link ,useNavigate} from "react-router-dom"
 const AdminTable = ({currentUser}) => {
   const {user}=useContext(UserContext); 
+  const {mode} = useContext(ModeContext);
   const [myProfile,setMyProfile] = useState(false)
   useEffect(() => {
 if(currentUser._id === user._id) {
@@ -75,15 +77,15 @@ if(currentUser._id === user._id) {
   }
   return (
    <div className='table_details'>
-   {  myProfile && <table className='table'>
+   {  myProfile && <table className='table' >
         <thead>
-          <tr className='tr'>
-            <th className='tr'>User ID</th>
-            <th className='tr'>Post ID</th>
-            <th className='tr'>Post user ID</th>
-            <th className='tr'>text</th>
-            <th className='tr'>Delete Report</th>
-            <th className='tr'>Delete Post</th>
+          <tr  className='tr'>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>User ID</th>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>Post ID</th>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>Post user ID</th>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>text</th>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>Delete Report</th>
+            <th style={{background:mode.backgroundNav,color:mode.color}} className='tr'>Delete Post</th>
           </tr>
         </thead>
         <tbody>
@@ -96,12 +98,12 @@ if(currentUser._id === user._id) {
         postId={item.postId ==null?"id":item.postId._id}
         handleClose={togglePopup}
       />}
-                <td className='tr'><Link to={`/profile/${item.userId ==null? "id" :item.userId._id}`}><span>{item.userId ==null? "id" :item.userId._id}</span></Link></td>
-                <td className='tr'><span onClick={togglePopup}>{item.postId ==null? "id" :item.postId._id}</span></td>
-                <td className='tr'><span onClick={() => GetUsersById(item.postUserId)}>{item.postUserId}</span></td>
-                <td className='tr'>{item.text}</td>
-                <td className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
-                <td className='tr' ><span onClick={() =>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr'><Link to={`/profile/${item.userId ==null? "id" :item.userId._id}`}><span>{item.userId ==null? "id" :item.userId._id}</span></Link></td>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr'><span onClick={togglePopup}>{item.postId ==null? "id" :item.postId._id}</span></td>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr'><span onClick={() => GetUsersById(item.postUserId)}>{item.postUserId}</span></td>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr'>{item.text}</td>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr'><span onClick={() => DeleteReportFromTable(item._id)}><FaRegTrashAlt /></span></td>
+                <td style={{background:mode.backgroundNav,color:mode.color}} className='tr' ><span onClick={() =>
                   DeletePostFromTable({
                     sendUserId:currentUser._id, //! USER._id
                     postId: item.postId,

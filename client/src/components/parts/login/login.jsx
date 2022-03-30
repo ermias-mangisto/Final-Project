@@ -27,7 +27,7 @@ const {  user,setUser ,setIsLoggedIn,isLoggedIn}=useContext(UserContext)
       return (
         <div className="popup-box-login">
         <div className="box-login">
-          <span className="close-icon-login"onClick={props.handleClose}>x</span>
+          <span className="close-icon-login"onClick={props.handleClose}>close</span>
           <article className="login" >
           <form onSubmit={handleSubmit}>
     <h1>Login</h1>

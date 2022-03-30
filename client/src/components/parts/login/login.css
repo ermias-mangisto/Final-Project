@@ -51,15 +51,17 @@ flex-direction: column;
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: calc(35.2% - 10px);
-    top: calc(102vh - 85vh - 33px);
-    background: black;
-    color: white;
+  float:right;
+    color: black;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
+  
     line-height: 20px;
     text-align: center;
-    border: 1px solid #999;
-    font-size: 20px;
+    font-size: 15px;
+  }
+  @media screen and (max-width: 768px){
+.box-login{
+  width: 60%;
+}
   }

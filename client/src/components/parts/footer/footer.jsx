@@ -5,10 +5,10 @@ import { FaLinkedinIn } from "react-icons/fa";
 const Footer = () => {
   const { mode } = useContext(ModeContext);
   return (
-    <footer className="footer" >
+    <footer className="footer" style={{ background: mode.backgroundNav }}>
       <div id="button"></div>
       <div id="container">
-        <article className=" hidden-Footer">
+        <article className="hidden-Footer">
           <div className="logoa">
             <img src="https://i.ibb.co/7CsT864/ddaf023ec64044ebaeb29ebf4545b423.png" alt="" />
           </div>
