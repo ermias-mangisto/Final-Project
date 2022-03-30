@@ -1,9 +1,9 @@
-import react, { useState } from "react";
+import react, { useState , useContext} from "react";
 import { UpdatePost } from "../../../services/postService";
-
+import { ModeContext } from "../../../context/modeContext/ModeContext";
 const EditPostPopUP = (props) => {
   const [editPost, setEditPost] = useState({});
-
+  const {mode}=useContext(ModeContext);
   const onFieldChange = (e) => {
     const { name, value } = e.target;
     setEditPost({ ...editPost, [name]: value });
@@ -21,15 +21,15 @@ UpdatePost(props.postInfo._id,{archivePost:true})
   };
   return (
     <div className="popup-box">
-      <div className="box">
+      <div className="box" style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
         <span className="close-icon" onClick={props.handleClose}>
           x
         </span>
-        <button className="delete-btn" onClick={DeletePost}>
+        <button className="delete-btn" style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}} onClick={DeletePost}>
          Delete post
         </button>
         <article className="edit">
-          <h1>edit post</h1>
+          <h1>Edit post</h1>
           <form>
             <label>
               post Name:
@@ -68,7 +68,7 @@ UpdatePost(props.postInfo._id,{archivePost:true})
               <input onChange={onFieldChange} name="participants" type="text" />
             </label>
 
-            <button onClick={CreatePost}>SAVE</button>
+            <button onClick={CreatePost} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>SAVE</button>
           </form>
         </article>
       </div>

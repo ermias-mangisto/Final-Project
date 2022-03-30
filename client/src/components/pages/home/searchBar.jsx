@@ -10,8 +10,10 @@ import CreatePostPopUp from './createPostPopUp';
 import Profile from "../../pages/profile/profile";
 import { UserContext } from "../../../context/userContext/userContext";
 import {Link} from "react-router-dom"
+import { ModeContext } from '../../../context/modeContext/ModeContext';
 export default function SearchBar() {
   const{user}=useContext(UserContext)
+  const { mode } = useContext(ModeContext)
   const [search,setSearch]=useState(false)
   useEffect(()=>{ 
     if(search===true){
@@ -71,7 +73,7 @@ export default function SearchBar() {
 })}
             </div>}
             {createPost && <CreatePostPopUp   id={user._id}handleClose={toggleCreate}/>} 
-            <button className="create-post-btn" onClick={toggleCreate}>create</button>
+            <button className="create-post-btn" onClick={toggleCreate}  style={{border:mode.border,background:mode.backgroundScreen,color:mode.colorTitle}}>create</button>
           
             </div>
   );

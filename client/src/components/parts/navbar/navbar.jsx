@@ -14,11 +14,12 @@ import { FaUserAlt } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { ModeContext } from "../../../context/modeContext/ModeContext";
 import Modes from "../mode/modes";
+import { AlertProvider } from "../../../context/alertContext/AlertContext";
 const useStyles = makeStyles((theme) => ({
-  
+
   root: {
     flexGrow: 1,
   },
@@ -42,12 +43,12 @@ const NavBar = () => {
     counter
   } = useContext(UserContext);
 
-  function HandleLogout(){
+  function HandleLogout() {
     localStorage.removeItem("token")
     setUser({})
     setIsLoggedIn(false)
     navigate("/")
-    }
+  }
   const toggleLogin = () => {
     setLogin(!login);
   };
@@ -61,7 +62,7 @@ const NavBar = () => {
       {login && <Login handleClose={toggleLogin} />}
       {register && <Register handleClose={toggleRegister} />}
       {!isLoggedIn && (
-        <AppBar position="static" color="inherit" style={{background:mode.headerFoteer,color:mode.color}}>
+        <AppBar position="static" color="inherit" style={{background:mode.backgroundNav,color:mode.color}}>
           <Toolbar>
             <Typography variant="h5" className={classes.title}>
               TEAMWARE
@@ -75,42 +76,42 @@ const NavBar = () => {
           </Toolbar>
         </AppBar>
       )}
-      {isLoggedIn && (
+      {isLoggedIn && ( 
 
-        <AppBar position="static" color="inherit" style={{background:mode.headerFoteer,color:mode.color}}>
+        <AppBar position="static" color="inherit" className="home_nav" style={{background:mode.backgroundNav,color:mode.color}}>
           <Toolbar>
-            <Modes/>
-            <Typography variant="h5" className={classes.title}>
-              <Link to="/">TEAMWARE</Link>
+            <Typography variant="h5" className={classes.title} >
+              <Link to="/" style={{color:mode.color}}>TEAMWARE</Link>
             </Typography>
+            
+            <Button color="inherit" >
+              <Modes />
+            </Button>
             <Button color="inherit">
               {" "}
               <Link to={`/profile/${user._id}`}>
-                <FaUserAlt className="Icon" />
+                <FaUserAlt className="Icon" style={{color:mode.color}} />
               </Link>
             </Button>
 
             <Button color="inherit">
               {" "}
               <Link to="/main">
-                <FaHome className="Icon" />
+                <FaHome className="Icon" style={{color:mode.color}}/>
               </Link>
             </Button>
             <Button
               color="inherit"
-              onClick={() => setDisplayAlerts(!displayAlerts)}
-            >
+              onClick={() => setDisplayAlerts(!displayAlerts)}>
               <FaBell className="Icon" />
-              
-              {counter?<span className="counter_newNotification">{counter}</span>:""}
-              
+              {counter ? <span className="counter_newNotification">{counter}</span> : ""}
             </Button>
             <Button color="inherit" onClick={HandleLogout}>
-
               <Link to="/">
-                <FiLogOut className="Icon" />
+                <FiLogOut className="Icon" style={{color:mode.color}}/>
               </Link>
             </Button>
+
           </Toolbar>
         </AppBar>
       )}

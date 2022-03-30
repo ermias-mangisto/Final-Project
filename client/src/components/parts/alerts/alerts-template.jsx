@@ -5,9 +5,11 @@ import { CreateAlert, DeleteAlert, GetAllAlert } from "../../../services/alertSe
 import { GetPostById, UpdatePost } from "../../../services/postService"
 import { GetUserById, UpdateUser } from "../../../services/userService"
 import { AlertContext } from "../../../context/alertContext/AlertContext"
+import { ModeContext } from "../../../context/modeContext/ModeContext"
 import CheckAlert from "./checkAlert";
 import {Link} from "react-router-dom"
 const AlertsTemplate = () => {
+    const {mode}=useContext(ModeContext);
     const { user, setCounter } = useContext(UserContext)
     const { alerts, setAlert } = useContext(AlertContext)
 
@@ -56,10 +58,10 @@ const AlertsTemplate = () => {
     }
     return (
         <div className="contain">
-            <table className="table_data" >
+            <table className="table_data" style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
                 <thead>
                     <tr>
-                        <th className="title_notification">Notification</th>
+                        <th className="title_notification" style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>Notification</th>
                     </tr>
                 </thead>
                 <div className="contain_tr">
@@ -74,15 +76,15 @@ const AlertsTemplate = () => {
                                 switch (data.type.toLowerCase()) {
                                     case "deleted": {
                                         return (
-                                            <tr className="tr_data" key={i}>
-                                                <td>Your post was <span className="tr_delete" onClick={() => GetYourPostId(data.postId)}> DELETED </span>by manager<button onClick={() => DeleteTRow(data)} className="btn_deleteDeleteAlert">x</button> </td>
+                                            <tr className="tr_data" key={i} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
+                                                <td style={{border:mode.border}}>Your post was <span className="tr_delete" onClick={() => GetYourPostId(data.postId)}> DELETED </span>by manager<button onClick={() => DeleteTRow(data)} className="btn_deleteDeleteAlert">x</button> </td>
                                             </tr>
                                         )
                                     }
                                     case "join": {
                                         return (
-                                            <tr className="tr_data" key={i} >
-                                                <td> <Link to={`/profile/${data.sendUserId==null?"id":data.sendUserId._id}`}><span className="tr_userName">{data.sendUserId==null?"id":data.sendUserId.firstName}</span></Link> wants to join your team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
+                                            <tr className="tr_data" key={i} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
+                                                <td style={{border:mode.border}}> <Link to={`/profile/${data.sendUserId==null?"id":data.sendUserId._id}`}><span className="tr_userName">{data.sendUserId==null?"id":data.sendUserId.firstName}</span></Link> wants to join your team <button onClick={() => DeleteTRow(data)} className="btn_deleteJoin">x</button>
                                                     <span className="general_btn">
                                                         <button onClick={() => AcceptRequest({
                                                             sendUserId: user._id,
@@ -98,15 +100,15 @@ const AlertsTemplate = () => {
                                     }
                                     case "accepted": {
                                         return (
-                                            <tr className="tr_data" key={i}>
-                                                <td>You have been <span className="tr_accepted" onClick={() => GetYourPostId(data.postId)}>ACCEPTED</span> to web team <button onClick={() => DeleteTRow(data)} className="btn_deleteAccepted">x</button></td>
+                                            <tr className="tr_data" key={i} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
+                                                <td style={{border:mode.border}}>You have been <span className="tr_accepted" onClick={() => GetYourPostId(data.postId)}>ACCEPTED</span> to web team <button onClick={() => DeleteTRow(data)} className="btn_deleteAccepted">x</button></td>
                                             </tr>
                                         )
                                     }
                                     case "comment": {
                                         return (
-                                            <tr className="tr_data" key={i}>
-                                                <td><span className="tr_comment" onClick={() => GetSenderData(data.sendUserId)}>SOMEONE</span> commented on your post <button onClick={() => DeleteTRow(data)} className="btn_deleteComment">x</button></td>
+                                            <tr className="tr_data" key={i} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
+                                                <td style={{border:mode.border}}><span className="tr_comment" onClick={() => GetSenderData(data.sendUserId)}>SOMEONE</span> commented on your post <button onClick={() => DeleteTRow(data)} className="btn_deleteComment">x</button></td>
                                             </tr>
                                         )
                                     }

@@ -2,8 +2,9 @@ import "./editpopup.css";
 import react, { useContext, useState } from "react";
 import { UserContext } from "../../../context/userContext/userContext";
 import { UpdateUser } from "../../../services/userService";
-
+import { ModeContext } from "../../../context/modeContext/ModeContext";
 const EditPopUP = (props) => {
+  const {mode}=useContext(ModeContext);
   const { user, setUser } = useContext(UserContext);
   const [editUser, setEditUser] = useState({});
 
@@ -20,8 +21,8 @@ const EditPopUP = (props) => {
 
   return (
     <div className="popup-box">
-      <div className="box">
-        <span className="close-icon" onClick={props.handleClose}>
+      <div className="box" style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>
+        <span className="close-icon" onClick={props.handleClose} >
           x
         </span>
         <article className="edit">
@@ -81,7 +82,7 @@ const EditPopUP = (props) => {
                 type="text"
               />
             </label>
-            <button onClick={CreateProfile}>SAVE</button>
+            <button onClick={CreateProfile} style={{color:mode.colorTitle,border:mode.border,background:mode.backgroundScreen}}>SAVE</button>
           </form>
         </article>
       </div>

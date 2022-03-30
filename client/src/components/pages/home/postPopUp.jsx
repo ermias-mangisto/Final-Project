@@ -6,7 +6,9 @@ import { CreateComment } from "../../../services/commentService";
 import { GetPostComment } from "../../../services/commentService";
 import "./home.css";
 import Comment from './comments'
+import { ModeContext } from "../../../context/modeContext/ModeContext";
 function PostPopUp(props){
+    const {mode} = useContext(ModeContext)
     const {user}=useContext(UserContext)
     const [comments,setComments]=useState([]);
     const [loading, setLoading] = useState(true);
@@ -43,13 +45,13 @@ function PostPopUp(props){
       }}
 
   return (
-    <div className="post-popup-box">
-      <div className="post-box" onScroll={handleScroll} ref={scrollRef}>
+    <div className="post-popup-box" >
+      <div className="post-box" onScroll={handleScroll} ref={scrollRef} style={{background:mode.backgroundScreen,color:mode.colorText}}>
         <span className="post-close-icon" onClick={props.handleClose}>
           x
         </span>
         {props.content}
-        <div>
+        <div style={{background:mode.backgroundScreen}}>
           <textarea
             type="text"
             className="post-commentInput"
@@ -57,10 +59,10 @@ function PostPopUp(props){
             placeholder="comment on the post"
             name="commentText"
           />
-          <button type="button" onClick={MakeComment}>
+          <button type="button" onClick={MakeComment}  style={{background:mode.backgroundScreen,color:mode.colorTitle}}>
             comment
           </button>
-        </div>
+        </div >
         {comments.map((comment, i) => {
           return <Comment commentInfo={comment} key={i} />;
         })}

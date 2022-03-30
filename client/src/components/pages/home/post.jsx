@@ -22,8 +22,10 @@ import {UserContext} from '../../../context/userContext/userContext'
 import {CreateAlert} from '../../../services/alertService'
 import ReportPopUp from "./reportPopUp";
 import {Link} from "react-router-dom"
+import { ModeContext } from '../../../context/modeContext/ModeContext';
 const Post = (props) => {
   const {user,setUser}=useContext(UserContext);
+const { mode } = useContext(ModeContext)
     const [userName,setUserName]=useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [reportPopUp, setReportPopUp] = useState(false);
@@ -59,7 +61,7 @@ const MakeAlert= ()=>{
       <>
     {isOpen && <PostPopUp
         content={
- <article className='post-PopUpCard' >
+ <article className='post-PopUpCard' style={{color:mode.colorTitle}}>
    <h1 className='post-nameTag'> 
    <Link to={`/profile/${props.postInfo.userId}`}>
       posted by:{userName} </Link>
