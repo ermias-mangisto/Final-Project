@@ -22,6 +22,7 @@
   min-height: 10vh;
 }
 
+
 .requestsContainer {
   grid-area: sidebar;
   width: 200px;
@@ -99,7 +100,7 @@
   margin-top: 0;
   font-size: small;
   float: left;
-}
+
 
 .post-close-icon {
   content: "x";
@@ -144,6 +145,7 @@
 .commentWriter:hover {
   font-weight: bold;
 }
+
 .comment-btn {
   margin-top: 0;
   height: 70px;
@@ -255,6 +257,53 @@
   font-size: x-large;
   cursor: pointer;
 }
+
+.post-popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 99%;
+    height: 1000vh;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+   
+  .post-box {
+    position: relative;
+    width: 55%;
+    margin: 0 auto;
+    height: 90vh;
+    max-height: 90vh;
+    margin-top: calc(100vh - 95vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+  }
+  .post-box button{
+   cursor:pointer;
+   width: 60px;
+   margin:auto;
+   margin-top: 20px;
+   height:30px;
+   background-color: #999;
+   text-align:center;
+   border: 1px solid #999;
+  }
+   .PopUpCard{
+       width: 99%;
+       text-align:left;
+   }
+   .post-PopUpText{
+       display: flex;
+    flex-direction: column;
+    margin:auto;
+color: rgb(5,5,46);
+text-align:left;
+       width: 80%;
+   }
+
 
 .create-post-popup-box {
   position: fixed;
