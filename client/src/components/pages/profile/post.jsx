@@ -40,7 +40,7 @@ const Post = ({ postInfo, icon ,currentUser }) => {
       {isOpen && (
         <PostPopUp
           postInfo={postInfo}
-          name={userName}
+          name={userName.name}
           postId={postInfo._id}
           handleClose={togglePopup}
         />
