@@ -37,6 +37,7 @@ function CreatePostPopUp(props){
             <span className="create-post-close-icon" onClick={props.handleClose} style={{color:mode.colorTitle}}>close</span>
             <form onSubmit={handleSubmit}>
 
+
             <TextField style={{background:"white"}} sx={{margin:"auto" , width:"80%"}} id="outlined-basic" label="post-name"name="postName" variant="outlined" onChange={onFieldChange} placeholder="write your post-name" type="text" required/>
             <TextareaAutosize aria-label="minimum height"  minRows={15} label="post-text" name="postText" onChange={onFieldChange}  style={{ background:"white",width: "80%" ,margin:"auto"}} required
       placeholder="write the idea of your project add as many details as you can " minLength={200}/>
