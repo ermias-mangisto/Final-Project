@@ -56,7 +56,7 @@ module.exports = {
         await Users.find({ firstName: req.params.firstName }).limit(limit).skip((page - 1) * limit)
             .then((data) => { res.send(data) })
             .catch((err) => res.status(404).send({ message: err.message }))
-    },
+    }, 
     Update: async (req, res) => {
         await Users.findByIdAndUpdate({ _id: req.params.id }, req.body)
             .then(data => res.send(data))
